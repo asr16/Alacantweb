@@ -31,57 +31,60 @@ export function Header() {
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-arena/80 bg-crema/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
-        <Link href="/" className="group flex items-center gap-3 rounded-lg">
-          <div
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-mar text-sm font-bold text-white shadow-sm transition-transform group-hover:scale-105"
-            aria-hidden
-          >
-            HA
-          </div>
-          <div className="leading-tight">
-            <span className="font-display text-lg font-semibold text-texto">
-              {siteConfig.name}
-            </span>
-            <span className="block text-xs text-texto-suave">Roquetas de Mar</span>
-          </div>
-        </Link>
-
-        <nav className="hidden items-center gap-1 lg:flex" aria-label={t("nav.main")}>
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-texto transition-colors hover:bg-arena hover:text-mar"
+    <>
+      <header className="sticky top-0 z-50 border-b border-arena/80 bg-crema/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+          <Link href="/" className="group flex items-center gap-3 rounded-lg">
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-mar text-sm font-bold text-white shadow-sm transition-transform group-hover:scale-105"
+              aria-hidden
             >
-              {t(item.labelKey)}
-            </Link>
-          ))}
-        </nav>
+              HA
+            </div>
+            <div className="leading-tight">
+              <span className="font-display text-lg font-semibold text-texto">
+                {siteConfig.name}
+              </span>
+              <span className="block text-xs text-texto-suave">Roquetas de Mar</span>
+            </div>
+          </Link>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <OpenStatus />
-          <LanguageSwitcher />
-          <a href={siteConfig.phoneHref} className="btn btn-mar !py-2 !px-4">
-            {t("nav.call")}
-          </a>
+          <nav className="hidden items-center gap-1 lg:flex" aria-label={t("nav.main")}>
+            {siteConfig.nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-full px-4 py-2 text-sm font-medium text-texto transition-colors hover:bg-arena hover:text-mar"
+              >
+                {t(item.labelKey)}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <OpenStatus />
+            <LanguageSwitcher />
+            <a href={siteConfig.phoneHref} className="btn btn-mar !py-2 !px-4">
+              {t("nav.call")}
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full border border-arena bg-white p-2.5 text-mar lg:hidden"
+            aria-expanded={open}
+            aria-controls={panelId}
+            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+      </header>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-full border border-arena bg-white p-2.5 text-mar lg:hidden"
-          aria-expanded={open}
-          aria-controls={panelId}
-          aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
+      {/* Fuera del header: backdrop-blur crea un containing block que recortaba el panel */}
       <div
-        className={`fixed inset-0 z-40 bg-texto/40 transition-opacity lg:hidden ${
+        className={`fixed inset-0 z-[60] bg-texto/40 transition-opacity lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden={!open}
@@ -93,11 +96,11 @@ export function Header() {
         role="dialog"
         aria-modal="true"
         aria-label={t("nav.mobile")}
-        className={`fixed right-0 top-0 z-50 flex h-full w-[min(100%,320px)] flex-col bg-crema shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed right-0 top-0 z-[70] flex h-dvh w-[min(100%,320px)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-arena px-4 py-4">
+        <div className="flex items-center justify-between border-b border-arena bg-white px-4 py-4">
           <OpenStatus />
           <button
             type="button"
@@ -109,7 +112,7 @@ export function Header() {
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col gap-1 p-4" aria-label={t("nav.mobile")}>
+        <nav className="flex flex-1 flex-col gap-1 overflow-y-auto bg-white p-4" aria-label={t("nav.mobile")}>
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
@@ -122,7 +125,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="space-y-3 border-t border-arena p-4">
+        <div className="space-y-3 border-t border-arena bg-white p-4">
           <div className="flex items-center justify-between">
             <span className="text-sm text-texto-suave">{t("lang.switch")}</span>
             <LanguageSwitcher />
@@ -143,6 +146,6 @@ export function Header() {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
