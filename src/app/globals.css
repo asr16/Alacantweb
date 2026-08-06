@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+:root {
+  --color-mar: #1e6b8c;
+  --color-mar-claro: #4a9bb5;
+  --color-arena: #f5ede4;
+  --color-crema: #faf8f5;
+  --color-terracota: #c47b5a;
+  --color-oliva: #6b7b5c;
+  --color-texto: #2c3e50;
+  --color-texto-suave: #5a6b7d;
+  --background: var(--color-crema);
+  --foreground: var(--color-texto);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-mar: var(--color-mar);
+  --color-mar-claro: var(--color-mar-claro);
+  --color-arena: var(--color-arena);
+  --color-crema: var(--color-crema);
+  --color-terracota: var(--color-terracota);
+  --color-oliva: var(--color-oliva);
+  --color-texto: var(--color-texto);
+  --color-texto-suave: var(--color-texto-suave);
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-mar);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 100;
+  border-radius: 9999px;
+  background: var(--color-mar);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* Utilidades de UI (reducen clases repetidas en JS) */
+.card {
+  border-radius: 1.5rem;
+  border: 1px solid var(--color-arena);
+  background: white;
+  box-shadow: 0 1px 2px rgb(44 62 80 / 0.04);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-mar {
+  background: var(--color-mar);
+  color: white;
+}
+
+.btn-mar:hover {
+  background: var(--color-mar-claro);
+}
+
+.btn-terracota {
+  background: var(--color-terracota);
+  color: white;
+}
+
+.btn-terracota:hover {
+  background: color-mix(in srgb, var(--color-terracota) 90%, black);
+}
+
+.btn-outline-mar {
+  border: 1px solid var(--color-mar);
+  color: var(--color-mar);
+}
+
+.btn-outline-mar:hover {
+  background: var(--color-mar);
+  color: white;
+}
+
+.btn-ghost-light {
+  border: 1px solid rgb(255 255 255 / 0.4);
+  color: white;
+}
+
+.btn-ghost-light:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.link-mar {
+  color: var(--color-mar);
+}
+
+.link-mar:hover {
+  color: var(--color-mar-claro);
+}
+
+.chip {
+  border-radius: 9999px;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.chip-active {
+  background: var(--color-mar);
+  color: white;
+}
+
+.chip-idle {
+  border: 1px solid var(--color-arena);
+  background: white;
+  color: var(--color-texto);
+}
+
+.chip-idle:hover {
+  border-color: var(--color-mar);
+  color: var(--color-mar);
+}
+
+.chip-tag-active {
+  background: var(--color-terracota);
+  color: white;
+}
+
+.chip-tag-idle {
+  border: 1px solid var(--color-arena);
+  background: white;
+  color: var(--color-texto-suave);
+}
+
+.chip-tag-idle:hover {
+  color: var(--color-terracota);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.6s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-up-delay-1,
+  .animate-fade-up-delay-2,
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
