@@ -29,11 +29,21 @@ export const metadata: Metadata = {
     "cafetería Roquetas",
     "pastelería Almería",
   ],
+  icons: {
+    icon: "/brand/logo-alacant.png",
+    apple: "/brand/logo-alacant.png",
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     locale: "es_ES",
     type: "website",
+    images: [
+      {
+        url: "/brand/logo-alacant.png",
+        alt: siteConfig.name,
+      },
+    ],
   },
 };
 

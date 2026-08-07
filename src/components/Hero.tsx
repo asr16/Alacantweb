@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { heroContent, siteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -23,6 +24,9 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-mar/80 via-mar/30 to-transparent" />
 
       <div className="relative mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-32 sm:px-6 sm:pb-20">
+        <div className="animate-fade-up mb-6 w-fit rounded-2xl bg-crema/95 p-3 shadow-sm backdrop-blur-sm sm:mb-8 sm:p-4">
+          <BrandLogo height={132} priority />
+        </div>
         <p className="animate-fade-up mb-4 text-sm font-medium uppercase tracking-[0.2em] text-white/90">
           Roquetas de Mar · Av. Mediterráneo
         </p>

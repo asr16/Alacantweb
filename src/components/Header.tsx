@@ -3,6 +3,7 @@
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { OpenStatus } from "@/components/OpenStatus";
 import { getWhatsAppHref, siteConfig } from "@/data/site";
@@ -34,19 +35,12 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 border-b border-arena/80 bg-crema/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
-          <Link href="/" className="group flex items-center gap-3 rounded-lg">
-            <div
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-mar text-sm font-bold text-white shadow-sm transition-transform group-hover:scale-105"
-              aria-hidden
-            >
-              HA
-            </div>
-            <div className="leading-tight">
-              <span className="font-display text-lg font-semibold text-texto">
-                {siteConfig.name}
-              </span>
-              <span className="block text-xs text-texto-suave">Roquetas de Mar</span>
-            </div>
+          <Link
+            href="/"
+            className="group rounded-lg transition-opacity hover:opacity-90"
+            aria-label={siteConfig.name}
+          >
+            <BrandLogo height={56} priority />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label={t("nav.main")}>

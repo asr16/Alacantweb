@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Camera, MapPin, Phone } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { getWhatsAppHref, siteConfig } from "@/data/site";
 import { getScheduleDisplay } from "@/lib/schedule";
 import { useLanguage } from "@/i18n/LanguageProvider";
@@ -18,7 +19,10 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <h2 className="font-display text-xl font-semibold">{siteConfig.name}</h2>
+            <div className="mb-4 w-fit rounded-2xl bg-crema p-2.5">
+              <BrandLogo height={88} />
+            </div>
+            <h2 className="sr-only">{siteConfig.name}</h2>
             <p className="mt-3 text-sm leading-relaxed text-white/80">
               {t("footer.blurb")}
             </p>
