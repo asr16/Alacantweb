@@ -20,8 +20,6 @@ export const siteConfig = {
   },
   phone: "+34 950 33 34 70",
   phoneHref: "tel:+34950333470",
-  whatsapp: "+34 606 26 37 02",
-  whatsappNumber: "34606263702",
   email: "info@heladeriaalacant.es",
   emailHref: "mailto:info@heladeriaalacant.es",
   instagram: "https://www.instagram.com/heladeriaalacantroquetas/",
@@ -32,9 +30,9 @@ export const siteConfig = {
   googleMapsEmbed:
     "https://www.google.com/maps?q=36.732696,-2.618354&hl=es&z=17&output=embed",
   scheduleNote:
-    "Horario orientativo. Puede variar en festivos; confirma por teléfono o WhatsApp.",
+    "Horario orientativo. Puede variar en festivos; confirma por teléfono.",
   scheduleNoteEn:
-    "Indicative hours. May vary on holidays; confirm by phone or WhatsApp.",
+    "Indicative hours. May vary on holidays; confirm by phone.",
   highlights: [
     { value: "65+", label: "Sabores de helado artesano", labelEn: "Artisan ice cream flavors" },
     { value: "50+", label: "Años de historia", labelEn: "Years of history" },
@@ -47,14 +45,6 @@ export const siteConfig = {
     { href: "/contacto", labelKey: "nav.contact" as const },
   ],
 };
-
-export function getWhatsAppHref(locale: "es" | "en" = "es") {
-  const text =
-    locale === "en"
-      ? "Hi, I'd like to ask about Heladería Alacant"
-      : "Hola, me gustaría consultar sobre Heladería Alacant";
-  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(text)}`;
-}
 
 export const heroContent = {
   title: "Helados artesanos frente al Mediterráneo",

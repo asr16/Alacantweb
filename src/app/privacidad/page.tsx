@@ -39,7 +39,7 @@ export default function PrivacidadPage() {
           </h2>
           <p className="mt-3">
             En esta versión informativa del sitio no se recogen datos personales
-            mediante formularios propios. Si contactas por WhatsApp, teléfono o
+            mediante formularios propios. Si contactas por teléfono o
             email, los datos que nos facilites se usarán únicamente para
             atender tu consulta.
           </p>
@@ -74,9 +74,8 @@ export default function PrivacidadPage() {
           </h2>
           <p className="mt-3">
             No se ceden datos a terceros salvo obligación legal o proveedores
-            imprescindibles para la comunicación (por ejemplo, Meta/WhatsApp si
-            usas ese canal). El sitio puede enlazar a Google Maps e Instagram,
-            sujetos a sus propias políticas.
+            imprescindibles para la comunicación. El sitio puede enlazar a
+            Google Maps e Instagram, sujetos a sus propias políticas.
           </p>
         </section>
 

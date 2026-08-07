@@ -32,7 +32,6 @@ export default function AvisoLegalPage() {
             <li>NIF/CIF: pendiente de facilitar por el titular</li>
             <li>Domicilio: {siteConfig.address.full}</li>
             <li>Teléfono: {siteConfig.phone}</li>
-            <li>WhatsApp: {siteConfig.whatsapp}</li>
             <li>Email: {siteConfig.email}</li>
           </ul>
         </section>
@@ -68,7 +67,7 @@ export default function AvisoLegalPage() {
             El titular procura mantener la información actualizada, pero no
             garantiza la ausencia de errores ni la disponibilidad ininterrumpida
             del sitio. Los horarios y precios pueden variar; se recomienda
-            confirmarlos en el local, por teléfono o WhatsApp.
+            confirmarlos en el local o por teléfono.
           </p>
         </section>
 
@@ -78,7 +77,7 @@ export default function AvisoLegalPage() {
           </h2>
           <p className="mt-3">
             El sitio puede incluir enlaces a terceros (Google Maps, Instagram,
-            WhatsApp, etc.). El titular no se responsabiliza del contenido ni de
+            etc.). El titular no se responsabiliza del contenido ni de
             las políticas de esos servicios externos.
           </p>
         </section>

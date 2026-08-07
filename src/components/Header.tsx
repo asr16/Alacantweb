@@ -6,11 +6,11 @@ import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { OpenStatus } from "@/components/OpenStatus";
-import { getWhatsAppHref, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function Header() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -132,14 +132,6 @@ export function Header() {
             className="block rounded-xl bg-mar px-4 py-3 text-center text-sm font-semibold text-white"
           >
             {t("nav.call")}
-          </a>
-          <a
-            href={getWhatsAppHref(locale)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-xl bg-[#25D366] px-4 py-3 text-center text-sm font-semibold text-white"
-          >
-            {t("whatsapp.message")}
           </a>
         </div>
       </div>

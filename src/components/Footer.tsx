@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { Camera, MapPin, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { getWhatsAppHref, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
 import { getScheduleDisplay } from "@/lib/schedule";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 const footerLink = "text-sm text-white/85 hover:text-arena rounded";
 
 export function Footer() {
-  const { t, tx, locale } = useLanguage();
+  const { t, tx } = useLanguage();
   const year = new Date().getFullYear();
   const schedule = getScheduleDisplay();
 
@@ -48,16 +48,6 @@ export function Footer() {
                 <Phone className="h-4 w-4 shrink-0" aria-hidden />
                 <a href={siteConfig.phoneHref} className="hover:text-arena">
                   {siteConfig.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={getWhatsAppHref(locale)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-arena"
-                >
-                  WhatsApp {siteConfig.whatsapp}
                 </a>
               </li>
             </ul>

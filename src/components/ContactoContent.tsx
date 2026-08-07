@@ -4,13 +4,12 @@ import { Camera, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactCard } from "@/components/ContactCard";
 import { OpenStatus } from "@/components/OpenStatus";
 import { SectionHeading } from "@/components/SectionHeading";
-import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
-import { getWhatsAppHref, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
 import { getScheduleDisplay } from "@/lib/schedule";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function ContactoContent() {
-  const { t, tx, locale } = useLanguage();
+  const { t, tx } = useLanguage();
   const schedule = getScheduleDisplay();
 
   return (
@@ -41,22 +40,6 @@ export function ContactoContent() {
             <a href={siteConfig.phoneHref} className="link-mar mt-1 block">
               {siteConfig.phone}
             </a>
-          </ContactCard>
-
-          <ContactCard
-            icon={<WhatsAppIcon className="h-5 w-5" />}
-            title={t("contact.whatsapp")}
-            iconClassName="bg-[#25D366]/15 text-[#128C7E]"
-          >
-            <a
-              href={getWhatsAppHref(locale)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-mar mt-1 block"
-            >
-              {siteConfig.whatsapp}
-            </a>
-            <p className="mt-2 text-sm text-texto-suave">{t("whatsapp.message")}</p>
           </ContactCard>
 
           <ContactCard
