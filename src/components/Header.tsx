@@ -33,39 +33,39 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-arena/80 bg-crema/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <header className="sticky top-0 z-50 border-b border-arena bg-crema/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-3.5">
           <Link
             href="/"
-            className="group rounded-lg transition-opacity hover:opacity-90"
+            className="group transition-opacity hover:opacity-90"
             aria-label={siteConfig.name}
           >
-            <BrandLogo height={56} priority />
+            <BrandLogo height={52} priority />
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label={t("nav.main")}>
+          <nav className="hidden items-center gap-6 lg:flex" aria-label={t("nav.main")}>
             {siteConfig.nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-texto transition-colors hover:bg-arena hover:text-mar"
+                className="text-sm font-medium text-texto underline-offset-4 transition-colors hover:text-mar hover:underline"
               >
                 {t(item.labelKey)}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-4 lg:flex">
             <OpenStatus />
             <LanguageSwitcher />
-            <a href={siteConfig.phoneHref} className="btn btn-mar !py-2 !px-4">
+            <a href={siteConfig.phoneHref} className="btn btn-mar !py-2 !px-3.5 !text-[0.7rem]">
               {t("nav.call")}
             </a>
           </div>
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-full border border-arena bg-white p-2.5 text-mar lg:hidden"
+            className="inline-flex items-center justify-center border border-arena bg-white p-2.5 text-mar lg:hidden"
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
@@ -93,7 +93,7 @@ export function Header() {
         aria-label={t("nav.mobile")}
         aria-hidden={!open}
         inert={!open ? true : undefined}
-        className={`fixed right-0 top-0 z-[70] flex h-dvh w-[min(100%,320px)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed right-0 top-0 z-[70] flex h-dvh w-[min(100%,320px)] flex-col bg-white transition-transform duration-300 ease-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -102,7 +102,7 @@ export function Header() {
           <button
             type="button"
             onClick={close}
-            className="rounded-full border border-arena bg-white p-2 text-mar"
+            className="border border-arena bg-white p-2 text-mar"
             aria-label={t("nav.closeMenu")}
           >
             <X className="h-5 w-5" />
@@ -115,7 +115,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               onClick={close}
-              className="rounded-xl px-4 py-3 text-base font-medium text-texto hover:bg-arena"
+              className="px-3 py-3 text-base font-medium text-texto hover:bg-arena"
             >
               {t(item.labelKey)}
             </Link>
@@ -129,7 +129,7 @@ export function Header() {
           </div>
           <a
             href={siteConfig.phoneHref}
-            className="block rounded-xl bg-mar px-4 py-3 text-center text-sm font-semibold text-white"
+            className="btn btn-mar w-full"
           >
             {t("nav.call")}
           </a>

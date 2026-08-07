@@ -14,11 +14,13 @@ export function ContactCard({
   iconClassName = "bg-arena text-mar",
 }: ContactCardProps) {
   return (
-    <div className="card p-6">
+    <div className="border border-arena bg-white p-5 sm:p-6">
       <div className="flex items-start gap-4">
-        <div className={`rounded-full p-3 ${iconClassName}`}>{icon}</div>
+        <div className={`p-2.5 ${iconClassName}`}>{icon}</div>
         <div className="min-w-0 flex-1">
-          <h2 className="font-semibold text-texto">{title}</h2>
+          <h2 className="font-display text-lg font-semibold tracking-tight text-texto">
+            {title}
+          </h2>
           {children}
         </div>
       </div>

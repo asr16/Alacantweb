@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { heroContent, siteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageProvider";
@@ -11,44 +10,41 @@ export function Hero() {
   const { t, tx } = useLanguage();
 
   return (
-    <section className="relative min-h-[85vh] overflow-hidden">
+    <section className="relative min-h-[88vh] overflow-hidden bg-mar">
       <Image
         src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=1920&q=80"
-        alt={tx("Helado artesano", "Artisan ice cream")}
+        alt=""
         fill
         priority
-        className="object-cover"
+        className="object-cover opacity-45 saturate-50"
         sizes="100vw"
+        aria-hidden
       />
-      <div className="absolute inset-0 bg-mar/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-mar/80 via-mar/30 to-transparent" />
+      <div className="absolute inset-0 bg-mar/70 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-r from-mar via-mar/80 to-transparent" />
 
-      <div className="relative mx-auto flex min-h-[85vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-32 sm:px-6 sm:pb-20">
-        <div className="animate-fade-up mb-6 w-fit rounded-2xl bg-crema/95 p-3 shadow-sm backdrop-blur-sm sm:mb-8 sm:p-4">
-          <BrandLogo height={132} priority />
+      <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-14 pt-28 sm:px-6 sm:pb-20 lg:justify-center lg:pb-24">
+        <div className="animate-fade-up max-w-xl">
+          <BrandLogo height={148} priority />
         </div>
-        <p className="animate-fade-up-delay-1 mb-4 text-sm font-medium uppercase tracking-[0.2em] text-white/90">
-          Av. Mediterráneo · desde 1974
-        </p>
-        <h1 className="animate-fade-up-delay-1 font-display max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+
+        <p className="animate-fade-up-delay-1 mt-8 max-w-md font-display text-2xl font-semibold leading-snug tracking-[-0.02em] text-white sm:text-3xl">
           {tx(heroContent.title, heroContent.titleEn)}
-        </h1>
-        <p className="animate-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
+        </p>
+        <p className="animate-fade-up-delay-2 mt-4 max-w-md text-base leading-relaxed text-white/80">
           {tx(heroContent.subtitle, heroContent.subtitleEn)}
         </p>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link href={heroContent.ctaPrimary.href} className="btn btn-terracota !py-3.5">
+        <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Link href={heroContent.ctaPrimary.href} className="btn btn-terracota">
             {t("hero.ctaMenu")}
-            <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
           <a
             href={siteConfig.googleMaps}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-2 py-3 text-sm font-medium text-white/90 underline-offset-4 hover:underline"
+            className="text-sm font-medium text-white/85 underline-offset-4 hover:underline"
           >
-            <MapPin className="h-4 w-4" aria-hidden />
             {t("hero.ctaMaps")}
           </a>
         </div>

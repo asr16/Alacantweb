@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { memo } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -16,21 +14,12 @@ type FeatureCardProps = {
   accent: string;
 };
 
-const accentClasses: Record<string, string> = {
-  mar: "text-mar",
-  "mar-claro": "text-mar-claro",
-  terracota: "text-terracota",
-  oliva: "text-oliva",
-};
-
 function FeatureCardInner({
   title,
   titleEn,
   description,
   descriptionEn,
   href,
-  image,
-  accent,
 }: FeatureCardProps) {
   const { t, tx } = useLanguage();
   const label = tx(title, titleEn);
@@ -38,32 +27,19 @@ function FeatureCardInner({
   return (
     <Link
       href={href}
-      className="group overflow-hidden rounded-2xl border border-arena bg-white transition-colors hover:border-mar/40"
+      className="group flex items-baseline justify-between gap-6 border-b border-arena py-5 transition-colors hover:border-mar"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={image}
-          alt={label}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-texto/50 to-transparent" />
-        <span className="absolute bottom-4 left-4 font-display text-lg font-semibold text-white">
+      <div className="min-w-0">
+        <h3 className="font-display text-xl font-semibold tracking-tight text-texto group-hover:text-mar sm:text-2xl">
           {label}
-        </span>
-      </div>
-      <div className="p-5">
-        <p className="text-sm leading-relaxed text-texto-suave">
+        </h3>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-texto-suave">
           {tx(description, descriptionEn)}
         </p>
-        <span
-          className={`mt-4 inline-flex items-center gap-1 text-sm font-semibold ${accentClasses[accent] ?? "text-mar"}`}
-        >
-          {t("home.seeMenu")}
-          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </span>
       </div>
+      <span className="shrink-0 text-sm font-semibold uppercase tracking-wide text-mar">
+        {t("home.seeMenu")} →
+      </span>
     </Link>
   );
 }

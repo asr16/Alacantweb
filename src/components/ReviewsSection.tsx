@@ -1,65 +1,54 @@
 "use client";
 
-import { Star } from "lucide-react";
 import { reviews, siteConfig } from "@/data/site";
 import { SectionHeading } from "@/components/SectionHeading";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function ReviewsSection() {
   const { t, tx } = useLanguage();
+  const [featured, ...others] = reviews;
 
   return (
-    <section className="px-4 py-16 sm:px-6 sm:py-20">
+    <section className="px-4 py-16 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           title={t("home.reviewsTitle")}
           subtitle={t("home.reviewsSubtitle")}
-          align="center"
         />
-        <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
-          {reviews.map((review) => (
-            <blockquote
-              key={review.author}
-              className="flex h-full flex-col border-t border-arena pt-6"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex gap-1" aria-label={`${review.rating} / 5`}>
-                  {Array.from({ length: 5 }, (_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-4 w-4 ${
-                        i < review.rating
-                          ? "fill-terracota text-terracota"
-                          : "text-arena"
-                      }`}
-                      aria-hidden
-                    />
-                  ))}
-                </div>
-                <span className="text-xs font-medium text-texto-suave">
-                  {review.source}
-                </span>
-              </div>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-texto-suave">
+
+        {featured && (
+          <blockquote className="mt-12 max-w-3xl border-l-2 border-mar pl-6 sm:pl-8">
+            <p className="font-display text-xl leading-snug tracking-tight text-texto sm:text-2xl">
+              “{tx(featured.text, featured.textEn)}”
+            </p>
+            <footer className="mt-6 text-sm">
+              <span className="font-semibold text-texto">{featured.author}</span>
+              <span className="text-texto-suave"> · {featured.source}</span>
+            </footer>
+          </blockquote>
+        )}
+
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          {others.map((review) => (
+            <blockquote key={review.author} className="border-t border-arena pt-6">
+              <p className="text-sm leading-relaxed text-texto-suave">
                 “{tx(review.text, review.textEn)}”
               </p>
-              <footer className="mt-6">
-                <p className="text-sm font-semibold text-texto">{review.author}</p>
-                <p className="mt-0.5 text-xs text-texto-suave">{review.date}</p>
+              <footer className="mt-4 text-sm font-semibold text-texto">
+                {review.author}
               </footer>
             </blockquote>
           ))}
         </div>
-        <div className="mt-10 text-center">
-          <a
-            href={siteConfig.googleReviews}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline-mar"
-          >
-            {t("home.reviewsOnGoogle")}
-          </a>
-        </div>
+
+        <a
+          href={siteConfig.googleReviews}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-10 inline-flex text-sm font-semibold uppercase tracking-wide text-mar underline-offset-4 hover:underline"
+        >
+          {t("home.reviewsOnGoogle")} →
+        </a>
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Outfit, Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3, Syne } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
   display: "swap",
 });
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${outfit.variable} ${sourceSans.variable} h-full antialiased`}
+      className={`${syne.variable} ${sourceSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-crema text-texto">
         <a href="#contenido-principal" className="skip-link">

@@ -71,7 +71,7 @@ export function MenuCatalog() {
     <div>
       <SectionHeading title={t("menu.title")} subtitle={t("menu.subtitle")} />
 
-      <div className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-md sm:top-[4.75rem] sm:mx-0 sm:rounded-2xl sm:border sm:px-5 sm:py-4">
+      <div className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:border sm:border-arena sm:px-5 sm:py-4">
         <div className="flex gap-2">
           <label className="block min-w-0 flex-1">
             <span className="sr-only">{t("menu.search")}</span>
@@ -80,15 +80,15 @@ export function MenuCatalog() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t("menu.search")}
-              className="w-full rounded-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
+              className="w-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
             />
           </label>
           <button
             type="button"
             onClick={() => setFiltersOpen((v) => !v)}
-            className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold sm:px-4 ${
+            className={`inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-xs font-semibold uppercase tracking-wide sm:px-4 ${
               tag !== "all" || filtersOpen
-                ? "border-terracota bg-terracota text-white"
+                ? "border-texto bg-texto text-white"
                 : "border-arena bg-white text-texto"
             }`}
             aria-expanded={filtersOpen}
@@ -172,7 +172,7 @@ export function MenuCatalog() {
               {cat.items.map((item) => (
                 <article
                   key={item.name}
-                  className="overflow-hidden rounded-2xl border border-arena bg-white transition-colors hover:border-mar/30"
+                  className="overflow-hidden border border-arena bg-white transition-colors hover:border-mar/40"
                 >
                   {item.image && (
                     <div className="relative aspect-[16/10] bg-arena">
@@ -191,7 +191,7 @@ export function MenuCatalog() {
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="font-semibold text-texto">{item.name}</h3>
                         {(item.popular || item.tags?.includes("popular")) && (
-                          <span className="rounded-full bg-terracota/15 px-2 py-0.5 text-xs font-medium text-terracota">
+                          <span className="bg-terracota/15 px-2 py-0.5 text-xs font-medium text-terracota">
                             {tx(tagLabels.popular.es, tagLabels.popular.en)}
                           </span>
                         )}
@@ -200,7 +200,7 @@ export function MenuCatalog() {
                           .map((tg) => (
                             <span
                               key={tg}
-                              className="rounded-full bg-oliva/15 px-2 py-0.5 text-xs font-medium text-oliva"
+                              className="bg-oliva/15 px-2 py-0.5 text-xs font-medium text-oliva"
                             >
                               {tx(tagLabels[tg].es, tagLabels[tg].en)}
                             </span>

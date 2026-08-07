@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Link from "next/link";
 import { FeatureCard } from "@/components/FeatureCard";
 import { Hero } from "@/components/Hero";
@@ -29,45 +28,40 @@ export default function HomePage() {
       <Hero />
       <InfoBar />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-          <div>
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
             <SectionHeading
               title={tx(historyPreview.title, historyPreview.titleEn)}
             />
-            <div className="mt-6 space-y-4 leading-relaxed text-texto-suave">
+          </div>
+          <div className="lg:col-span-7">
+            <div className="space-y-5 text-[1.05rem] leading-relaxed text-texto-suave">
               {tx(historyPreview.paragraphs, historyPreview.paragraphsEn)
                 .slice(0, 1)
                 .map((paragraph) => (
                   <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                 ))}
             </div>
-            <Link href="/nosotros" className="btn btn-mar mt-8">
-              {t("home.historyCta")}
+            <Link
+              href="/nosotros"
+              className="mt-8 inline-flex text-sm font-semibold uppercase tracking-wide text-mar underline-offset-4 hover:underline"
+            >
+              {t("home.historyCta")} →
             </Link>
-          </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-            <Image
-              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=80"
-              alt={tx("Ambiente de cafetería", "Café atmosphere")}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
           </div>
         </div>
       </section>
 
       <SeasonalSection />
 
-      <section className="bg-arena/60 px-4 py-16 sm:px-6 sm:py-20">
+      <section className="border-y border-arena bg-white px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             title={t("home.menuTitle")}
             subtitle={t("home.menuSubtitle")}
-            align="center"
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="mt-4">
             {featureCards.map((card) => (
               <FeatureCard key={card.title} {...card} />
             ))}
@@ -77,13 +71,18 @@ export default function HomePage() {
 
       <ReviewsSection />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="rounded-3xl bg-mar px-6 py-12 text-center text-white sm:px-12">
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">
-            {t("home.ctaTitle")}
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white/85">{t("home.ctaText")}</p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <section className="bg-mar px-4 py-16 text-white sm:px-6 sm:py-20">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-xl">
+            <span className="mb-4 block h-0.5 w-10 bg-terracota" aria-hidden />
+            <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+              {t("home.ctaTitle")}
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-white/75">
+              {t("home.ctaText")}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
             <a
               href={siteConfig.googleMaps}
               target="_blank"
