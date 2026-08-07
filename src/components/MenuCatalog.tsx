@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { SlidersHorizontal } from "lucide-react";
 import {
   menuCategories,
   tagLabels,
@@ -32,6 +33,7 @@ export function MenuCatalog() {
   const [category, setCategory] = useState("all");
   const [tag, setTag] = useState<TagFilter>("all");
   const [search, setSearch] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const tagFilters = useMemo(
     () =>
@@ -50,6 +52,9 @@ export function MenuCatalog() {
     [t, tx],
   );
 
+  const activeTagLabel =
+    tagFilters.find((f) => f.id === tag)?.label ?? t("menu.all");
+
   const filtered = useMemo(
     () =>
       menuCategories
@@ -66,19 +71,40 @@ export function MenuCatalog() {
     <div>
       <SectionHeading title={t("menu.title")} subtitle={t("menu.subtitle")} />
 
-      <div className="sticky top-[73px] z-30 mt-8 -mx-4 space-y-4 border-b border-arena bg-crema/95 px-4 py-4 backdrop-blur-md sm:mx-0 sm:rounded-2xl sm:border sm:px-5">
-        <label className="block">
-          <span className="sr-only">{t("menu.search")}</span>
-          <input
-            type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder={t("menu.search")}
-            className="w-full rounded-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
-          />
-        </label>
+      <div className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-md sm:top-[4.75rem] sm:mx-0 sm:rounded-2xl sm:border sm:px-5 sm:py-4">
+        <div className="flex gap-2">
+          <label className="block min-w-0 flex-1">
+            <span className="sr-only">{t("menu.search")}</span>
+            <input
+              type="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={t("menu.search")}
+              className="w-full rounded-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
+            />
+          </label>
+          <button
+            type="button"
+            onClick={() => setFiltersOpen((v) => !v)}
+            className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-semibold sm:px-4 ${
+              tag !== "all" || filtersOpen
+                ? "border-terracota bg-terracota text-white"
+                : "border-arena bg-white text-texto"
+            }`}
+            aria-expanded={filtersOpen}
+            aria-controls="menu-tag-filters"
+          >
+            <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden />
+            <span className="hidden sm:inline">{t("menu.filters")}</span>
+            {tag !== "all" && (
+              <span className="max-w-[5.5rem] truncate sm:max-w-none">
+                {activeTagLabel}
+              </span>
+            )}
+          </button>
+        </div>
 
-        <div className="flex flex-wrap gap-2" role="group" aria-label={t("nav.menu")}>
+        <div className="chip-scroll" role="group" aria-label={t("nav.menu")}>
           <button
             type="button"
             onClick={() => setCategory("all")}
@@ -98,29 +124,41 @@ export function MenuCatalog() {
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-2" role="group" aria-label={t("menu.tags")}>
-          {tagFilters.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => setTag(f.id)}
-              className={`chip !text-xs !font-semibold ${
-                tag === f.id ? "chip-tag-active" : "chip-tag-idle"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
+        {filtersOpen && (
+          <div
+            id="menu-tag-filters"
+            className="chip-scroll border-t border-arena/80 pt-3"
+            role="group"
+            aria-label={t("menu.tags")}
+          >
+            {tagFilters.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                onClick={() => {
+                  setTag(f.id);
+                  if (f.id !== "all") setFiltersOpen(false);
+                }}
+                className={`chip !text-xs !font-semibold ${
+                  tag === f.id ? "chip-tag-active" : "chip-tag-idle"
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div className="mt-10 space-y-14">
+      <div className="mt-10 space-y-14 pb-8">
         {filtered.length === 0 && (
-          <p className="card p-8 text-center text-texto-suave">{t("menu.empty")}</p>
+          <p className="rounded-2xl border border-arena bg-white p-8 text-center text-texto-suave">
+            {t("menu.empty")}
+          </p>
         )}
 
         {filtered.map((cat) => (
-          <section key={cat.id} id={cat.id} className="scroll-mt-40">
+          <section key={cat.id} id={cat.id} className="scroll-mt-36">
             <div className="mb-6">
               <h2 className="font-display text-2xl font-bold text-texto sm:text-3xl">
                 {tx(cat.title, cat.titleEn)}
@@ -130,9 +168,12 @@ export function MenuCatalog() {
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               {cat.items.map((item) => (
-                <article key={item.name} className="card overflow-hidden">
+                <article
+                  key={item.name}
+                  className="overflow-hidden rounded-2xl border border-arena bg-white transition-colors hover:border-mar/30"
+                >
                   {item.image && (
                     <div className="relative aspect-[16/10] bg-arena">
                       <Image

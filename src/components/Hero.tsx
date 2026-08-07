@@ -27,8 +27,8 @@ export function Hero() {
         <div className="animate-fade-up mb-6 w-fit rounded-2xl bg-crema/95 p-3 shadow-sm backdrop-blur-sm sm:mb-8 sm:p-4">
           <BrandLogo height={132} priority />
         </div>
-        <p className="animate-fade-up mb-4 text-sm font-medium uppercase tracking-[0.2em] text-white/90">
-          Roquetas de Mar · Av. Mediterráneo
+        <p className="animate-fade-up-delay-1 mb-4 text-sm font-medium uppercase tracking-[0.2em] text-white/90">
+          Av. Mediterráneo · desde 1974
         </p>
         <h1 className="animate-fade-up-delay-1 font-display max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
           {tx(heroContent.title, heroContent.titleEn)}
@@ -46,7 +46,7 @@ export function Hero() {
             href={siteConfig.googleMaps}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-ghost-light !bg-white/10 !py-3.5 backdrop-blur-sm"
+            className="inline-flex items-center justify-center gap-2 px-2 py-3 text-sm font-medium text-white/90 underline-offset-4 hover:underline"
           >
             <MapPin className="h-4 w-4" aria-hidden />
             {t("hero.ctaMaps")}

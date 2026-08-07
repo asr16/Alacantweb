@@ -49,6 +49,7 @@ export const dictionaries = {
     "menu.search": "Buscar producto…",
     "menu.empty": "No hay productos con estos filtros.",
     "menu.tags": "Etiquetas",
+    "menu.filters": "Filtros",
     "contact.title": "Contacto y ubicación",
     "contact.subtitle":
       "Estamos en la urbanización de Roquetas de Mar, en Av. Mediterráneo. Ven a visitarnos o escríbenos por WhatsApp.",
@@ -117,6 +118,7 @@ export const dictionaries = {
     "menu.search": "Search product…",
     "menu.empty": "No products match these filters.",
     "menu.tags": "Tags",
+    "menu.filters": "Filters",
     "contact.title": "Contact & location",
     "contact.subtitle":
       "We are in the Roquetas de Mar urbanization, on Av. Mediterráneo. Visit us or message us on WhatsApp.",

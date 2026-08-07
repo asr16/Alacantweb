@@ -189,19 +189,6 @@ body {
   opacity: 0;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.65s ease,
-    transform 0.65s ease;
-}
-
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -209,11 +196,27 @@ body {
 
   .animate-fade-up,
   .animate-fade-up-delay-1,
-  .animate-fade-up-delay-2,
-  .reveal {
+  .animate-fade-up-delay-2 {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
-    transition: none !important;
   }
+}
+
+/* Scroll horizontal de chips sin barra fea */
+.chip-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.125rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-scroll > * {
+  flex-shrink: 0;
 }

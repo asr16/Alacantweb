@@ -82,6 +82,7 @@ export function Header() {
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         aria-hidden={!open}
+        inert={!open ? true : undefined}
         onClick={close}
       />
 
@@ -90,6 +91,8 @@ export function Header() {
         role="dialog"
         aria-modal="true"
         aria-label={t("nav.mobile")}
+        aria-hidden={!open}
+        inert={!open ? true : undefined}
         className={`fixed right-0 top-0 z-[70] flex h-dvh w-[min(100%,320px)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}

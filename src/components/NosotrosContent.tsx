@@ -74,18 +74,16 @@ export function NosotrosContent() {
               align="center"
             />
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {aboutContent.values.map((value, index) => (
-              <Reveal key={value.title} delayMs={index * 80}>
-                <div className="card p-8 text-center">
-                  <h3 className="font-display text-lg font-semibold text-mar">
-                    {tx(value.title, value.titleEn)}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-texto-suave">
-                    {tx(value.description, value.descriptionEn)}
-                  </p>
-                </div>
-              </Reveal>
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            {aboutContent.values.map((value) => (
+              <div key={value.title} className="text-center sm:text-left">
+                <h3 className="font-display text-lg font-semibold text-mar">
+                  {tx(value.title, value.titleEn)}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-texto-suave">
+                  {tx(value.description, value.descriptionEn)}
+                </p>
+              </div>
             ))}
           </div>
         </div>

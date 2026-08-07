@@ -38,7 +38,7 @@ function FeatureCardInner({
   return (
     <Link
       href={href}
-      className="card group overflow-hidden transition-all hover:-translate-y-1 hover:shadow-md"
+      className="group overflow-hidden rounded-2xl border border-arena bg-white transition-colors hover:border-mar/40"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image

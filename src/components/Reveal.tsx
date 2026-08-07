@@ -1,42 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
+  /** @deprecated Conservado por compatibilidad; el contenido ya no se oculta. */
   delayMs?: number;
 };
 
-export function Reveal({ children, className = "", delayMs = 0 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      className={`reveal ${visible ? "reveal-visible" : ""} ${className}`}
-      style={{ transitionDelay: `${delayMs}ms` }}
-    >
-      {children}
-    </div>
-  );
+/**
+ * Contenedor semántico sin ocultar contenido.
+ * El motion agresivo (opacity 0) se eliminó por UX/accesibilidad.
+ */
+export function Reveal({ children, className = "" }: RevealProps) {
+  if (!className) return <>{children}</>;
+  return <div className={className}>{children}</div>;
 }
