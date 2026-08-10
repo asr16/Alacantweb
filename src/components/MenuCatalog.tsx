@@ -14,14 +14,21 @@ import { SectionHeading } from "@/components/SectionHeading";
 
 type TagFilter = "all" | ProductTag;
 
+/** Etiquetas presentes en la carta, en el orden en que se declaran. */
+const usedTags: ProductTag[] = (Object.keys(tagLabels) as ProductTag[]).filter((tag) =>
+  menuCategories.some((cat) =>
+    cat.items.some((item) => item.tags?.includes(tag) || (tag === "popular" && item.popular)),
+  ),
+);
+
 function itemMatches(item: MenuItem, search: string, tag: TagFilter) {
   const q = search.trim().toLowerCase();
-  if (
-    q &&
-    !item.name.toLowerCase().includes(q) &&
-    !item.description?.toLowerCase().includes(q)
-  ) {
-    return false;
+  if (q) {
+    const haystack = [item.name, item.nameEn, item.description, item.descriptionEn]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+    if (!haystack.includes(q)) return false;
   }
   if (tag === "all") return true;
   if (tag === "popular") return !!(item.popular || item.tags?.includes("popular"));
@@ -36,19 +43,13 @@ export function MenuCatalog() {
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   const tagFilters = useMemo(
-    () =>
-      (
-        [
-          ["all", t("menu.all")],
-          ["popular", t("menu.popular")],
-          ["vegano", tagLabels.vegano],
-          ["sin-gluten", tagLabels["sin-gluten"]],
-          ["temporada", tagLabels.temporada],
-        ] as const
-      ).map(([id, label]) => ({
-        id: id as TagFilter,
-        label: typeof label === "string" ? label : tx(label.es, label.en),
+    () => [
+      { id: "all" as TagFilter, label: t("menu.all") },
+      ...usedTags.map((tag) => ({
+        id: tag as TagFilter,
+        label: tag === "popular" ? t("menu.popular") : tx(tagLabels[tag].es, tagLabels[tag].en),
       })),
+    ],
     [t, tx],
   );
 
@@ -178,7 +179,7 @@ export function MenuCatalog() {
                     <div className="relative aspect-[16/10] bg-arena">
                       <Image
                         src={item.image}
-                        alt={item.name}
+                        alt={tx(item.name, item.nameEn ?? item.name)}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -189,7 +190,9 @@ export function MenuCatalog() {
                   <div className="flex items-start justify-between gap-4 p-5">
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="font-semibold text-texto">{item.name}</h3>
+                        <h3 className="font-semibold text-texto">
+                          {tx(item.name, item.nameEn ?? item.name)}
+                        </h3>
                         {(item.popular || item.tags?.includes("popular")) && (
                           <span className="bg-terracota/15 px-2 py-0.5 text-xs font-medium text-terracota">
                             {tx(tagLabels.popular.es, tagLabels.popular.en)}
@@ -208,7 +211,7 @@ export function MenuCatalog() {
                       </div>
                       {item.description && (
                         <p className="mt-1 text-sm text-texto-suave">
-                          {item.description}
+                          {tx(item.description, item.descriptionEn ?? item.description)}
                         </p>
                       )}
                     </div>

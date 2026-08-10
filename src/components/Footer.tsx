@@ -67,7 +67,9 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/15 pt-8 sm:flex-row sm:items-center">
           <p className="text-xs text-white/50">
-            © {year} {siteConfig.name}
+            {/* El HTML estático se genera en build: el año del cliente puede
+                diferir tras Nochevieja hasta el siguiente despliegue. */}
+            © <span suppressHydrationWarning>{year}</span> {siteConfig.name}
           </p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link href="/aviso-legal" className={footerLink}>

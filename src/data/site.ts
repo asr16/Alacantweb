@@ -41,6 +41,7 @@ export const siteConfig = {
   nav: [
     { href: "/", labelKey: "nav.home" as const },
     { href: "/carta", labelKey: "nav.menu" as const },
+    { href: "/carta-2", labelKey: "nav.menu2" as const },
     { href: "/nosotros", labelKey: "nav.about" as const },
     { href: "/contacto", labelKey: "nav.contact" as const },
   ],
@@ -139,8 +140,8 @@ export const featureCards = [
   {
     title: "Cafetería",
     titleEn: "Café",
-    description: "Batidos, smoothies, cafés y combinados para cualquier momento del día.",
-    descriptionEn: "Shakes, smoothies, coffee and combos for any time of day.",
+    description: "Frapés, cafés especiales, batidos y smoothies para cualquier momento del día.",
+    descriptionEn: "Frappés, specialty coffees, shakes and smoothies for any time of day.",
     href: "/carta#cafeteria",
     image:
       "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
@@ -149,18 +150,18 @@ export const featureCards = [
   {
     title: "Gofres y crepes",
     titleEn: "Waffles & crepes",
-    description: "Dulces recién hechos, perfectos para merendar con helado o nata.",
-    descriptionEn: "Freshly made sweets, perfect with ice cream or cream.",
+    description: "Gofres, crepes y tortitas recién hechos, con salsas y complementos a elegir.",
+    descriptionEn: "Freshly made waffles, crepes and pancakes with sauces and toppings to choose.",
     href: "/carta#gofres-crepes",
     image:
       "https://images.unsplash.com/photo-1567620905732-2d1ec7ab9f32?w=800&q=80",
     accent: "oliva",
   },
   {
-    title: "Pastelería",
-    titleEn: "Pastry",
-    description: "Tartas, bollería y postres para compartir o disfrutar en solitario.",
-    descriptionEn: "Cakes, pastries and desserts to share or enjoy alone.",
+    title: "Postres",
+    titleEn: "Desserts",
+    description: "Coulant, brownie con helado y donut especial, recién hechos.",
+    descriptionEn: "Coulant, brownie with ice cream and our special donut, freshly made.",
     href: "/carta#pasteleria",
     image:
       "https://images.unsplash.com/photo-1578985545069-69928b1d9587?w=800&q=80",

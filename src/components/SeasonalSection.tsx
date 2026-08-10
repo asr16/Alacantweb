@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function SeasonalSection() {
-  const { t } = useLanguage();
+  const { t, tx } = useLanguage();
   const [featured, ...rest] = seasonalHighlights;
 
   return (
@@ -27,13 +27,12 @@ export function SeasonalSection() {
                 {t("home.seasonalTitle")}
               </p>
               <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-texto group-hover:text-mar sm:text-4xl">
-                {featured.name}
+                {tx(featured.name, featured.nameEn)}
               </h3>
-              <p className="mt-3 max-w-sm text-texto-suave">{featured.description}</p>
-              <p className="mt-5 font-display text-2xl font-semibold text-oliva">
-                {featured.price}
+              <p className="mt-3 max-w-sm text-texto-suave">
+                {tx(featured.description, featured.descriptionEn)}
               </p>
-              <span className="mt-4 inline-block text-sm font-semibold uppercase tracking-wide text-mar">
+              <span className="mt-5 inline-block text-sm font-semibold uppercase tracking-wide text-mar">
                 {t("home.seeMenu")} →
               </span>
             </Link>
@@ -48,11 +47,12 @@ export function SeasonalSection() {
                 >
                   <div>
                     <p className="font-display text-lg font-semibold tracking-tight">
-                      {item.name}
+                      {tx(item.name, item.nameEn)}
                     </p>
-                    <p className="mt-1 text-sm text-texto-suave">{item.description}</p>
+                    <p className="mt-1 text-sm text-texto-suave">
+                      {tx(item.description, item.descriptionEn)}
+                    </p>
                   </div>
-                  <span className="shrink-0 font-semibold text-oliva">{item.price}</span>
                 </Link>
               </li>
             ))}
