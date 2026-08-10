@@ -1,10 +1,4 @@
-export type ProductTag =
-  | "popular"
-  | "nuevo"
-  | "sin-azucar"
-  | "vegano"
-  | "sin-gluten"
-  | "temporada";
+export type ProductTag = "popular" | "nuevo" | "sin-azucar";
 
 export type MenuItem = {
   name: string;
@@ -15,8 +9,6 @@ export type MenuItem = {
   price?: string;
   popular?: boolean;
   tags?: ProductTag[];
-  /** Ruta en /public o URL. Si no hay foto, la carta se muestra solo con texto. */
-  image?: string;
 };
 
 export type MenuCategory = {
@@ -32,9 +24,6 @@ export const tagLabels: Record<ProductTag, { es: string; en: string }> = {
   popular: { es: "Popular", en: "Popular" },
   nuevo: { es: "Nueva", en: "New" },
   "sin-azucar": { es: "Sin azúcar", en: "Sugar-free" },
-  vegano: { es: "Vegano", en: "Vegan" },
-  "sin-gluten": { es: "Sin gluten", en: "Gluten-free" },
-  temporada: { es: "Temporada", en: "Seasonal" },
 };
 
 /**

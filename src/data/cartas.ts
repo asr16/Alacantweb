@@ -23,8 +23,8 @@ export type CartaDoc = {
 export const cartaDocs: CartaDoc[] = [
   {
     id: "carta-principal",
-    title: "Carta completa",
-    titleEn: "Full menu",
+    title: "Nuestra carta",
+    titleEn: "Our menu",
     description:
       "Copas de helado, jarritas y batidos, frapés, smoothies, granizados y carta templada.",
     descriptionEn:

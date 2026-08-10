@@ -1,60 +1,24 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo, useState } from "react";
-import { SlidersHorizontal } from "lucide-react";
-import {
-  menuCategories,
-  tagLabels,
-  type MenuItem,
-  type ProductTag,
-} from "@/data/menu";
+import { menuCategories, tagLabels, type MenuItem } from "@/data/menu";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/SectionHeading";
 
-type TagFilter = "all" | ProductTag;
-
-/** Etiquetas presentes en la carta, en el orden en que se declaran. */
-const usedTags: ProductTag[] = (Object.keys(tagLabels) as ProductTag[]).filter((tag) =>
-  menuCategories.some((cat) =>
-    cat.items.some((item) => item.tags?.includes(tag) || (tag === "popular" && item.popular)),
-  ),
-);
-
-function itemMatches(item: MenuItem, search: string, tag: TagFilter) {
+function itemMatches(item: MenuItem, search: string) {
   const q = search.trim().toLowerCase();
-  if (q) {
-    const haystack = [item.name, item.nameEn, item.description, item.descriptionEn]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
-    if (!haystack.includes(q)) return false;
-  }
-  if (tag === "all") return true;
-  if (tag === "popular") return !!(item.popular || item.tags?.includes("popular"));
-  return !!item.tags?.includes(tag);
+  if (!q) return true;
+  const haystack = [item.name, item.nameEn, item.description, item.descriptionEn]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return haystack.includes(q);
 }
 
 export function MenuCatalog() {
   const { t, tx } = useLanguage();
   const [category, setCategory] = useState("all");
-  const [tag, setTag] = useState<TagFilter>("all");
   const [search, setSearch] = useState("");
-  const [filtersOpen, setFiltersOpen] = useState(false);
-
-  const tagFilters = useMemo(
-    () => [
-      { id: "all" as TagFilter, label: t("menu.all") },
-      ...usedTags.map((tag) => ({
-        id: tag as TagFilter,
-        label: tag === "popular" ? t("menu.popular") : tx(tagLabels[tag].es, tagLabels[tag].en),
-      })),
-    ],
-    [t, tx],
-  );
-
-  const activeTagLabel =
-    tagFilters.find((f) => f.id === tag)?.label ?? t("menu.all");
 
   const filtered = useMemo(
     () =>
@@ -62,10 +26,10 @@ export function MenuCatalog() {
         .filter((cat) => category === "all" || cat.id === category)
         .map((cat) => ({
           ...cat,
-          items: cat.items.filter((item) => itemMatches(item, search, tag)),
+          items: cat.items.filter((item) => itemMatches(item, search)),
         }))
         .filter((cat) => cat.items.length > 0),
-    [category, search, tag],
+    [category, search],
   );
 
   return (
@@ -73,37 +37,16 @@ export function MenuCatalog() {
       <SectionHeading title={t("menu.title")} subtitle={t("menu.subtitle")} />
 
       <div className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:border sm:border-arena sm:px-5 sm:py-4">
-        <div className="flex gap-2">
-          <label className="block min-w-0 flex-1">
-            <span className="sr-only">{t("menu.search")}</span>
-            <input
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder={t("menu.search")}
-              className="w-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
-            />
-          </label>
-          <button
-            type="button"
-            onClick={() => setFiltersOpen((v) => !v)}
-            className={`inline-flex shrink-0 items-center gap-1.5 border px-3 py-2 text-xs font-semibold uppercase tracking-wide sm:px-4 ${
-              tag !== "all" || filtersOpen
-                ? "border-texto bg-texto text-white"
-                : "border-arena bg-white text-texto"
-            }`}
-            aria-expanded={filtersOpen}
-            aria-controls="menu-tag-filters"
-          >
-            <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden />
-            <span className="hidden sm:inline">{t("menu.filters")}</span>
-            {tag !== "all" && (
-              <span className="max-w-[5.5rem] truncate sm:max-w-none">
-                {activeTagLabel}
-              </span>
-            )}
-          </button>
-        </div>
+        <label className="block min-w-0">
+          <span className="sr-only">{t("menu.search")}</span>
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder={t("menu.search")}
+            className="w-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
+          />
+        </label>
 
         <div className="chip-scroll" role="group" aria-label={t("nav.menu")}>
           <button
@@ -124,31 +67,6 @@ export function MenuCatalog() {
             </button>
           ))}
         </div>
-
-        {filtersOpen && (
-          <div
-            id="menu-tag-filters"
-            className="chip-scroll border-t border-arena/80 pt-3"
-            role="group"
-            aria-label={t("menu.tags")}
-          >
-            {tagFilters.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                onClick={() => {
-                  setTag(f.id);
-                  if (f.id !== "all") setFiltersOpen(false);
-                }}
-                className={`chip !text-xs !font-semibold ${
-                  tag === f.id ? "chip-tag-active" : "chip-tag-idle"
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="mt-10 space-y-14 pb-8">
@@ -173,21 +91,9 @@ export function MenuCatalog() {
               {cat.items.map((item) => (
                 <article
                   key={item.name}
-                  className="overflow-hidden border border-arena bg-white transition-colors hover:border-mar/40"
+                  className="border border-arena bg-white p-5 transition-colors hover:border-mar/40"
                 >
-                  {item.image && (
-                    <div className="relative aspect-[16/10] bg-arena">
-                      <Image
-                        src={item.image}
-                        alt={tx(item.name, item.nameEn ?? item.name)}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-start justify-between gap-4 p-5">
+                  <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="font-semibold text-texto">

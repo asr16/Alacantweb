@@ -18,24 +18,25 @@ export function ReviewsSection() {
 
         {featured && (
           <blockquote className="mt-12 max-w-3xl border-l-2 border-mar pl-6 sm:pl-8">
-            <p className="font-display text-xl leading-snug tracking-tight text-texto sm:text-2xl">
+            <p className="text-base leading-relaxed text-texto">
               “{tx(featured.text, featured.textEn)}”
             </p>
-            <footer className="mt-6 text-sm">
+            <footer className="mt-5 text-sm">
               <span className="font-semibold text-texto">{featured.author}</span>
               <span className="text-texto-suave"> · {featured.source}</span>
             </footer>
           </blockquote>
         )}
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+        <div className="mt-10 grid gap-8 sm:grid-cols-2">
           {others.map((review) => (
             <blockquote key={review.author} className="border-t border-arena pt-6">
-              <p className="text-sm leading-relaxed text-texto-suave">
+              <p className="text-base leading-relaxed text-texto">
                 “{tx(review.text, review.textEn)}”
               </p>
-              <footer className="mt-4 text-sm font-semibold text-texto">
-                {review.author}
+              <footer className="mt-4 text-sm">
+                <span className="font-semibold text-texto">{review.author}</span>
+                <span className="text-texto-suave"> · {review.source}</span>
               </footer>
             </blockquote>
           ))}

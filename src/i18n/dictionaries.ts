@@ -20,15 +20,11 @@ export const dictionaries = {
     "home.menuTitle": "Nuestra carta",
     "home.menuSubtitle":
       "Helados, cafetería, gofres, crepes y pastelería. Todo lo que necesitas para merendar o desayunar en Roquetas de Mar.",
-    "home.galleryTitle": "Momentos Alacant",
-    "home.gallerySubtitle":
-      "Ambiente, sabores y el día a día en nuestra heladería de Roquetas de Mar.",
     "home.instagram": "Síguenos en Instagram",
     "home.ctaTitle": "Te esperamos en Av. Mediterráneo",
     "home.ctaText":
       "Helados artesanos, meriendas y desayunos en el corazón de la urbanización. Un clásico de Roquetas de Mar desde 1974.",
     "home.ctaMaps": "Cómo llegar",
-    "home.ctaMenu": "Ver carta completa",
     "home.seasonalTitle": "Sabores del mes",
     "home.seasonalSubtitle":
       "Una selección de favoritos y propuestas de temporada. Pregúntanos en el local por las novedades.",
@@ -42,13 +38,10 @@ export const dictionaries = {
     "infobar.phone": "Teléfono",
     "menu.title": "Nuestra carta",
     "menu.subtitle":
-      "Filtra por categoría o etiquetas. Consulta los precios actualizados en el local.",
+      "Filtra por categoría o busca un producto. Consulta los precios actualizados en el local.",
     "menu.all": "Todas",
-    "menu.popular": "Populares",
     "menu.search": "Buscar producto…",
     "menu.empty": "No hay productos con estos filtros.",
-    "menu.tags": "Etiquetas",
-    "menu.filters": "Filtros",
     "carta2.title": "Nuestras cartas",
     "carta2.document": "Carta",
     "carta2.page": "Página",
@@ -92,15 +85,11 @@ export const dictionaries = {
     "home.menuTitle": "Our menu",
     "home.menuSubtitle":
       "Ice cream, café, waffles, crepes and pastry — everything for breakfast or an afternoon treat in Roquetas de Mar.",
-    "home.galleryTitle": "Alacant moments",
-    "home.gallerySubtitle":
-      "Atmosphere, flavors and everyday life at our ice cream shop in Roquetas de Mar.",
     "home.instagram": "Follow us on Instagram",
     "home.ctaTitle": "See you on Av. Mediterráneo",
     "home.ctaText":
       "Artisan ice cream, snacks and breakfast in the heart of the urbanization. A Roquetas classic since 1974.",
     "home.ctaMaps": "Get directions",
-    "home.ctaMenu": "Full menu",
     "home.seasonalTitle": "Flavors of the month",
     "home.seasonalSubtitle":
       "A selection of favorites and seasonal picks. Ask in-store for the latest arrivals.",
@@ -114,13 +103,10 @@ export const dictionaries = {
     "infobar.phone": "Phone",
     "menu.title": "Our menu",
     "menu.subtitle":
-      "Filter by category or tags. Ask in-store for current prices.",
+      "Filter by category or search a product. Ask in-store for current prices.",
     "menu.all": "All",
-    "menu.popular": "Popular",
     "menu.search": "Search product…",
     "menu.empty": "No products match these filters.",
-    "menu.tags": "Tags",
-    "menu.filters": "Filters",
     "carta2.title": "Our menus",
     "carta2.document": "Menu",
     "carta2.page": "Page",

@@ -1,6 +1,5 @@
 export const siteConfig = {
   name: "Heladería Alacant",
-  shortName: "Alacant",
   description:
     "Más de 65 sabores de helado artesano, cafetería, gofres, crepes y pastelería en Roquetas de Mar. Tradición alicantina desde hace más de 50 años.",
   descriptionEn:
@@ -13,10 +12,6 @@ export const siteConfig = {
     postalCode: "04740",
     country: "España",
     full: "Av. Mediterráneo, 107, 04740 Roquetas de Mar, Almería",
-  },
-  coords: {
-    lat: 36.732696,
-    lng: -2.618354,
   },
   phone: "+34 950 33 34 70",
   phoneHref: "tel:+34950333470",
@@ -33,11 +28,6 @@ export const siteConfig = {
     "Horario orientativo. Puede variar en festivos; confirma por teléfono.",
   scheduleNoteEn:
     "Indicative hours. May vary on holidays; confirm by phone.",
-  highlights: [
-    { value: "65+", label: "Sabores de helado artesano", labelEn: "Artisan ice cream flavors" },
-    { value: "50+", label: "Años de historia", labelEn: "Years of history" },
-    { value: "4.1", label: "Valoración Google (1.210+ reseñas)", labelEn: "Google rating (1,210+ reviews)" },
-  ],
   nav: [
     { href: "/", labelKey: "nav.home" as const },
     { href: "/carta", labelKey: "nav.menu" as const },
@@ -54,8 +44,7 @@ export const heroContent = {
     "Más de 65 sabores, tradición alicantina y la calidez de un local con más de 50 años en Roquetas de Mar.",
   subtitleEn:
     "Over 65 flavors, Alicante tradition and the warmth of a local spot with more than 50 years in Roquetas de Mar.",
-  ctaPrimary: { label: "Ver carta", labelEn: "View menu", href: "/carta" },
-  ctaSecondary: { label: "Cómo llegar", labelEn: "Get directions" },
+  ctaPrimary: { href: "/carta" },
 };
 
 export const historyPreview = {
@@ -133,9 +122,6 @@ export const featureCards = [
     description: "Más de 65 sabores: clásicos, frutas, turrón, trufa y creaciones de temporada.",
     descriptionEn: "Over 65 flavors: classics, fruit, turrón, truffle and seasonal creations.",
     href: "/carta#helados",
-    image:
-      "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
-    accent: "mar",
   },
   {
     title: "Cafetería",
@@ -143,9 +129,6 @@ export const featureCards = [
     description: "Frapés, cafés especiales, batidos y smoothies para cualquier momento del día.",
     descriptionEn: "Frappés, specialty coffees, shakes and smoothies for any time of day.",
     href: "/carta#cafeteria",
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
-    accent: "terracota",
   },
   {
     title: "Gofres y crepes",
@@ -153,9 +136,6 @@ export const featureCards = [
     description: "Gofres, crepes y tortitas recién hechos, con salsas y complementos a elegir.",
     descriptionEn: "Freshly made waffles, crepes and pancakes with sauces and toppings to choose.",
     href: "/carta#gofres-crepes",
-    image:
-      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab9f32?w=800&q=80",
-    accent: "oliva",
   },
   {
     title: "Postres",
@@ -163,32 +143,6 @@ export const featureCards = [
     description: "Coulant, brownie con helado y donut especial, recién hechos.",
     descriptionEn: "Coulant, brownie with ice cream and our special donut, freshly made.",
     href: "/carta#pasteleria",
-    image:
-      "https://images.unsplash.com/photo-1578985545069-69928b1d9587?w=800&q=80",
-    accent: "mar-claro",
-  },
-];
-
-export const galleryImages = [
-  {
-    src: "https://images.unsplash.com/photo-1497032628192-86f99bcd04bc?w=800&q=80",
-    alt: "Helado artesano en cucurucho",
-    altEn: "Artisan ice cream cone",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
-    alt: "Copa de helado con toppings",
-    altEn: "Ice cream cup with toppings",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
-    alt: "Costa mediterránea de Almería",
-    altEn: "Mediterranean coast of Almería",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
-    alt: "Ambiente de cafetería",
-    altEn: "Café atmosphere",
   },
 ];
 

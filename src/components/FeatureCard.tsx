@@ -10,8 +10,6 @@ type FeatureCardProps = {
   description: string;
   descriptionEn: string;
   href: string;
-  image: string;
-  accent: string;
 };
 
 function FeatureCardInner({

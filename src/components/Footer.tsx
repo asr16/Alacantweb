@@ -15,11 +15,11 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-mar text-white">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-12">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+        <div className="grid gap-8 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
-            <div className="mb-5 w-fit bg-crema p-2">
-              <BrandLogo height={84} />
+            <div className="mb-3 w-fit bg-crema p-1.5">
+              <BrandLogo height={56} />
             </div>
             <h2 className="sr-only">{siteConfig.name}</h2>
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
@@ -31,7 +31,7 @@ export function Footer() {
             <h3 className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/55">
               {t("footer.contact")}
             </h3>
-            <ul className="mt-4 space-y-3 text-sm text-white/85">
+            <ul className="mt-3 space-y-2 text-sm text-white/85">
               <li>
                 <a
                   href={siteConfig.googleMaps}
@@ -54,7 +54,7 @@ export function Footer() {
             <h3 className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/55">
               {t("footer.hours")}
             </h3>
-            <ul className="mt-4 space-y-2 text-sm text-white/85">
+            <ul className="mt-3 space-y-1.5 text-sm text-white/85">
               {schedule.map((slot) => (
                 <li key={slot.days} className="flex justify-between gap-4">
                   <span>{tx(slot.days, slot.daysEn)}</span>
@@ -65,7 +65,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/15 pt-8 sm:flex-row sm:items-center">
+        <div className="mt-6 flex flex-col items-start justify-between gap-3 border-t border-white/15 pt-5 sm:flex-row sm:items-center">
           <p className="text-xs text-white/50">
             {/* El HTML estático se genera en build: el año del cliente puede
                 diferir tras Nochevieja hasta el siguiente despliegue. */}
