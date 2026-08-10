@@ -15,7 +15,7 @@ export function Hero() {
   );
 
   return (
-    <section className="relative w-full overflow-hidden bg-mar">
+    <section className="relative w-full overflow-hidden bg-mar text-white">
       <picture>
         <source srcSet="/images/portada.webp" type="image/webp" />
         <img
@@ -28,19 +28,24 @@ export function Hero() {
           fetchPriority="high"
         />
       </picture>
-      {/* Degradado lateral suave para legibilidad del texto */}
-      <div className="absolute inset-0 bg-gradient-to-r from-mar/55 via-mar/25 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-mar/25 via-transparent to-transparent sm:from-mar/15" />
 
-      <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end px-4 pb-10 pt-24 sm:px-6 sm:pb-14 lg:justify-center lg:pb-16">
-        <h1 className="animate-fade-up max-w-md font-display text-2xl font-semibold leading-snug tracking-[-0.02em] text-white sm:text-3xl">
+      {/* Degradados solo en desktop, donde el texto va encima de la imagen */}
+      <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-mar/55 via-mar/25 to-transparent sm:block" />
+      <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-mar/25 via-transparent to-transparent sm:block" />
+
+      {/*
+        Móvil: bloque debajo de la imagen (la panorámica es demasiado baja
+        para caber título + subtítulo + CTAs).
+        Desktop: overlay absoluto encima de la imagen.
+      */}
+      <div className="relative px-4 py-8 sm:absolute sm:inset-0 sm:mx-auto sm:flex sm:max-w-6xl sm:flex-col sm:justify-end sm:px-6 sm:pb-14 sm:pt-24 lg:justify-center lg:pb-16">
+        <h1 className="animate-fade-up max-w-md font-display text-2xl font-semibold leading-snug tracking-[-0.02em] sm:text-3xl">
           {tx(heroContent.title, heroContent.titleEn)}
         </h1>
         <p className="animate-fade-up-delay-1 mt-4 max-w-md text-base leading-relaxed text-white/85">
           {tx(heroContent.subtitle, heroContent.subtitleEn)}
         </p>
-
-        <div className="animate-fade-up-delay-2 mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <div className="animate-fade-up-delay-2 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-9">
           <Link href={heroContent.ctaPrimary.href} className="btn btn-terracota">
             {t("hero.ctaMenu")}
           </Link>

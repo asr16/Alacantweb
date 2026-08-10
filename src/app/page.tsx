@@ -71,14 +71,14 @@ export default function HomePage() {
 
       <ReviewsSection />
 
-      <section className="bg-mar px-4 py-16 text-white sm:px-6 sm:py-20">
+      <section className="border-t border-arena bg-crema px-4 py-14 sm:px-6 sm:py-16">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <span className="mb-4 block h-0.5 w-10 bg-terracota" aria-hidden />
-            <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-texto sm:text-4xl">
               {t("home.ctaTitle")}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/75">
+            <p className="mt-4 text-base leading-relaxed text-texto-suave">
               {t("home.ctaText")}
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function HomePage() {
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-ghost-light"
+              className="btn btn-mar"
             >
               {t("home.instagram")}
             </a>

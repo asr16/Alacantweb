@@ -198,12 +198,29 @@ body {
 
 .chip-scroll {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.125rem;
+  padding-right: 1.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(to right, #000 0%, #000 88%, transparent 100%);
+}
+
+.chip-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .chip-scroll > * {
   flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .chip-scroll {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    mask-image: none;
+  }
 }
 
 .section-rule {
