@@ -61,7 +61,7 @@ export default function HomePage() {
             title={t("home.menuTitle")}
             subtitle={t("home.menuSubtitle")}
           />
-          <div className="mt-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {featureCards.map((card) => (
               <FeatureCard key={card.title} {...card} />
             ))}

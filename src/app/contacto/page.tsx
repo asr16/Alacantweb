@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Contacto",
   description:
     "Contacta con Heladería Alacant en Av. Mediterráneo, 107, Roquetas de Mar. Horario, teléfono y ubicación.",
+  alternates: { canonical: "/contacto" },
 };
 
 export default function ContactoPage() {

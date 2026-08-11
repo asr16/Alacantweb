@@ -1,6 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useEffectEvent,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 import { menuCategories, tagLabels, type MenuItem } from "@/data/menu";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -17,26 +26,166 @@ function itemMatches(item: MenuItem, search: string) {
 
 export function MenuCatalog() {
   const { t, tx } = useLanguage();
-  const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
+  const [activeId, setActiveId] = useState(menuCategories[0]?.id ?? "");
+  const [showTop, setShowTop] = useState(false);
+  const [flashId, setFlashId] = useState<string | null>(null);
+
+  const chipRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+  const stickyRef = useRef<HTMLDivElement>(null);
+  const scrollMarginRef = useRef(200);
+  const navigatingRef = useRef(false);
+  const navigateTimerRef = useRef<number | null>(null);
+  const [scrollMargin, setScrollMargin] = useState(200);
 
   const filtered = useMemo(
     () =>
       menuCategories
-        .filter((cat) => category === "all" || cat.id === category)
         .map((cat) => ({
           ...cat,
           items: cat.items.filter((item) => itemMatches(item, search)),
         }))
         .filter((cat) => cat.items.length > 0),
-    [category, search],
+    [search],
   );
+
+  useEffect(() => {
+    if (filtered.length === 0) return;
+    if (!filtered.some((cat) => cat.id === activeId)) {
+      setActiveId(filtered[0].id);
+    }
+  }, [filtered, activeId]);
+
+  // Altura real de header + barra sticky (chips pueden ocupar 1–2 filas)
+  useEffect(() => {
+    const sticky = stickyRef.current;
+    if (!sticky) return;
+
+    const update = () => {
+      const header = document.querySelector("header");
+      const headerH = header?.getBoundingClientRect().height ?? 64;
+      const stickyH = sticky.getBoundingClientRect().height;
+      const next = Math.ceil(headerH + stickyH + 16);
+      scrollMarginRef.current = next;
+      setScrollMargin(next);
+    };
+
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(sticky);
+    window.addEventListener("resize", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const onActiveFromScroll = useEffectEvent((id: string) => {
+    if (navigatingRef.current) return;
+    setActiveId(id);
+  });
+
+  const scrollToCategory = useCallback((id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    navigatingRef.current = true;
+    setActiveId(id);
+    setFlashId(id);
+
+    const top =
+      el.getBoundingClientRect().top + window.scrollY - scrollMarginRef.current;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+
+    if (navigateTimerRef.current) window.clearTimeout(navigateTimerRef.current);
+    navigateTimerRef.current = window.setTimeout(() => {
+      navigatingRef.current = false;
+      setFlashId(null);
+    }, 900);
+  }, []);
+
+  // Hash inicial (/carta#helados, etc.)
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, "");
+    if (!hash || !menuCategories.some((c) => c.id === hash)) return;
+    const timer = window.setTimeout(() => scrollToCategory(hash), 80);
+    return () => window.clearTimeout(timer);
+  }, [scrollToCategory]);
+
+  // Categoría activa según scroll
+  useEffect(() => {
+    const sections = filtered
+      .map((cat) => document.getElementById(cat.id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        const top = visible[0];
+        if (top?.target.id) onActiveFromScroll(top.target.id);
+      },
+      {
+        rootMargin: "-30% 0px -55% 0px",
+        threshold: [0, 0.1, 0.25, 0.5, 1],
+      },
+    );
+
+    for (const section of sections) observer.observe(section);
+    return () => observer.disconnect();
+  }, [filtered, onActiveFromScroll]);
+
+  // Chip activo visible en la fila sticky
+  useEffect(() => {
+    const chip = chipRefs.current.get(activeId);
+    chip?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [activeId]);
+
+  // Botón flotante
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 480);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (navigateTimerRef.current) window.clearTimeout(navigateTimerRef.current);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    navigatingRef.current = true;
+    setActiveId(filtered[0]?.id ?? menuCategories[0]?.id ?? "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (navigateTimerRef.current) window.clearTimeout(navigateTimerRef.current);
+    navigateTimerRef.current = window.setTimeout(() => {
+      navigatingRef.current = false;
+    }, 900);
+  };
 
   return (
     <div>
       <SectionHeading title={t("menu.title")} subtitle={t("menu.subtitle")} />
 
-      <div className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:border sm:border-arena sm:px-5 sm:py-4">
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border border-arena bg-white px-4 py-4 sm:px-5">
+        <p className="text-sm text-texto-suave">{t("menu.originalHint")}</p>
+        <Link href="/carta-2" className="btn btn-mar !py-2.5 !px-4">
+          {t("menu.original")}
+        </Link>
+      </div>
+      <div
+        ref={stickyRef}
+        className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:border sm:border-arena sm:px-5 sm:py-4"
+      >
         <label className="block min-w-0">
           <span className="sr-only">{t("menu.search")}</span>
           <input
@@ -48,28 +197,38 @@ export function MenuCatalog() {
           />
         </label>
 
-        <div className="chip-scroll" role="group" aria-label={t("nav.menu")}>
-          <button
-            type="button"
-            onClick={() => setCategory("all")}
-            className={`chip ${category === "all" ? "chip-active" : "chip-idle"}`}
-          >
-            {t("menu.all")}
-          </button>
-          {menuCategories.map((cat) => (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => setCategory(cat.id)}
-              className={`chip ${category === cat.id ? "chip-active" : "chip-idle"}`}
-            >
-              {tx(cat.title, cat.titleEn)}
-            </button>
-          ))}
+        <div className="chip-scroll chip-scroll-x" role="tablist" aria-label={t("nav.menu")}>
+          {menuCategories.map((cat) => {
+            const available = filtered.some((f) => f.id === cat.id);
+            const selected = activeId === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                disabled={!available}
+                ref={(node) => {
+                  if (node) chipRefs.current.set(cat.id, node);
+                  else chipRefs.current.delete(cat.id);
+                }}
+                onClick={() => {
+                  if (!available) return;
+                  scrollToCategory(cat.id);
+                  history.replaceState(null, "", `#${cat.id}`);
+                }}
+                className={`chip ${selected ? "chip-active chip-active-strong" : "chip-idle"} ${
+                  available ? "" : "pointer-events-none opacity-35"
+                }`}
+              >
+                {tx(cat.title, cat.titleEn)}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className="mt-10 space-y-14 pb-8">
+      <div className="mt-10 space-y-14 pb-24">
         {filtered.length === 0 && (
           <p className="rounded-2xl border border-arena bg-white p-8 text-center text-texto-suave">
             {t("menu.empty")}
@@ -77,7 +236,14 @@ export function MenuCatalog() {
         )}
 
         {filtered.map((cat) => (
-          <section key={cat.id} id={cat.id} className="scroll-mt-36">
+          <section
+            key={cat.id}
+            id={cat.id}
+            style={{ scrollMarginTop: scrollMargin }}
+            className={`menu-section ${
+              flashId === cat.id ? "menu-section-flash" : ""
+            } ${activeId === cat.id ? "menu-section-active" : ""}`}
+          >
             <div className="mb-6">
               <h2 className="font-display text-2xl font-bold text-texto sm:text-3xl">
                 {tx(cat.title, cat.titleEn)}
@@ -133,6 +299,19 @@ export function MenuCatalog() {
           </section>
         ))}
       </div>
+
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label={t("menu.backTop")}
+        className={`fixed bottom-24 right-4 z-40 flex h-12 w-12 items-center justify-center border border-arena bg-mar text-white shadow-lg transition-all duration-300 md:bottom-8 sm:right-8 ${
+          showTop
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-3 opacity-0"
+        }`}
+      >
+        <ArrowUp className="h-5 w-5" aria-hidden />
+      </button>
     </div>
   );
 }

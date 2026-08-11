@@ -16,6 +16,31 @@ export function ContactoContent() {
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
       <SectionHeading title={t("contact.title")} subtitle={t("contact.subtitle")} />
 
+      <div className="mt-8 flex flex-wrap gap-3">
+        <a
+          href={siteConfig.googleMaps}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-terracota"
+        >
+          {t("contact.maps")}
+        </a>
+        <a href={siteConfig.phoneHref} className="btn btn-mar">
+          {t("contact.call")}
+        </a>
+        <a href={siteConfig.emailHref} className="btn btn-ghost">
+          {t("contact.emailCta")}
+        </a>
+        <a
+          href={siteConfig.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-ghost"
+        >
+          {t("contact.instagram")}
+        </a>
+      </div>
+
       <div className="mt-12 grid gap-10 lg:grid-cols-2">
         <div className="space-y-6">
           <ContactCard
@@ -29,7 +54,7 @@ export function ContactoContent() {
               rel="noopener noreferrer"
               className="link-mar mt-3 inline-flex text-sm font-medium"
             >
-              {t("contact.maps")}
+              {t("contact.maps")} →
             </a>
           </ContactCard>
 
@@ -37,7 +62,7 @@ export function ContactoContent() {
             icon={<Phone className="h-5 w-5" aria-hidden />}
             title={t("contact.phone")}
           >
-            <a href={siteConfig.phoneHref} className="link-mar mt-1 block">
+            <a href={siteConfig.phoneHref} className="link-mar mt-1 block font-medium">
               {siteConfig.phone}
             </a>
           </ContactCard>
@@ -46,20 +71,20 @@ export function ContactoContent() {
             icon={<Mail className="h-5 w-5" aria-hidden />}
             title={t("contact.email")}
           >
-            <a href={siteConfig.emailHref} className="link-mar mt-1 block">
+            <a href={siteConfig.emailHref} className="link-mar mt-1 block font-medium">
               {siteConfig.email}
             </a>
           </ContactCard>
 
           <ContactCard
             icon={<Camera className="h-5 w-5" aria-hidden />}
-            title="Instagram"
+            title={t("contact.instagram")}
           >
             <a
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="link-mar mt-1 block"
+              className="link-mar mt-1 block font-medium"
             >
               @heladeriaalacantroquetas
             </a>

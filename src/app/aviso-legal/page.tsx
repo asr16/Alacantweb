@@ -14,8 +14,7 @@ export default function AvisoLegalPage() {
         Aviso legal
       </h1>
       <p className="mt-4 text-sm text-texto-suave">
-        Última actualización de este documento: agosto 2026. Los datos fiscales
-        del titular se completarán cuando estén confirmados.
+        Última actualización: agosto 2026.
       </p>
 
       <div className="prose-legal mt-10 space-y-8 text-texto-suave leading-relaxed">
@@ -29,7 +28,8 @@ export default function AvisoLegalPage() {
           </p>
           <ul className="mt-3 list-disc space-y-1 pl-5">
             <li>Titular: {siteConfig.name}</li>
-            <li>NIF/CIF: pendiente de facilitar por el titular</li>
+            {/* TODO(cliente): sustituir por el NIF/CIF real cuando lo facilite el titular.
+                Mientras no esté confirmado, no se muestra un texto provisional al público. */}
             <li>Domicilio: {siteConfig.address.full}</li>
             <li>Teléfono: {siteConfig.phone}</li>
             <li>Email: {siteConfig.email}</li>

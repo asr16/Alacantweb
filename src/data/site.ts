@@ -31,7 +31,6 @@ export const siteConfig = {
   nav: [
     { href: "/", labelKey: "nav.home" as const },
     { href: "/carta", labelKey: "nav.menu" as const },
-    { href: "/carta-2", labelKey: "nav.menu2" as const },
     { href: "/nosotros", labelKey: "nav.about" as const },
     { href: "/contacto", labelKey: "nav.contact" as const },
   ],
@@ -122,6 +121,9 @@ export const featureCards = [
     description: "Más de 65 sabores: clásicos, frutas, turrón, trufa y creaciones de temporada.",
     descriptionEn: "Over 65 flavors: classics, fruit, turrón, truffle and seasonal creations.",
     href: "/carta#helados",
+    image: "/images/tarrina-alacant.webp",
+    imageAlt: "Tarrina de helado artesano de Heladería Alacant",
+    imageAltEn: "Artisan ice cream tub from Heladería Alacant",
   },
   {
     title: "Cafetería",
@@ -129,6 +131,9 @@ export const featureCards = [
     description: "Frapés, cafés especiales, batidos y smoothies para cualquier momento del día.",
     descriptionEn: "Frappés, specialty coffees, shakes and smoothies for any time of day.",
     href: "/carta#cafeteria",
+    image: "/images/heladeria-local.webp",
+    imageAlt: "Interior de Heladería Alacant en Roquetas de Mar",
+    imageAltEn: "Heladería Alacant interior in Roquetas de Mar",
   },
   {
     title: "Gofres y crepes",
@@ -136,6 +141,9 @@ export const featureCards = [
     description: "Gofres, crepes y tortitas recién hechos, con salsas y complementos a elegir.",
     descriptionEn: "Freshly made waffles, crepes and pancakes with sauces and toppings to choose.",
     href: "/carta#gofres-crepes",
+    image: "/carta/dulce/pagina-1.webp",
+    imageAlt: "Carta dulce: gofres, crepes y tortitas",
+    imageAltEn: "Sweet menu: waffles, crepes and pancakes",
   },
   {
     title: "Postres",
@@ -143,6 +151,9 @@ export const featureCards = [
     description: "Coulant, brownie con helado y donut especial, recién hechos.",
     descriptionEn: "Coulant, brownie with ice cream and our special donut, freshly made.",
     href: "/carta#pasteleria",
+    image: "/carta/principal/pagina-1.webp",
+    imageAlt: "Selección de la carta de Heladería Alacant",
+    imageAltEn: "A selection from the Heladería Alacant menu",
   },
 ];
 

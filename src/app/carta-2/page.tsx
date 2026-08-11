@@ -5,9 +5,10 @@ import { Carta2Content, type CartaDocument, type CartaPage } from "@/components/
 import { cartaDocs, type CartaDoc } from "@/data/cartas";
 
 export const metadata: Metadata = {
-  title: "Carta 2",
+  title: "Cartas originales",
   description:
-    "Cartas de Heladería Alacant en PDF: copas de helado, batidos, frapés, granizados, gofres, crepes y tortitas en Roquetas de Mar.",
+    "Cartas ilustradas de Heladería Alacant: helados, dulce, desayunos y bowls de frutas en Roquetas de Mar.",
+  alternates: { canonical: "/carta-2" },
 };
 
 /** Lee en build las páginas generadas por `npm run carta:pdf`. */

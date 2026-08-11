@@ -87,7 +87,17 @@ body {
   font-weight: 650;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-mar);
+  outline-offset: 3px;
 }
 
 .btn-mar {
@@ -116,6 +126,17 @@ body {
 .btn-outline-mar:hover {
   background: var(--color-mar);
   color: white;
+}
+
+.btn-ghost {
+  border: 1px solid var(--color-arena);
+  background: white;
+  color: var(--color-mar);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-mar);
+  background: var(--color-crema);
 }
 
 .btn-ghost-light {
@@ -149,6 +170,11 @@ body {
   color: white;
 }
 
+.chip-active-strong {
+  box-shadow: 0 0 0 2px var(--color-crema), 0 0 0 4px var(--color-mar);
+  font-weight: 650;
+}
+
 .chip-idle {
   border: 1px solid var(--color-arena);
   background: white;
@@ -158,6 +184,20 @@ body {
 .chip-idle:hover {
   border-color: var(--color-mar);
   color: var(--color-mar);
+}
+
+.chip-lg {
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 550;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .chip-lg {
+    padding: 0.6rem 1.15rem;
+    font-size: 0.95rem;
+  }
 }
 
 @keyframes fade-in {
@@ -207,6 +247,15 @@ body {
   mask-image: linear-gradient(to right, #000 0%, #000 88%, transparent 100%);
 }
 
+.chip-scroll-lg {
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-x: visible;
+  padding-right: 0;
+  mask-image: none;
+}
+
 .chip-scroll::-webkit-scrollbar {
   display: none;
 }
@@ -216,9 +265,26 @@ body {
 }
 
 @media (min-width: 640px) {
-  .chip-scroll {
+  .chip-scroll:not(.chip-scroll-x) {
     flex-wrap: wrap;
     overflow-x: visible;
+    mask-image: none;
+  }
+}
+
+.chip-scroll-x {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  mask-image: linear-gradient(to right, #000 0%, #000 88%, transparent 100%);
+}
+
+@media (min-width: 768px) {
+  .chip-scroll-x {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+    padding-right: 0;
+    row-gap: 0.5rem;
     mask-image: none;
   }
 }
@@ -229,4 +295,28 @@ body {
   height: 2px;
   background: var(--color-mar);
   margin-bottom: 1rem;
+}
+
+.menu-section {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.menu-section-active > div:first-child h2 {
+  color: var(--color-mar);
+  transition: color 0.3s ease;
+}
+
+.menu-section-flash {
+  animation: menu-section-in 0.55s ease;
+}
+
+@keyframes menu-section-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

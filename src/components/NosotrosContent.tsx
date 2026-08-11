@@ -42,7 +42,7 @@ export function NosotrosContent() {
               )}
               width={1200}
               height={1600}
-              className="h-auto w-full"
+              className="h-auto w-full transition-transform duration-700 hover:scale-[1.02]"
               sizes="(max-width: 1024px) 100vw, 28rem"
             />
           </div>
@@ -57,6 +57,60 @@ export function NosotrosContent() {
                 </p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-arena bg-white px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            title={tx("De 1974 a hoy", "From 1974 to today")}
+            subtitle={tx(
+              "Más de medio siglo frente al Mediterráneo.",
+              "More than half a century by the Mediterranean.",
+            )}
+          />
+          <ol className="mt-12 grid gap-8 sm:grid-cols-3">
+            <li className="relative border-l-2 border-terracota pl-5 sm:border-l-0 sm:border-t-2 sm:pl-0 sm:pt-5">
+              <p className="font-display text-3xl font-semibold text-mar">1974</p>
+              <p className="mt-3 text-sm leading-relaxed text-texto-suave">
+                {tx(
+                  "Abrimos en Roquetas de Mar con raíces alicantinas y vocación artesana.",
+                  "We opened in Roquetas de Mar with Alicante roots and an artisan craft.",
+                )}
+              </p>
+            </li>
+            <li className="relative border-l-2 border-terracota pl-5 sm:border-l-0 sm:border-t-2 sm:pl-0 sm:pt-5">
+              <p className="font-display text-3xl font-semibold text-mar">50+</p>
+              <p className="mt-3 text-sm leading-relaxed text-texto-suave">
+                {tx(
+                  "Generaciones de clientes y el mismo trato familiar en la urbanización.",
+                  "Generations of guests and the same family welcome in the urbanization.",
+                )}
+              </p>
+            </li>
+            <li className="relative border-l-2 border-terracota pl-5 sm:border-l-0 sm:border-t-2 sm:pl-0 sm:pt-5">
+              <p className="font-display text-3xl font-semibold text-mar">2024</p>
+              <p className="mt-3 text-sm leading-relaxed text-texto-suave">
+                {tx(
+                  "Celebramos el 50º aniversario en la localidad, mirando al futuro con la misma pasión.",
+                  "We celebrated our 50th anniversary locally, looking ahead with the same passion.",
+                )}
+              </p>
+            </li>
+          </ol>
+          <div className="mt-12 overflow-hidden rounded-3xl">
+            <Image
+              src="/images/heladeria-local.webp"
+              alt={tx(
+                "Fachada e interior de Heladería Alacant",
+                "Heladería Alacant storefront and interior",
+              )}
+              width={1600}
+              height={1000}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 1152px) 100vw, 1152px"
+            />
           </div>
         </div>
       </section>

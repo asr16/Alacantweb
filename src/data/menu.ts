@@ -28,9 +28,8 @@ export const tagLabels: Record<ProductTag, { es: string; en: string }> = {
 
 /**
  * Contenido transcrito de las cartas oficiales de la heladería
- * (`public/carta/carta-principal.pdf` y `public/carta/carta-dulce.pdf`).
- * Los PDF no incluyen precios: los huecos vienen en blanco para rellenarlos
- * a mano en el local, así que aquí tampoco se indica ninguno.
+ * (`public/carta/carta-principal.pdf`, `carta-dulce.pdf`, `carta-desayunos.pdf`
+ * y `carta-bowl.pdf`). Solo se indican precios cuando vienen en el PDF.
  */
 export const menuCategories: MenuCategory[] = [
   {
@@ -526,6 +525,71 @@ export const menuCategories: MenuCategory[] = [
     ],
   },
   {
+    id: "bowls",
+    title: "Bowl de frutas",
+    titleEn: "Fruit bowls",
+    description:
+      "Cremoso batido de fruta con muesli y toppings. Normal 5,50 € · Maxi 6,50 €. Extras: leche de soja, avena o sin lactosa, chocolate negro o blanco, miel, sirope de dulce de arce, galletas Oreo/Cookies/Lotus, Lacasitos, fruta fresca, coco, almendra o nueces, mango o plátano deshidratado (+0,50 €); crema de cacahuete (+1,00 €).",
+    descriptionEn:
+      "Creamy fruit blend with muesli and toppings. Regular 5.50 € · Maxi 6.50 €. Extras: soy, oat or lactose-free milk, dark or white chocolate, honey, maple syrup, Oreo/Cookies/Lotus biscuits, Lacasitos, fresh fruit, coconut, almond or walnuts, dehydrated mango or banana (+0.50 €); peanut butter (+1.00 €).",
+    items: [
+      {
+        name: "Colada Jungle Bowl",
+        description:
+          "Cremoso batido de plátano, coco y piña acompañado de muesli, plátano, coco, arándanos y coco rallado.",
+        descriptionEn:
+          "Creamy banana, coconut and pineapple blend with muesli, banana, coconut, blueberries and shredded coconut.",
+        price: "5,50 € · Maxi 6,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Vitaly Bowl",
+        description:
+          "Cremoso batido de fresas y plátano acompañado de muesli, fresas, plátano y frutos rojos.",
+        descriptionEn:
+          "Creamy strawberry and banana blend with muesli, strawberries, banana and red berries.",
+        price: "5,50 € · Maxi 6,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Delicia Mix Bowl",
+        description:
+          "Cremoso batido de mango, plátano, açaí y arándanos acompañado de muesli, plátano, fresas y arándanos.",
+        descriptionEn:
+          "Creamy mango, banana, açaí and blueberry blend with muesli, banana, strawberries and blueberries.",
+        price: "5,50 € · Maxi 6,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Dragon Fruit Bowl",
+        description:
+          "Cremoso batido de fruta del dragón, fresas y mango acompañado de muesli, fresas, arándanos y mango natural.",
+        descriptionEn:
+          "Creamy dragon fruit, strawberry and mango blend with muesli, strawberries, blueberries and fresh mango.",
+        price: "5,50 € · Maxi 6,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Caribbean Passion Bowl",
+        description:
+          "Cremoso batido de piña, mango y papaya acompañado de muesli, piña, mango natural y papaya.",
+        descriptionEn:
+          "Creamy pineapple, mango and papaya blend with muesli, pineapple, fresh mango and papaya.",
+        price: "5,50 € · Maxi 6,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Berries Paradise Bowl",
+        description:
+          "Cremoso batido de fresas, arándanos, cereza y mango acompañado de muesli, fresas, arándanos y grosellas con un toque de canela.",
+        descriptionEn:
+          "Creamy strawberry, blueberry, cherry and mango blend with muesli, strawberries, blueberries, currants and a touch of cinnamon.",
+        price: "5,50 € · Maxi 6,50 €",
+        tags: ["nuevo"],
+      },
+    ],
+  },
+  {
     id: "granizados",
     title: "Granizados y horchata",
     titleEn: "Slushes & horchata",
@@ -581,6 +645,81 @@ export const menuCategories: MenuCategory[] = [
       { name: "Chocolate Excepción", nameEn: "Chocolate Excepción" },
       { name: "Chocolate con Menta", nameEn: "Mint Hot Chocolate" },
       { name: "Chocolate Caliente con Nata", nameEn: "Hot Chocolate with Whipped Cream" },
+    ],
+  },
+  {
+    id: "desayunos",
+    title: "Desayunos",
+    titleEn: "Breakfast",
+    description:
+      "¡Personaliza tu tostada! Pan rústico, de semillas, de molde, mollete o sin gluten. Bases: tomate, aceite, mantequilla/Lorenzana, mayonesa, alioli, queso de untar, queso roquefort, paté ibérico, sobrasada, Nocilla, dulce de arce y miel. Ingredientes: jamón york, jamón serrano, pavo braseado, lomo sajonia, lomo de orza, atún, salmón ahumado, queso de burgos, mezcla de quesos, rulo de cabra, queso viejo, aguacate, mermelada fresa/melocotón y rúcula. Finalista del concurso Un Mar de Desayunos II.",
+    descriptionEn:
+      "Build your own toast! Rustic, seeded, sandwich bread, soft roll or gluten-free. Bases: tomato, oil, butter/Lorenzana, mayonnaise, aioli, cream cheese, Roquefort, Iberian pâté, sobrasada, Nocilla, maple syrup and honey. Toppings: cooked ham, Serrano ham, braised turkey, sajonia loin, orza loin, tuna, smoked salmon, Burgos cheese, cheese mix, goat cheese log, aged cheese, avocado, strawberry/peach jam and rocket. Finalist of Un Mar de Desayunos II.",
+    items: [
+      {
+        name: "Tostada a tu gusto",
+        nameEn: "Toast your way",
+        description: "Elige el pan, la base y los ingredientes que quieras",
+        descriptionEn: "Choose your bread, base and toppings",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial tomate, atún y york",
+        nameEn: "Special tomato, tuna & ham",
+        description: "Tomate, atún, york, orégano y queso fundido",
+        descriptionEn: "Tomato, tuna, cooked ham, oregano and melted cheese",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial serrano y rúcula",
+        nameEn: "Special Serrano & rocket",
+        description: "Queso de untar, rúcula, jamón serrano y AOVE",
+        descriptionEn: "Cream cheese, rocket, Serrano ham and olive oil",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial salmón y aguacate",
+        nameEn: "Special salmon & avocado",
+        description: "Queso de untar, salmón ahumado y aguacate",
+        descriptionEn: "Cream cheese, smoked salmon and avocado",
+        popular: true,
+        tags: ["nuevo", "popular"],
+      },
+      {
+        name: "Especial roquefort y atún",
+        nameEn: "Special Roquefort & tuna",
+        description: "Roquefort, atún y queso fundido",
+        descriptionEn: "Roquefort, tuna and melted cheese",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial Lorenzana y york",
+        nameEn: "Special Lorenzana & ham",
+        description: "Lorenzana, york y queso fundido",
+        descriptionEn: "Lorenzana, cooked ham and melted cheese",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial tomate y sajonia",
+        nameEn: "Special tomato & sajonia",
+        description: "Tomate, sajonia y queso fundido",
+        descriptionEn: "Tomato, sajonia and melted cheese",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial alioli y orza",
+        nameEn: "Special aioli & orza",
+        description: "Alioli y lomo de orza / sajonia",
+        descriptionEn: "Aioli with orza or sajonia loin",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Especial Nocilla y plátano",
+        nameEn: "Special Nocilla & banana",
+        description: "Nocilla y plátano",
+        descriptionEn: "Nocilla and banana",
+        tags: ["nuevo"],
+      },
     ],
   },
   {
