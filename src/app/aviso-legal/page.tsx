@@ -5,6 +5,7 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = {
   title: "Aviso legal",
   description: `Aviso legal de ${siteConfig.name}.`,
+  alternates: { canonical: "/aviso-legal" },
 };
 
 export default function AvisoLegalPage() {

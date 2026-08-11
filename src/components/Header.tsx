@@ -40,7 +40,7 @@ export function Header() {
             className="group transition-opacity hover:opacity-90"
             aria-label={siteConfig.name}
           >
-            <BrandLogo height={52} priority />
+            <BrandLogo height={52} priority decorative />
           </Link>
 
           <nav className="hidden items-center gap-6 lg:flex" aria-label={t("nav.main")}>

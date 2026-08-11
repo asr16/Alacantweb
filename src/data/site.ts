@@ -18,10 +18,16 @@ export const siteConfig = {
   email: "info@heladeriaalacant.es",
   emailHref: "mailto:info@heladeriaalacant.es",
   instagram: "https://www.instagram.com/heladeriaalacantroquetas/",
+  instagramHandle: "@heladeriaalacantroquetas",
   /** Ficha de Google Maps del local (CID). */
   googleMaps: "https://www.google.com/maps?cid=2396138620883418987",
   /** Misma ficha — el usuario ve valoración y reseñas. */
   googleReviews: "https://www.google.com/maps?cid=2396138620883418987",
+  /** Coordenadas del local (mismas que el embed de Maps). */
+  geo: {
+    latitude: 36.732696,
+    longitude: -2.618354,
+  },
   googleMapsEmbed:
     "https://www.google.com/maps?q=36.732696,-2.618354&hl=es&z=17&output=embed",
   scheduleNote:

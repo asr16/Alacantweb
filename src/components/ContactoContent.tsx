@@ -86,7 +86,7 @@ export function ContactoContent() {
               rel="noopener noreferrer"
               className="link-mar mt-1 block font-medium"
             >
-              @heladeriaalacantroquetas
+              {siteConfig.instagramHandle}
             </a>
           </ContactCard>
 

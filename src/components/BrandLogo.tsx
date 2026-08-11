@@ -8,6 +8,8 @@ type BrandLogoProps = {
   /** Color (terracota) o mono (negro) para fondos claros. */
   variant?: "color" | "mono";
   priority?: boolean;
+  /** Vacío cuando el enlace padre ya tiene aria-label. */
+  decorative?: boolean;
 };
 
 const SRC = {
@@ -23,13 +25,14 @@ export function BrandLogo({
   className = "",
   variant = "color",
   priority = false,
+  decorative = false,
 }: BrandLogoProps) {
   const width = Math.round(height * ASPECT);
 
   return (
     <Image
       src={SRC[variant]}
-      alt={siteConfig.name}
+      alt={decorative ? "" : siteConfig.name}
       width={width}
       height={height}
       className={`w-auto object-contain ${className}`}

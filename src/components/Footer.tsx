@@ -19,7 +19,7 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
             <div className="mb-3 w-fit bg-crema p-1.5">
-              <BrandLogo height={56} />
+              <BrandLogo height={56} decorative />
             </div>
             <h2 className="sr-only">{siteConfig.name}</h2>
             <p className="max-w-sm text-sm leading-relaxed text-white/70">

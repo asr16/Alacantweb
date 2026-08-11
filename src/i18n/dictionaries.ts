@@ -4,7 +4,6 @@ export const dictionaries = {
   es: {
     "nav.home": "Inicio",
     "nav.menu": "Carta",
-    "nav.menu2": "Carta 2",
     "nav.about": "Sobre nosotros",
     "nav.contact": "Contacto",
     "nav.call": "Llamar",
@@ -78,7 +77,6 @@ export const dictionaries = {
   en: {
     "nav.home": "Home",
     "nav.menu": "Menu",
-    "nav.menu2": "Menu 2",
     "nav.about": "About us",
     "nav.contact": "Contact",
     "nav.call": "Call",

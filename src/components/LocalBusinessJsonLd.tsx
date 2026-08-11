@@ -50,8 +50,8 @@ export function LocalBusinessJsonLd() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 36.732696,
-      longitude: -2.618354,
+      latitude: siteConfig.geo.latitude,
+      longitude: siteConfig.geo.longitude,
     },
     hasMap: siteConfig.googleMaps,
     sameAs: [siteConfig.instagram, siteConfig.googleMaps],
