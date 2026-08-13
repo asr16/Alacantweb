@@ -68,12 +68,12 @@ export default function HomePage() {
               {t("home.ctaText")}
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3">
             <a
               href={siteConfig.googleMaps}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-terracota"
+              className="btn btn-terracota w-full sm:w-auto"
             >
               {t("home.ctaMaps")}
             </a>
@@ -81,7 +81,7 @@ export default function HomePage() {
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-mar"
+              className="btn btn-mar w-full sm:w-auto"
             >
               {t("home.instagram")}
             </a>

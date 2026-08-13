@@ -45,15 +45,15 @@ export function Hero() {
         <p className="animate-fade-up-delay-1 mt-4 max-w-md text-base leading-relaxed text-white/85">
           {tx(heroContent.subtitle, heroContent.subtitleEn)}
         </p>
-        <div className="animate-fade-up-delay-2 mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-9">
-          <Link href={heroContent.ctaPrimary.href} className="btn btn-terracota">
+        <div className="animate-fade-up-delay-2 mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3">
+          <Link href={heroContent.ctaPrimary.href} className="btn btn-terracota w-full sm:w-auto">
             {t("hero.ctaMenu")}
           </Link>
           <a
             href={siteConfig.googleMaps}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-white/90 underline-offset-4 hover:underline"
+            className="text-center text-sm font-medium text-white/90 underline-offset-4 hover:underline sm:text-left"
           >
             {t("hero.ctaMaps")}
           </a>

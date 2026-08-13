@@ -39,7 +39,7 @@ export function Carta2Content({ documents }: { documents: CartaDocument[] }) {
       </header>
 
       <div
-        className="sticky top-16 z-30 -mx-4 flex flex-wrap items-center justify-center gap-2 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:gap-2.5 sm:border sm:border-arena sm:px-5 sm:py-4"
+        className="sticky top-[4.25rem] z-30 -mx-4 flex flex-wrap items-center justify-center gap-2 border-b border-arena bg-crema/95 px-4 py-2.5 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:gap-2.5 sm:border sm:border-arena sm:px-5 sm:py-4"
         role="tablist"
         aria-label={t("carta2.title")}
       >

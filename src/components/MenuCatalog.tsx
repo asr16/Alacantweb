@@ -180,15 +180,15 @@ export function MenuCatalog() {
     <div>
       <SectionHeading as="h1" title={t("menu.title")} subtitle={t("menu.subtitle")} />
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border border-arena bg-white px-4 py-4 sm:px-5">
+      <div className="mt-5 flex flex-col gap-3 border border-arena bg-white px-4 py-3.5 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4">
         <p className="text-sm text-texto-suave">{t("menu.originalHint")}</p>
-        <Link href="/carta-2" className="btn btn-mar !py-2.5 !px-4">
+        <Link href="/carta-2" className="btn btn-mar w-full !py-2.5 !px-4 sm:w-auto">
           {t("menu.original")}
         </Link>
       </div>
       <div
         ref={stickyRef}
-        className="sticky top-16 z-30 mt-8 -mx-4 space-y-3 border-b border-arena bg-crema/95 px-4 py-3 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:border sm:border-arena sm:px-5 sm:py-4"
+        className="sticky top-[4.25rem] z-30 mt-6 -mx-4 space-y-2.5 border-b border-arena bg-crema/95 px-4 py-2.5 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:mt-8 sm:space-y-3 sm:border sm:border-arena sm:px-5 sm:py-4"
       >
         <label className="block min-w-0">
           <span className="sr-only">{t("menu.search")}</span>
@@ -197,7 +197,8 @@ export function MenuCatalog() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder={t("menu.search")}
-            className="w-full border border-arena bg-white px-4 py-2.5 text-sm text-texto placeholder:text-texto-suave"
+            enterKeyHint="search"
+            className="w-full border border-arena bg-white px-4 py-3 text-base text-texto placeholder:text-texto-suave sm:py-2.5 sm:text-sm"
           />
         </label>
 
@@ -325,7 +326,7 @@ export function MenuCatalog() {
         type="button"
         onClick={scrollToTop}
         aria-label={t("menu.backTop")}
-        className={`fixed bottom-24 right-4 z-40 flex h-12 w-12 items-center justify-center border border-arena bg-mar text-white shadow-lg transition-all duration-300 md:bottom-8 sm:right-8 ${
+        className={`fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-12 w-12 items-center justify-center border border-arena bg-mar text-white shadow-lg transition-all duration-300 md:bottom-8 sm:right-8 ${
           showTop
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-3 opacity-0"

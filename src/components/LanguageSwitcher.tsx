@@ -19,7 +19,7 @@ function LanguageSwitcherInner() {
           key={code}
           type="button"
           onClick={() => setLocale(code)}
-          className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
+          className={`rounded-full px-3.5 py-2 text-xs font-semibold transition-colors sm:px-2.5 sm:py-1 ${
             locale === code
               ? "bg-mar text-white"
               : "text-texto-suave hover:text-mar"

@@ -16,16 +16,16 @@ export function ContactoContent() {
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
       <SectionHeading as="h1" title={t("contact.title")} subtitle={t("contact.subtitle")} />
 
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-8 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
         <a
           href={siteConfig.googleMaps}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-terracota"
+          className="btn btn-terracota col-span-2 sm:col-auto"
         >
           {t("contact.maps")}
         </a>
-        <a href={siteConfig.phoneHref} className="btn btn-mar">
+        <a href={siteConfig.phoneHref} className="btn btn-mar col-span-2 sm:col-auto">
           {t("contact.call")}
         </a>
         <a href={siteConfig.emailHref} className="btn btn-ghost">
@@ -51,7 +51,7 @@ export function ContactoContent() {
           href={siteConfig.glovo}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-ghost"
+          className="btn btn-ghost col-span-2 sm:col-auto"
         >
           {t("contact.glovo")}
         </a>
@@ -159,7 +159,7 @@ export function ContactoContent() {
           <iframe
             title={t("contact.mapTitle")}
             src={siteConfig.googleMapsEmbed}
-            className="h-full min-h-[520px] w-full border-0"
+            className="h-[min(55vh,28rem)] min-h-[280px] w-full border-0 sm:h-full sm:min-h-[520px]"
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

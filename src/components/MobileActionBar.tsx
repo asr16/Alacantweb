@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 const itemClass =
-  "flex flex-col items-center gap-1 px-2 py-3 text-[0.7rem] font-semibold uppercase tracking-wide text-texto transition-colors hover:text-mar focus-visible:bg-arena focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-mar";
+  "flex min-h-[3.25rem] flex-col items-center justify-center gap-1 px-2 py-2.5 text-[0.7rem] font-semibold uppercase tracking-wide text-texto transition-colors hover:text-mar focus-visible:bg-arena focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-mar active:bg-arena/60";
 
 export function MobileActionBar() {
   const { t } = useLanguage();

@@ -34,13 +34,13 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-arena bg-crema/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-3.5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5">
           <Link
             href="/"
             className="group transition-opacity hover:opacity-90"
             aria-label={siteConfig.name}
           >
-            <BrandLogo height={56} priority decorative />
+            <BrandLogo height={48} priority decorative />
           </Link>
 
           <nav className="hidden items-center gap-6 lg:flex" aria-label={t("nav.main")}>
@@ -65,7 +65,7 @@ export function Header() {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center border border-arena bg-white p-2.5 text-mar lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center border border-arena bg-white text-mar lg:hidden"
             aria-expanded={open}
             aria-controls={panelId}
             aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
@@ -102,7 +102,7 @@ export function Header() {
           <button
             type="button"
             onClick={close}
-            className="border border-arena bg-white p-2 text-mar"
+            className="inline-flex h-11 w-11 items-center justify-center border border-arena bg-white text-mar"
             aria-label={t("nav.closeMenu")}
           >
             <X className="h-5 w-5" aria-hidden />

@@ -1,6 +1,7 @@
 /**
  * Fuente única de horarios (Europe/Madrid).
- * Apertura confirmada: 09:00 todos los días.
+ * Confirmados por el cliente: apertura 09:00 todos los días;
+ * cierre Lun–Jue/Dom 23:00, Vie 23:30, Sáb 00:00.
  * Si closeMin <= openMin, el cierre cruza medianoche.
  */
 
