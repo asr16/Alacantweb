@@ -37,9 +37,10 @@ export function LocalBusinessJsonLd() {
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
-    telephone: siteConfig.phone,
+    telephone: "+34950333470",
     email: siteConfig.email,
     image: `${siteConfig.url}/images/portada.jpg`,
+    logo: `${siteConfig.url}/brand/logo-alacant.png`,
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.street,
@@ -54,7 +55,12 @@ export function LocalBusinessJsonLd() {
       longitude: siteConfig.geo.longitude,
     },
     hasMap: siteConfig.googleMaps,
-    sameAs: [siteConfig.instagram, siteConfig.googleMaps],
+    sameAs: [
+      siteConfig.instagram,
+      siteConfig.tiktok,
+      siteConfig.glovo,
+      siteConfig.googleMaps,
+    ],
     openingHoursSpecification: openingHoursSpecification(),
   };
 

@@ -18,8 +18,8 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <div className="grid gap-8 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
-            <div className="mb-3 w-fit bg-crema p-1.5">
-              <BrandLogo height={56} decorative />
+            <div className="mb-3 w-fit rounded-sm bg-crema p-1.5">
+              <BrandLogo height={64} decorative />
             </div>
             <h2 className="sr-only">{siteConfig.name}</h2>
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
@@ -45,6 +45,11 @@ export function Footer() {
               <li>
                 <a href={siteConfig.phoneHref} className="hover:text-white">
                   {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a href={siteConfig.emailHref} className="hover:text-white">
+                  {siteConfig.email}
                 </a>
               </li>
             </ul>
@@ -85,6 +90,22 @@ export function Footer() {
               className={footerLink}
             >
               Instagram
+            </a>
+            <a
+              href={siteConfig.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={footerLink}
+            >
+              TikTok
+            </a>
+            <a
+              href={siteConfig.glovo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={footerLink}
+            >
+              Glovo
             </a>
             <a
               href={siteConfig.googleMaps}

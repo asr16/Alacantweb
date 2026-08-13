@@ -1,6 +1,6 @@
 "use client";
 
-import { Camera, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Bike, Camera, Clock, Mail, MapPin, Music2, Phone } from "lucide-react";
 import { ContactCard } from "@/components/ContactCard";
 import { OpenStatus } from "@/components/OpenStatus";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -38,6 +38,22 @@ export function ContactoContent() {
           className="btn btn-ghost"
         >
           {t("contact.instagram")}
+        </a>
+        <a
+          href={siteConfig.tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-ghost"
+        >
+          {t("contact.tiktok")}
+        </a>
+        <a
+          href={siteConfig.glovo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-ghost"
+        >
+          {t("contact.glovo")}
         </a>
       </div>
 
@@ -87,6 +103,34 @@ export function ContactoContent() {
               className="link-mar mt-1 block font-medium"
             >
               {siteConfig.instagramHandle}
+            </a>
+          </ContactCard>
+
+          <ContactCard
+            icon={<Music2 className="h-5 w-5" aria-hidden />}
+            title={t("contact.tiktok")}
+          >
+            <a
+              href={siteConfig.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-mar mt-1 block font-medium"
+            >
+              {siteConfig.tiktokHandle}
+            </a>
+          </ContactCard>
+
+          <ContactCard
+            icon={<Bike className="h-5 w-5" aria-hidden />}
+            title="Glovo"
+          >
+            <a
+              href={siteConfig.glovo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-mar mt-1 block font-medium"
+            >
+              {t("contact.glovo")}
             </a>
           </ContactCard>
 

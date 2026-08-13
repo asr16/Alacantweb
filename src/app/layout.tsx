@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/brand/logo-alacant.png",
-    apple: "/brand/logo-alacant.png",
+    icon: "/brand/logo-alacant-icon.png",
+    apple: "/brand/logo-alacant-icon.png",
   },
   openGraph: {
     title: siteConfig.name,

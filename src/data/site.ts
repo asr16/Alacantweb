@@ -6,19 +6,22 @@ export const siteConfig = {
     "Over 65 artisan ice cream flavors, café, waffles, crepes and pastry in Roquetas de Mar. Alicante tradition for over 50 years.",
   url: "https://heladeria-alacant.es",
   address: {
-    street: "Av. Mediterráneo, 107",
+    street: "Avenida del Mediterráneo, 109",
     city: "Roquetas de Mar",
     province: "Almería",
     postalCode: "04740",
     country: "España",
-    full: "Av. Mediterráneo, 107, 04740 Roquetas de Mar, Almería",
+    full: "Avenida del Mediterráneo, 109, 04740 Roquetas de Mar",
   },
-  phone: "+34 950 33 34 70",
+  phone: "950 333 470",
   phoneHref: "tel:+34950333470",
-  email: "info@heladeriaalacant.es",
-  emailHref: "mailto:info@heladeriaalacant.es",
+  email: "heladeriaalacantroquetas@gmail.com",
+  emailHref: "mailto:heladeriaalacantroquetas@gmail.com",
   instagram: "https://www.instagram.com/heladeriaalacantroquetas/",
   instagramHandle: "@heladeriaalacantroquetas",
+  tiktok: "https://www.tiktok.com/@heladeriaalacantroquetas",
+  tiktokHandle: "@heladeriaalacantroquetas",
+  glovo: "https://glovoapp.com/es/es/roquetas-de-mar/stores/heladeria-alacant-roquetas",
   /** Ficha de Google Maps del local (CID). */
   googleMaps: "https://www.google.com/maps?cid=2396138620883418987",
   /** Misma ficha — el usuario ve valoración y reseñas. */
@@ -29,7 +32,7 @@ export const siteConfig = {
     longitude: -2.618354,
   },
   googleMapsEmbed:
-    "https://www.google.com/maps?q=36.732696,-2.618354&hl=es&z=17&output=embed",
+    "https://www.google.com/maps?q=Avenida+del+Mediterr%C3%A1neo+109,+04740+Roquetas+de+Mar&hl=es&z=17&output=embed",
   scheduleNote:
     "Horario orientativo. Puede variar en festivos; confirma por teléfono.",
   scheduleNoteEn:
@@ -53,72 +56,196 @@ export const heroContent = {
 };
 
 export const historyPreview = {
-  title: "Una institución en Roquetas de Mar",
-  titleEn: "A Roquetas de Mar institution",
+  title: "Nuestra historia",
+  titleEn: "Our story",
   paragraphs: [
-    "La Heladería Alacant es una institución con más de 50 años de historia que se distingue por ofrecer una amplia variedad de más de 65 sabores de helado artesano, manteniendo la tradición de sus orígenes alicantinos.",
-    "Además de sus helados, la oferta se extiende a una completa carta de cafetería: gofres, crepes, batidos, tartas y una selección de desayunos y meriendas. Un lugar de toda la vida en la urbanización, conocido por la misma solera y la calidad de siempre.",
+    "Más de 50 años endulzando momentos en Roquetas de Mar. Abrimos en junio de 1974 y seguimos siendo un negocio familiar con tradición, sabor y recuerdos.",
+    "Aquellos niños que venían en los años 70 y 80 con sus padres hoy regresan con sus propios hijos y nietos para compartir la misma tradición.",
   ],
   paragraphsEn: [
-    "Heladería Alacant is an institution with more than 50 years of history, known for over 65 artisan ice cream flavors and its Alicante roots.",
-    "Beyond ice cream, the menu includes a full café offering: waffles, crepes, shakes, cakes, breakfast and afternoon treats. A neighborhood classic known for its warmth and lasting quality.",
+    "Over 50 years sweetening moments in Roquetas de Mar. We opened in June 1974 and remain a family business of tradition, flavour and memories.",
+    "The children who visited in the 70s and 80s with their parents now return with their own children and grandchildren to share the same tradition.",
   ],
 };
 
 export const aboutContent = {
-  title: "Sobre nosotros",
-  titleEn: "About us",
-  intro:
-    "Desde 1974, la Heladería Alacant ha sido parte del día a día de Roquetas de Mar. Lo que empezó como un proyecto familiar con raíces alicantinas se ha convertido en un referente de helado artesano en la costa de Almería.",
-  introEn:
-    "Since 1974, Heladería Alacant has been part of everyday life in Roquetas de Mar. What began as a family project with Alicante roots is now a reference for artisan ice cream on the Almería coast.",
+  title: "Nuestra historia",
+  titleEn: "Our story",
+  subtitle: "Más de 50 años endulzando momentos en Roquetas de Mar",
+  subtitleEn: "Over 50 years sweetening moments in Roquetas de Mar",
+  intro: [
+    "En pleno corazón de la avenida principal de la Urbanización de Roquetas de Mar —uno de los destinos más emblemáticos de Almería y Andalucía— se encuentra Heladería Alacant, un rincón lleno de tradición, sabor y recuerdos.",
+    "Nuestras puertas se abrieron por primera vez en junio de 1974, coincidiendo con los inicios de la Urbanización. Desde entonces, hemos mantenido intacta nuestra pasión por el helado evolucionando año tras año para adaptarnos a las nuevas tendencias e incorporar productos novedosos sin perder nunca la esencia que nos vio nacer.",
+  ],
+  introEn: [
+    "In the heart of the main avenue of the Roquetas de Mar Urbanization — one of the most emblematic destinations in Almería and Andalusia — you will find Heladería Alacant, a place full of tradition, flavour and memories.",
+    "We first opened our doors in June 1974, at the beginnings of the Urbanization. Since then we have kept our passion for ice cream intact, evolving year after year to adapt to new trends and add new products without ever losing the essence that saw us born.",
+  ],
   sections: [
     {
-      title: "Orígenes alicantinos",
-      titleEn: "Alicante origins",
-      content:
-        "Nuestra receta parte de la tradición heladera de Alicante: materias primas de calidad, elaboración artesana y un catálogo que crece cada temporada sin perder la esencia de lo clásico.",
-      contentEn:
-        "Our recipes come from Alicante ice-cream tradition: quality ingredients, artisan craft and a catalog that grows each season without losing its classic soul.",
+      title: "Un negocio familiar con corazón y tradición",
+      titleEn: "A family business with heart and tradition",
+      paragraphs: [
+        "Desde 1989, la gerencia está en manos de Isabel Soriano, quien sigue al pie del cañón cada día para garantizar la máxima calidad y un trato cercano a cada visitante.",
+        "Somos un negocio familiar con vocación de permanencia. Nos llena de orgullo ser un lugar generacional: aquellos niños que venían en los años 70 y 80 con sus padres, hoy regresan acompañados de sus propios hijos y nietos para compartir la misma tradición.",
+      ],
+      paragraphsEn: [
+        "Since 1989, management has been in the hands of Isabel Soriano, who is still on the front line every day to guarantee the highest quality and a warm welcome for every guest.",
+        "We are a family business built to last. We are proud to be a generational place: the children who came in the 70s and 80s with their parents now return with their own children and grandchildren to share the same tradition.",
+      ],
     },
     {
-      title: "Más que helados",
-      titleEn: "More than ice cream",
-      content:
-        "Helados, copas, batidos, gofres, crepes, tartas y desayunos. Alacant es heladería y cafetería: el sitio perfecto para merendar, celebrar o simplemente darte un capricho antes o después del paseo marítimo.",
-      contentEn:
-        "Ice cream, sundaes, shakes, waffles, crepes, cakes and breakfast. Alacant is both gelato shop and café — perfect before or after a stroll by the sea.",
-    },
-    {
-      title: "De generación en generación",
-      titleEn: "Generation after generation",
-      content:
-        "En 2024 celebramos nuestro 50º aniversario en Roquetas de Mar, un hito que refleja la confianza de generaciones de clientes y el compromiso de un equipo que lleva la heladería en el corazón.",
-      contentEn:
-        "In 2024 we celebrated our 50th anniversary in Roquetas de Mar — a milestone that reflects generations of trust and a team that lives for ice cream.",
+      title: "Cincuenta años de historia y un futuro lleno de ilusión",
+      titleEn: "Fifty years of history and a future full of hope",
+      paragraphs: [
+        "En 2024 celebramos nuestro 50º aniversario, consolidándonos como el establecimiento más antiguo que continúa con la misma actividad en la Urbanización de Roquetas de Mar. Este hito fue reconocido con un galardón entregado por el alcalde, Don Gabriel Amat; un homenaje que refleja el cariño y la confianza de generaciones de clientes y el esfuerzo de un equipo que lleva esta heladería en el corazón.",
+        "Para reflejar todo lo que somos hoy, en 2025 renovamos nuestra imagen con un nuevo logotipo: el símbolo de una heladería con historia, sabor y mucho corazón, preparada para seguir endulzando el futuro.",
+      ],
+      paragraphsEn: [
+        "In 2024 we celebrated our 50th anniversary, confirming ourselves as the oldest establishment that continues with the same activity in the Roquetas de Mar Urbanization. This milestone was recognised with an award presented by the mayor, Don Gabriel Amat — a tribute that reflects the affection and trust of generations of guests and the effort of a team that carries this ice cream shop in its heart.",
+        "To reflect everything we are today, in 2025 we renewed our image with a new logo: the symbol of an ice cream shop with history, flavour and a great deal of heart, ready to keep sweetening the future.",
+      ],
     },
   ],
-  values: [
+  offerTitle: "Mucho más que helados",
+  offerTitleEn: "Much more than ice cream",
+  offerIntro:
+    "En Heladería Alacant nos encanta adaptarnos a ti en cualquier momento del día. Abrimos todos los días para ofrecerte:",
+  offerIntroEn:
+    "At Heladería Alacant we love adapting to you at any time of day. We open every day to offer you:",
+  offerItems: [
     {
-      title: "Tradición",
-      titleEn: "Tradition",
-      description: "Recetas artesanas y sabores que evocan la heladería de siempre.",
-      descriptionEn: "Artisan recipes and flavors that feel like classic gelato.",
+      es: "Más de 65 sabores de helado elaborados para sorprender a todos los paladares.",
+      en: "Over 65 ice cream flavours crafted to surprise every palate.",
     },
     {
-      title: "Calidad",
-      titleEn: "Quality",
-      description: "Ingredientes seleccionados y elaboración cuidada en cada producto.",
-      descriptionEn: "Selected ingredients and careful craft in every product.",
+      es: "Espectaculares copas de helado, batidos y refrescantes bebidas.",
+      en: "Spectacular ice cream sundaes, milkshakes and refreshing drinks.",
     },
     {
-      title: "Cercanía",
-      titleEn: "Warmth",
-      description: "El mismo local, las mismas caras y un trato familiar que nos define.",
-      descriptionEn: "The same place, familiar faces and a family welcome.",
+      es: "Servicio de cafetería, desayunos y meriendas ideales para disfrutar en compañía.",
+      en: "Café service, breakfasts and afternoon snacks ideal to enjoy with company.",
+    },
+    {
+      es: "Una amplia variedad de productos pensados para hacer de tu visita una experiencia inolvidable.",
+      en: "A wide variety of products designed to make your visit an unforgettable experience.",
+    },
+  ],
+  closing: "¡Te esperamos en nuestra casa para seguir creando recuerdos juntos!",
+  closingEn: "We look forward to welcoming you and creating more memories together!",
+  timeline: [
+    {
+      year: "1974",
+      text: "Abrimos nuestras puertas en junio, coincidiendo con los inicios de la Urbanización.",
+      textEn: "We opened our doors in June, at the beginnings of the Urbanization.",
+    },
+    {
+      year: "1989",
+      text: "Isabel Soriano asume la gerencia y sigue al pie del cañón cada día.",
+      textEn: "Isabel Soriano takes over management and remains on the front line every day.",
+    },
+    {
+      year: "2024",
+      text: "Celebramos el 50º aniversario con un galardón del alcalde Don Gabriel Amat.",
+      textEn: "We celebrated our 50th anniversary with an award from mayor Don Gabriel Amat.",
+    },
+    {
+      year: "2025",
+      text: "Renovamos nuestra imagen con un nuevo logotipo lleno de historia y corazón.",
+      textEn: "We renewed our image with a new logo full of history and heart.",
     },
   ],
 };
+
+/**
+ * Fotos antiguas para el carrusel de historia (`public/images/historia/`).
+ */
+export const historyGallery: {
+  src: string;
+  alt: string;
+  altEn: string;
+  caption?: string;
+  captionEn?: string;
+}[] = [
+  {
+    src: "/images/historia/inicios-heladeria-1.webp",
+    alt: "Heladería Alacant en sus inicios",
+    altEn: "Heladería Alacant in its early years",
+    caption: "Los inicios en la Urbanización de Roquetas de Mar",
+    captionEn: "The early years in the Roquetas de Mar Urbanization",
+  },
+  {
+    src: "/images/historia/inicios-heladeria-2.webp",
+    alt: "El local de Heladería Alacant en sus primeros años",
+    altEn: "The Heladería Alacant shop in its first years",
+    caption: "Los primeros años del negocio familiar",
+    captionEn: "The first years of the family business",
+  },
+  {
+    src: "/images/historia/inicios-heladeria-3.webp",
+    alt: "Interior de Heladería Alacant en sus inicios",
+    altEn: "Interior of Heladería Alacant in its early years",
+    caption: "Así era Alacant al principio",
+    captionEn: "This is how Alacant looked at the beginning",
+  },
+  {
+    src: "/images/historia/isabel-en-sus-inicios-de-heladera.webp",
+    alt: "Isabel Soriano en sus inicios como heladera",
+    altEn: "Isabel Soriano in her early days as an ice-cream maker",
+    caption: "Isabel Soriano en sus inicios",
+    captionEn: "Isabel Soriano in her early days",
+  },
+  {
+    src: "/images/historia/heladeria-alacant-en-los-90.webp",
+    alt: "Heladería Alacant en los años 90",
+    altEn: "Heladería Alacant in the 1990s",
+    caption: "Los años 90",
+    captionEn: "The 1990s",
+  },
+  {
+    src: "/images/historia/plantilla-2002.webp",
+    alt: "El equipo de Heladería Alacant en 2002",
+    altEn: "The Heladería Alacant team in 2002",
+    caption: "Plantilla, 2002",
+    captionEn: "The team, 2002",
+  },
+  {
+    src: "/images/historia/plantilla-2014.webp",
+    alt: "El equipo de Heladería Alacant en 2014",
+    altEn: "The Heladería Alacant team in 2014",
+    caption: "Plantilla, 2014",
+    captionEn: "The team, 2014",
+  },
+  {
+    src: "/images/historia/plantilla-2017.webp",
+    alt: "El equipo de Heladería Alacant en 2017",
+    altEn: "The Heladería Alacant team in 2017",
+    caption: "Plantilla, 2017",
+    captionEn: "The team, 2017",
+  },
+  {
+    src: "/images/historia/plantilla-2018.webp",
+    alt: "El equipo de Heladería Alacant en 2018",
+    altEn: "The Heladería Alacant team in 2018",
+    caption: "Plantilla, 2018",
+    captionEn: "The team, 2018",
+  },
+  {
+    src: "/images/historia/2020-despues-del-covid.webp",
+    alt: "Heladería Alacant en 2020, después del COVID",
+    altEn: "Heladería Alacant in 2020, after COVID",
+    caption: "2020, después del COVID",
+    captionEn: "2020, after COVID",
+  },
+  {
+    src: "/images/historia/50-aniversario.webp",
+    alt: "Celebración del 50 aniversario de Heladería Alacant",
+    altEn: "Heladería Alacant 50th anniversary celebration",
+    caption: "50º aniversario, 2024",
+    captionEn: "50th anniversary, 2024",
+  },
+];
+
 
 export const featureCards = [
   {
