@@ -234,6 +234,19 @@ body {
     animation: none !important;
     opacity: 1 !important;
   }
+
+  .btn:active {
+    transform: none;
+  }
+
+  .menu-section,
+  .menu-section-active > div:first-child h2 {
+    transition: none;
+  }
+
+  .menu-section-flash {
+    animation: none !important;
+  }
 }
 
 .chip-scroll {

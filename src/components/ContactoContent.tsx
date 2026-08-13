@@ -14,7 +14,7 @@ export function ContactoContent() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-      <SectionHeading title={t("contact.title")} subtitle={t("contact.subtitle")} />
+      <SectionHeading as="h1" title={t("contact.title")} subtitle={t("contact.subtitle")} />
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a

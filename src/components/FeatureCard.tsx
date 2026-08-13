@@ -32,14 +32,14 @@ function FeatureCardInner({
   return (
     <Link
       href={href}
-      className="group block overflow-hidden border border-arena bg-white transition-transform duration-300 hover:-translate-y-0.5 hover:border-mar/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mar active:scale-[0.99]"
+      className="group block overflow-hidden border border-arena bg-white transition-transform duration-300 hover:-translate-y-0.5 hover:border-mar/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mar active:scale-[0.99] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-arena">
         <Image
           src={image}
           alt={tx(imageAlt, imageAltEn)}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
       </div>

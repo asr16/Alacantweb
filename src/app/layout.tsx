@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Source_Sans_3, Syne } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
@@ -72,6 +72,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,9 +89,6 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-crema text-texto">
         <LocalBusinessJsonLd />
-        <a href="#contenido-principal" className="skip-link">
-          Saltar al contenido
-        </a>
         <Providers>{children}</Providers>
       </body>
     </html>

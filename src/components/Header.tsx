@@ -71,7 +71,7 @@ export function Header() {
             aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
           </button>
         </div>
       </header>
@@ -105,7 +105,7 @@ export function Header() {
             className="border border-arena bg-white p-2 text-mar"
             aria-label={t("nav.closeMenu")}
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5" aria-hidden />
           </button>
         </div>
 

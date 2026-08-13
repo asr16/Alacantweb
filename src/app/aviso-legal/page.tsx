@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Aviso legal",
   description: `Aviso legal de ${siteConfig.name}.`,
   alternates: { canonical: "/aviso-legal" },
+  openGraph: {
+    title: `Aviso legal | ${siteConfig.name}`,
+    description: `Aviso legal de ${siteConfig.name}.`,
+    url: `${siteConfig.url}/aviso-legal`,
+  },
 };
 
 export default function AvisoLegalPage() {
@@ -28,9 +33,8 @@ export default function AvisoLegalPage() {
             Información y de Comercio Electrónico (LSSI-CE), se informa:
           </p>
           <ul className="mt-3 list-disc space-y-1 pl-5">
-            <li>Titular: {siteConfig.name}</li>
-            {/* TODO(cliente): sustituir por el NIF/CIF real cuando lo facilite el titular.
-                Mientras no esté confirmado, no se muestra un texto provisional al público. */}
+            <li>Titular: {siteConfig.legalName || siteConfig.name}</li>
+            {siteConfig.taxId ? <li>NIF/CIF: {siteConfig.taxId}</li> : null}
             <li>Domicilio: {siteConfig.address.full}</li>
             <li>Teléfono: {siteConfig.phone}</li>
             <li>Email: {siteConfig.email}</li>

@@ -11,12 +11,21 @@ export type MenuItem = {
   tags?: ProductTag[];
 };
 
+export type MenuOptionGroup = {
+  label: string;
+  labelEn: string;
+  options: string[];
+  optionsEn: string[];
+};
+
 export type MenuCategory = {
   id: string;
   title: string;
   titleEn: string;
   description: string;
   descriptionEn: string;
+  /** Grupos visuales (panes, salsas…). Solo en bloques densos de la carta. */
+  optionGroups?: MenuOptionGroup[];
   items: MenuItem[];
 };
 
@@ -207,8 +216,8 @@ export const menuCategories: MenuCategory[] = [
       {
         name: "Copa Active sin azúcar",
         nameEn: "Copa Active (sugar-free)",
-        description: "Apto para diabéticos",
-        descriptionEn: "Suitable for diabetics",
+        description: "Sin azúcar añadido",
+        descriptionEn: "No added sugar",
         tags: ["sin-azucar"],
       },
       {
@@ -513,7 +522,7 @@ export const menuCategories: MenuCategory[] = [
         descriptionEn: "Banana, coconut and pineapple",
       },
       {
-        name: "Vitality",
+        name: "Vitaly",
         description: "Fresa y plátano",
         descriptionEn: "Strawberry and banana",
       },
@@ -652,9 +661,85 @@ export const menuCategories: MenuCategory[] = [
     title: "Desayunos",
     titleEn: "Breakfast",
     description:
-      "¡Personaliza tu tostada! Pan rústico, de semillas, de molde, mollete o sin gluten. Bases: tomate, aceite, mantequilla/Lorenzana, mayonesa, alioli, queso de untar, queso roquefort, paté ibérico, sobrasada, Nocilla, dulce de arce y miel. Ingredientes: jamón york, jamón serrano, pavo braseado, lomo sajonia, lomo de orza, atún, salmón ahumado, queso de burgos, mezcla de quesos, rulo de cabra, queso viejo, aguacate, mermelada fresa/melocotón y rúcula. Finalista del concurso Un Mar de Desayunos II.",
+      "¡Personaliza tu tostada! Finalista del concurso Un Mar de Desayunos II.",
     descriptionEn:
-      "Build your own toast! Rustic, seeded, sandwich bread, soft roll or gluten-free. Bases: tomato, oil, butter/Lorenzana, mayonnaise, aioli, cream cheese, Roquefort, Iberian pâté, sobrasada, Nocilla, maple syrup and honey. Toppings: cooked ham, Serrano ham, braised turkey, sajonia loin, orza loin, tuna, smoked salmon, Burgos cheese, cheese mix, goat cheese log, aged cheese, avocado, strawberry/peach jam and rocket. Finalist of Un Mar de Desayunos II.",
+      "Build your own toast! Finalist of Un Mar de Desayunos II.",
+    optionGroups: [
+      {
+        label: "Pan",
+        labelEn: "Bread",
+        options: ["Rústico", "De semillas", "De molde", "Mollete", "Sin gluten"],
+        optionsEn: ["Rustic", "Seeded", "Sandwich bread", "Soft roll", "Gluten-free"],
+      },
+      {
+        label: "Bases",
+        labelEn: "Bases",
+        options: [
+          "Tomate",
+          "Aceite",
+          "Mantequilla/Lorenzana",
+          "Mayonesa",
+          "Alioli",
+          "Queso de untar",
+          "Queso roquefort",
+          "Paté ibérico",
+          "Sobrasada",
+          "Nocilla",
+          "Dulce de arce",
+          "Miel",
+        ],
+        optionsEn: [
+          "Tomato",
+          "Oil",
+          "Butter/Lorenzana",
+          "Mayonnaise",
+          "Aioli",
+          "Cream cheese",
+          "Roquefort",
+          "Iberian pâté",
+          "Sobrasada",
+          "Nocilla",
+          "Maple syrup",
+          "Honey",
+        ],
+      },
+      {
+        label: "Ingredientes",
+        labelEn: "Toppings",
+        options: [
+          "Jamón york",
+          "Jamón serrano",
+          "Pavo braseado",
+          "Lomo sajonia",
+          "Lomo de orza",
+          "Atún",
+          "Salmón ahumado",
+          "Queso de burgos",
+          "Mezcla de quesos",
+          "Rulo de cabra",
+          "Queso viejo",
+          "Aguacate",
+          "Mermelada fresa/melocotón",
+          "Rúcula",
+        ],
+        optionsEn: [
+          "Cooked ham",
+          "Serrano ham",
+          "Braised turkey",
+          "Sajonia loin",
+          "Orza loin",
+          "Tuna",
+          "Smoked salmon",
+          "Burgos cheese",
+          "Cheese mix",
+          "Goat cheese log",
+          "Aged cheese",
+          "Avocado",
+          "Strawberry/peach jam",
+          "Rocket",
+        ],
+      },
+    ],
     items: [
       {
         name: "Tostada a tu gusto",
@@ -726,10 +811,98 @@ export const menuCategories: MenuCategory[] = [
     id: "gofres-crepes",
     title: "Gofres, crepes y tortitas",
     titleEn: "Waffles, crepes & pancakes",
-    description:
-      "Recién hechos y montados a tu gusto. Salsas a elegir: chocolate, chocolate blanco, Nocilla, chocolate Kinder, Lotus, dulce de leche y dulce de arce. Complementos a elegir: helado, nata, fruta (fresas, plátano, arándanos, frutos rojos, melocotón, piña y kiwi), galletas (Oreo, cookies, Filipinos, barritas Kinder, Happy Hippo y Lotus), Lacasitos y fideo de chocolate, coco rallado, nueces y almendra laminada, y nubes.",
-    descriptionEn:
-      "Freshly made and built your way. Sauces to choose from: chocolate, white chocolate, Nocilla, Kinder chocolate, Lotus, dulce de leche and maple syrup. Toppings to choose from: ice cream, whipped cream, fruit (strawberry, banana, blueberry, red berries, peach, pineapple and kiwi), biscuits (Oreo, cookies, Filipinos, Kinder bars, Happy Hippo and Lotus), Lacasitos and chocolate sprinkles, grated coconut, walnuts and flaked almond, and marshmallows.",
+    description: "Recién hechos y montados a tu gusto.",
+    descriptionEn: "Freshly made and built your way.",
+    optionGroups: [
+      {
+        label: "Salsas",
+        labelEn: "Sauces",
+        options: [
+          "Chocolate",
+          "Chocolate blanco",
+          "Nocilla",
+          "Chocolate Kinder",
+          "Lotus",
+          "Dulce de leche",
+          "Dulce de arce",
+        ],
+        optionsEn: [
+          "Chocolate",
+          "White chocolate",
+          "Nocilla",
+          "Kinder chocolate",
+          "Lotus",
+          "Dulce de leche",
+          "Maple syrup",
+        ],
+      },
+      {
+        label: "Fruta",
+        labelEn: "Fruit",
+        options: [
+          "Fresas",
+          "Plátano",
+          "Arándanos",
+          "Frutos rojos",
+          "Melocotón",
+          "Piña",
+          "Kiwi",
+        ],
+        optionsEn: [
+          "Strawberry",
+          "Banana",
+          "Blueberry",
+          "Red berries",
+          "Peach",
+          "Pineapple",
+          "Kiwi",
+        ],
+      },
+      {
+        label: "Galletas",
+        labelEn: "Biscuits",
+        options: [
+          "Oreo",
+          "Cookies",
+          "Filipinos",
+          "Barritas Kinder",
+          "Happy Hippo",
+          "Lotus",
+        ],
+        optionsEn: [
+          "Oreo",
+          "Cookies",
+          "Filipinos",
+          "Kinder bars",
+          "Happy Hippo",
+          "Lotus",
+        ],
+      },
+      {
+        label: "Complementos",
+        labelEn: "Toppings",
+        options: [
+          "Helado",
+          "Nata",
+          "Lacasitos",
+          "Fideo de chocolate",
+          "Coco rallado",
+          "Nueces",
+          "Almendra laminada",
+          "Nubes",
+        ],
+        optionsEn: [
+          "Ice cream",
+          "Whipped cream",
+          "Lacasitos",
+          "Chocolate sprinkles",
+          "Grated coconut",
+          "Walnuts",
+          "Flaked almond",
+          "Marshmallows",
+        ],
+      },
+    ],
     items: [
       {
         name: "Tortitas",

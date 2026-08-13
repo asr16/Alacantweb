@@ -71,7 +71,7 @@ export function Footer() {
         </div>
 
         <div className="mt-6 flex flex-col items-start justify-between gap-3 border-t border-white/15 pt-5 sm:flex-row sm:items-center">
-          <p className="text-xs text-white/50">
+          <p className="text-xs text-white/70">
             {/* El HTML estático se genera en build: el año del cliente puede
                 diferir tras Nochevieja hasta el siguiente despliegue. */}
             © <span suppressHydrationWarning>{year}</span> {siteConfig.name}

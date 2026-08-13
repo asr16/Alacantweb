@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Política de privacidad",
   description: `Política de privacidad de ${siteConfig.name}.`,
   alternates: { canonical: "/privacidad" },
+  openGraph: {
+    title: `Política de privacidad | ${siteConfig.name}`,
+    description: `Política de privacidad de ${siteConfig.name}.`,
+    url: `${siteConfig.url}/privacidad`,
+  },
 };
 
 export default function PrivacidadPage() {
@@ -24,10 +29,16 @@ export default function PrivacidadPage() {
             1. Responsable del tratamiento
           </h2>
           <p className="mt-3">
-            {siteConfig.name}
+            {siteConfig.legalName || siteConfig.name}
             <br />
             {siteConfig.address.full}
             <br />
+            {siteConfig.taxId ? (
+              <>
+                NIF/CIF: {siteConfig.taxId}
+                <br />
+              </>
+            ) : null}
             Email: {siteConfig.email}
             <br />
             Teléfono: {siteConfig.phone}

@@ -3,12 +3,19 @@ import path from "node:path";
 import type { Metadata } from "next";
 import { Carta2Content, type CartaDocument, type CartaPage } from "@/components/Carta2Content";
 import { cartaDocs, type CartaDoc } from "@/data/cartas";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Cartas originales",
   description:
     "Cartas ilustradas de Heladería Alacant: helados, dulce, desayunos y bowls de frutas en Roquetas de Mar.",
   alternates: { canonical: "/carta-2" },
+  openGraph: {
+    title: `Cartas originales | ${siteConfig.name}`,
+    description:
+      "Cartas ilustradas de Heladería Alacant: helados, dulce, desayunos y bowls de frutas.",
+    url: `${siteConfig.url}/carta-2`,
+  },
 };
 
 /** Lee en build las páginas generadas por `npm run carta:pdf`. */

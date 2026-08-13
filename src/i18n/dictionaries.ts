@@ -20,7 +20,7 @@ export const dictionaries = {
     "home.menuSubtitle":
       "Helados, cafetería, gofres, crepes y pastelería. Todo lo que necesitas para merendar o desayunar en Roquetas de Mar.",
     "home.instagram": "Síguenos en Instagram",
-    "home.ctaTitle": "Te esperamos en Av. Mediterráneo",
+    "home.ctaTitle": "Te esperamos en Av. Mediterráneo, 109",
     "home.ctaText":
       "Helados artesanos, meriendas y desayunos en el corazón de la urbanización. Un clásico de Roquetas de Mar desde 1974.",
     "home.ctaMaps": "Cómo llegar",
@@ -50,7 +50,7 @@ export const dictionaries = {
     "carta2.choose": "Ninguna carta seleccionada.",
     "contact.title": "Contacto y ubicación",
     "contact.subtitle":
-      "Estamos en la urbanización de Roquetas de Mar, en Av. Mediterráneo. Ven a visitarnos o llámanos.",
+      "Estamos en la urbanización de Roquetas de Mar, en Av. Mediterráneo, 109. Ven a visitarnos o llámanos.",
     "contact.address": "Dirección",
     "contact.maps": "Cómo llegar",
     "contact.phone": "Teléfono",
@@ -70,6 +70,7 @@ export const dictionaries = {
     "about.gallerySubtitle": "Imágenes antiguas de Heladería Alacant a lo largo de los años.",
     "about.galleryPrev": "Foto anterior",
     "about.galleryNext": "Foto siguiente",
+    "about.galleryThumbs": "Miniaturas de la galería",
     "footer.blurb":
       "Helados artesanos, cafetería y pastelería en la urbanización de Roquetas de Mar. Tradición alicantina desde 1974.",
     "footer.contact": "Contacto",
@@ -79,6 +80,7 @@ export const dictionaries = {
     "lang.es": "ES",
     "lang.en": "EN",
     "lang.switch": "Idioma",
+    "a11y.skip": "Saltar al contenido",
   },
   en: {
     "nav.home": "Home",
@@ -99,7 +101,7 @@ export const dictionaries = {
     "home.menuSubtitle":
       "Ice cream, café, waffles, crepes and pastry — everything for breakfast or an afternoon treat in Roquetas de Mar.",
     "home.instagram": "Follow us on Instagram",
-    "home.ctaTitle": "See you on Av. Mediterráneo",
+    "home.ctaTitle": "See you at Av. Mediterráneo, 109",
     "home.ctaText":
       "Artisan ice cream, snacks and breakfast in the heart of the urbanization. A Roquetas classic since 1974.",
     "home.ctaMaps": "Get directions",
@@ -129,7 +131,7 @@ export const dictionaries = {
     "carta2.choose": "No menu selected.",
     "contact.title": "Contact & location",
     "contact.subtitle":
-      "We are in the Roquetas de Mar urbanization, on Av. Mediterráneo. Visit us or give us a call.",
+      "We are in the Roquetas de Mar urbanization, at Av. Mediterráneo, 109. Visit us or give us a call.",
     "contact.address": "Address",
     "contact.maps": "Get directions",
     "contact.phone": "Phone",
@@ -149,6 +151,7 @@ export const dictionaries = {
     "about.gallerySubtitle": "Historic images of Heladería Alacant through the years.",
     "about.galleryPrev": "Previous photo",
     "about.galleryNext": "Next photo",
+    "about.galleryThumbs": "Gallery thumbnails",
     "footer.blurb":
       "Artisan ice cream, café and pastry in the Roquetas de Mar urbanization. Alicante tradition since 1974.",
     "footer.contact": "Contact",
@@ -158,6 +161,7 @@ export const dictionaries = {
     "lang.es": "ES",
     "lang.en": "EN",
     "lang.switch": "Language",
+    "a11y.skip": "Skip to content",
   },
 } as const;
 

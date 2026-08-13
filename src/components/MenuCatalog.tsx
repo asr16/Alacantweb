@@ -24,6 +24,10 @@ function itemMatches(item: MenuItem, search: string) {
   return haystack.includes(q);
 }
 
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function MenuCatalog() {
   const { t, tx } = useLanguage();
   const [search, setSearch] = useState("");
@@ -49,12 +53,9 @@ export function MenuCatalog() {
     [search],
   );
 
-  useEffect(() => {
-    if (filtered.length === 0) return;
-    if (!filtered.some((cat) => cat.id === activeId)) {
-      setActiveId(filtered[0].id);
-    }
-  }, [filtered, activeId]);
+  const visibleActiveId = filtered.some((cat) => cat.id === activeId)
+    ? activeId
+    : (filtered[0]?.id ?? "");
 
   // Altura real de header + barra sticky (chips pueden ocupar 1–2 filas)
   useEffect(() => {
@@ -95,7 +96,10 @@ export function MenuCatalog() {
 
     const top =
       el.getBoundingClientRect().top + window.scrollY - scrollMarginRef.current;
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
 
     if (navigateTimerRef.current) window.clearTimeout(navigateTimerRef.current);
     navigateTimerRef.current = window.setTimeout(() => {
@@ -136,17 +140,17 @@ export function MenuCatalog() {
 
     for (const section of sections) observer.observe(section);
     return () => observer.disconnect();
-  }, [filtered, onActiveFromScroll]);
+  }, [filtered]);
 
   // Chip activo visible en la fila sticky
   useEffect(() => {
-    const chip = chipRefs.current.get(activeId);
+    const chip = chipRefs.current.get(visibleActiveId);
     chip?.scrollIntoView({
-      behavior: "smooth",
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
       inline: "center",
       block: "nearest",
     });
-  }, [activeId]);
+  }, [visibleActiveId]);
 
   // Botón flotante
   useEffect(() => {
@@ -165,7 +169,10 @@ export function MenuCatalog() {
   const scrollToTop = () => {
     navigatingRef.current = true;
     setActiveId(filtered[0]?.id ?? menuCategories[0]?.id ?? "");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
     if (navigateTimerRef.current) window.clearTimeout(navigateTimerRef.current);
     navigateTimerRef.current = window.setTimeout(() => {
       navigatingRef.current = false;
@@ -174,7 +181,7 @@ export function MenuCatalog() {
 
   return (
     <div>
-      <SectionHeading title={t("menu.title")} subtitle={t("menu.subtitle")} />
+      <SectionHeading as="h1" title={t("menu.title")} subtitle={t("menu.subtitle")} />
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border border-arena bg-white px-4 py-4 sm:px-5">
         <p className="text-sm text-texto-suave">{t("menu.originalHint")}</p>
@@ -200,7 +207,7 @@ export function MenuCatalog() {
         <div className="chip-scroll chip-scroll-x" role="tablist" aria-label={t("nav.menu")}>
           {menuCategories.map((cat) => {
             const available = filtered.some((f) => f.id === cat.id);
-            const selected = activeId === cat.id;
+            const selected = visibleActiveId === cat.id;
             return (
               <button
                 key={cat.id}
@@ -242,7 +249,7 @@ export function MenuCatalog() {
             style={{ scrollMarginTop: scrollMargin }}
             className={`menu-section ${
               flashId === cat.id ? "menu-section-flash" : ""
-            } ${activeId === cat.id ? "menu-section-active" : ""}`}
+            } ${visibleActiveId === cat.id ? "menu-section-active" : ""}`}
           >
             <div className="mb-6">
               <h2 className="font-display text-2xl font-bold text-texto sm:text-3xl">
@@ -251,6 +258,23 @@ export function MenuCatalog() {
               <p className="mt-2 max-w-2xl text-texto-suave">
                 {tx(cat.description, cat.descriptionEn)}
               </p>
+              {cat.optionGroups?.map((group) => (
+                <div key={group.label} className="mt-4">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-texto-suave">
+                    {tx(group.label, group.labelEn)}
+                  </p>
+                  <ul className="mt-2 flex flex-wrap gap-1.5">
+                    {tx(group.options, group.optionsEn).map((option) => (
+                      <li
+                        key={option}
+                        className="border border-arena bg-white px-2.5 py-1 text-xs text-texto"
+                      >
+                        {option}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">

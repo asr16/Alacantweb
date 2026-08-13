@@ -36,7 +36,7 @@ export function BrandLogo({
       width={width}
       height={height}
       className={`w-auto object-contain ${className}`}
-      style={{ height }}
+      style={{ height, width: "auto" }}
       priority={priority}
       sizes={`${Math.max(width, 160)}px`}
     />

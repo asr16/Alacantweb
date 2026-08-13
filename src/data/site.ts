@@ -1,10 +1,21 @@
+function resolveSiteUrl() {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  return (fromEnv || "https://heladeriaalacant.es").replace(/\/$/, "");
+}
+
 export const siteConfig = {
   name: "Heladería Alacant",
   description:
     "Más de 65 sabores de helado artesano, cafetería, gofres, crepes y pastelería en Roquetas de Mar. Tradición alicantina desde hace más de 50 años.",
   descriptionEn:
     "Over 65 artisan ice cream flavors, café, waffles, crepes and pastry in Roquetas de Mar. Alicante tradition for over 50 years.",
-  url: "https://heladeria-alacant.es",
+  url: resolveSiteUrl(),
+  /**
+   * Razón social y NIF/CIF: vacíos hasta que el cliente los facilite.
+   * No mostrar en UI si están vacíos.
+   */
+  legalName: "",
+  taxId: "",
   address: {
     street: "Avenida del Mediterráneo, 109",
     city: "Roquetas de Mar",
@@ -162,6 +173,8 @@ export const aboutContent = {
  */
 export const historyGallery: {
   src: string;
+  width: number;
+  height: number;
   alt: string;
   altEn: string;
   caption?: string;
@@ -169,6 +182,8 @@ export const historyGallery: {
 }[] = [
   {
     src: "/images/historia/inicios-heladeria-1.webp",
+    width: 1600,
+    height: 1123,
     alt: "Heladería Alacant en sus inicios",
     altEn: "Heladería Alacant in its early years",
     caption: "Los inicios en la Urbanización de Roquetas de Mar",
@@ -176,6 +191,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/inicios-heladeria-2.webp",
+    width: 1600,
+    height: 1184,
     alt: "El local de Heladería Alacant en sus primeros años",
     altEn: "The Heladería Alacant shop in its first years",
     caption: "Los primeros años del negocio familiar",
@@ -183,6 +200,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/inicios-heladeria-3.webp",
+    width: 1200,
+    height: 1600,
     alt: "Interior de Heladería Alacant en sus inicios",
     altEn: "Interior of Heladería Alacant in its early years",
     caption: "Así era Alacant al principio",
@@ -190,6 +209,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/isabel-en-sus-inicios-de-heladera.webp",
+    width: 1200,
+    height: 1600,
     alt: "Isabel Soriano en sus inicios como heladera",
     altEn: "Isabel Soriano in her early days as an ice-cream maker",
     caption: "Isabel Soriano en sus inicios",
@@ -197,6 +218,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/heladeria-alacant-en-los-90.webp",
+    width: 960,
+    height: 669,
     alt: "Heladería Alacant en los años 90",
     altEn: "Heladería Alacant in the 1990s",
     caption: "Los años 90",
@@ -204,6 +227,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/plantilla-2002.webp",
+    width: 1600,
+    height: 1200,
     alt: "El equipo de Heladería Alacant en 2002",
     altEn: "The Heladería Alacant team in 2002",
     caption: "Plantilla, 2002",
@@ -211,6 +236,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/plantilla-2014.webp",
+    width: 960,
+    height: 638,
     alt: "El equipo de Heladería Alacant en 2014",
     altEn: "The Heladería Alacant team in 2014",
     caption: "Plantilla, 2014",
@@ -218,6 +245,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/plantilla-2017.webp",
+    width: 540,
+    height: 960,
     alt: "El equipo de Heladería Alacant en 2017",
     altEn: "The Heladería Alacant team in 2017",
     caption: "Plantilla, 2017",
@@ -225,6 +254,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/plantilla-2018.webp",
+    width: 960,
+    height: 720,
     alt: "El equipo de Heladería Alacant en 2018",
     altEn: "The Heladería Alacant team in 2018",
     caption: "Plantilla, 2018",
@@ -232,6 +263,8 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/2020-despues-del-covid.webp",
+    width: 720,
+    height: 960,
     alt: "Heladería Alacant en 2020, después del COVID",
     altEn: "Heladería Alacant in 2020, after COVID",
     caption: "2020, después del COVID",
@@ -239,13 +272,14 @@ export const historyGallery: {
   },
   {
     src: "/images/historia/50-aniversario.webp",
+    width: 1200,
+    height: 1600,
     alt: "Celebración del 50 aniversario de Heladería Alacant",
     altEn: "Heladería Alacant 50th anniversary celebration",
     caption: "50º aniversario, 2024",
     captionEn: "50th anniversary, 2024",
   },
 ];
-
 
 export const featureCards = [
   {

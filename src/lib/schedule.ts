@@ -1,5 +1,6 @@
 /**
  * Fuente única de horarios (Europe/Madrid).
+ * Apertura confirmada: 09:00 todos los días.
  * Si closeMin <= openMin, el cierre cruza medianoche.
  */
 
