@@ -4,11 +4,8 @@ import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { historyGallery } from "@/data/site";
+import { prefersReducedMotion } from "@/lib/motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
-
-function prefersReducedMotion() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
 
 const navBtn =
   "absolute top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-arena bg-white/95 text-mar shadow-sm transition-colors hover:border-mar";

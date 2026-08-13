@@ -38,7 +38,6 @@ export const dictionaries = {
     "menu.title": "Nuestra carta",
     "menu.subtitle":
       "Elige una categoría o busca un producto. Consulta los precios actualizados en el local.",
-    "menu.all": "Todas",
     "menu.search": "Buscar producto…",
     "menu.empty": "No hay productos con estos filtros.",
     "menu.backTop": "Volver arriba",
@@ -119,7 +118,6 @@ export const dictionaries = {
     "menu.title": "Our menu",
     "menu.subtitle":
       "Pick a category or search a product. Ask in-store for current prices.",
-    "menu.all": "All",
     "menu.search": "Search product…",
     "menu.empty": "No products match these filters.",
     "menu.backTop": "Back to top",

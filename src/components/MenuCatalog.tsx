@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { menuCategories, tagLabels, type MenuItem } from "@/data/menu";
+import { prefersReducedMotion } from "@/lib/motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/SectionHeading";
 
@@ -22,10 +23,6 @@ function itemMatches(item: MenuItem, search: string) {
     .join(" ")
     .toLowerCase();
   return haystack.includes(q);
-}
-
-function prefersReducedMotion() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export function MenuCatalog() {

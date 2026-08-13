@@ -1,24 +1,14 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FeatureCard } from "@/components/FeatureCard";
 import { Hero } from "@/components/Hero";
 import { InfoBar } from "@/components/InfoBar";
+import { ReviewsSection } from "@/components/ReviewsSection";
+import { SeasonalSection } from "@/components/SeasonalSection";
 import { SectionHeading } from "@/components/SectionHeading";
 import { featureCards, historyPreview, siteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageProvider";
-
-const SeasonalSection = dynamic(
-  () =>
-    import("@/components/SeasonalSection").then((m) => m.SeasonalSection),
-  { ssr: true },
-);
-
-const ReviewsSection = dynamic(
-  () => import("@/components/ReviewsSection").then((m) => m.ReviewsSection),
-  { ssr: true },
-);
 
 export default function HomePage() {
   const { t, tx } = useLanguage();
@@ -36,13 +26,9 @@ export default function HomePage() {
             />
           </div>
           <div className="lg:col-span-7">
-            <div className="space-y-5 text-[1.05rem] leading-relaxed text-texto-suave">
-              {tx(historyPreview.paragraphs, historyPreview.paragraphsEn)
-                .slice(0, 1)
-                .map((paragraph) => (
-                  <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                ))}
-            </div>
+            <p className="text-[1.05rem] leading-relaxed text-texto-suave">
+              {tx(historyPreview.paragraph, historyPreview.paragraphEn)}
+            </p>
             <Link
               href="/nosotros"
               className="mt-8 inline-flex text-sm font-semibold uppercase tracking-wide text-mar underline-offset-4 hover:underline"

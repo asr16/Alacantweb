@@ -13,7 +13,6 @@
   --background: var(--color-crema);
   --foreground: var(--color-texto);
   --radius-btn: 0.2rem;
-  --radius-panel: 0.35rem;
 }
 
 @theme inline {
@@ -70,12 +69,6 @@ body {
   left: 1rem;
 }
 
-.card {
-  border-radius: var(--radius-panel);
-  border: 1px solid var(--color-arena);
-  background: white;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -118,16 +111,6 @@ body {
   background: color-mix(in srgb, var(--color-terracota) 88%, black);
 }
 
-.btn-outline-mar {
-  border: 1px solid var(--color-mar);
-  color: var(--color-mar);
-}
-
-.btn-outline-mar:hover {
-  background: var(--color-mar);
-  color: white;
-}
-
 .btn-ghost {
   border: 1px solid var(--color-arena);
   background: white;
@@ -137,15 +120,6 @@ body {
 .btn-ghost:hover {
   border-color: var(--color-mar);
   background: var(--color-crema);
-}
-
-.btn-ghost-light {
-  border: 1px solid rgb(255 255 255 / 0.45);
-  color: white;
-}
-
-.btn-ghost-light:hover {
-  background: rgb(255 255 255 / 0.1);
 }
 
 .link-mar {
@@ -258,15 +232,6 @@ body {
   scrollbar-width: none;
   -ms-overflow-style: none;
   mask-image: linear-gradient(to right, #000 0%, #000 88%, transparent 100%);
-}
-
-.chip-scroll-lg {
-  gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  overflow-x: visible;
-  padding-right: 0;
-  mask-image: none;
 }
 
 .chip-scroll::-webkit-scrollbar {

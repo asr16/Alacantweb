@@ -52,7 +52,7 @@ export const SCHEDULE_GROUPS: ScheduleGroup[] = [
   },
 ];
 
-function formatClock(min: number) {
+export function formatClock(min: number) {
   if (min === 24 * 60 || min === 0) return "00:00";
   const h = Math.floor(min / 60);
   const m = min % 60;

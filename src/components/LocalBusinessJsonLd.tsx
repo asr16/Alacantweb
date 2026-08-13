@@ -1,12 +1,5 @@
 import { siteConfig } from "@/data/site";
-import { SCHEDULE_GROUPS } from "@/lib/schedule";
-
-function formatClock(min: number) {
-  if (min === 24 * 60 || min === 0) return "00:00";
-  const h = Math.floor(min / 60);
-  const m = min % 60;
-  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
-}
+import { SCHEDULE_GROUPS, formatClock } from "@/lib/schedule";
 
 const DAY_NAMES = [
   "Sunday",
@@ -37,7 +30,7 @@ export function LocalBusinessJsonLd() {
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
-    telephone: "+34950333470",
+    telephone: siteConfig.phoneHref.replace(/^tel:/, ""),
     email: siteConfig.email,
     image: `${siteConfig.url}/images/portada.jpg`,
     logo: `${siteConfig.url}/brand/logo-alacant.png`,

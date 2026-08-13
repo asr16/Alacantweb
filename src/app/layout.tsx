@@ -53,9 +53,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/portada.jpg",
-        width: 3840,
-        height: 1444,
+        url: "/brand/og.jpg",
+        width: 1200,
+        height: 630,
         alt: siteConfig.name,
       },
     ],
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ["/images/portada.jpg"],
+    images: ["/brand/og.jpg"],
   },
   robots: {
     index: true,

@@ -35,7 +35,7 @@ export const siteConfig = {
   glovo: "https://glovoapp.com/es/es/roquetas-de-mar/stores/heladeria-alacant-roquetas",
   /** Ficha de Google Maps del local (CID). */
   googleMaps: "https://www.google.com/maps?cid=2396138620883418987",
-  /** Misma ficha — el usuario ve valoración y reseñas. */
+  /** Misma ficha de Google para reseñas. */
   googleReviews: "https://www.google.com/maps?cid=2396138620883418987",
   /** Coordenadas del local (mismas que el embed de Maps). */
   geo: {
@@ -69,14 +69,10 @@ export const heroContent = {
 export const historyPreview = {
   title: "Nuestra historia",
   titleEn: "Our story",
-  paragraphs: [
+  paragraph:
     "Más de 50 años endulzando momentos en Roquetas de Mar. Abrimos en junio de 1974 y seguimos siendo un negocio familiar con tradición, sabor y recuerdos.",
-    "Aquellos niños que venían en los años 70 y 80 con sus padres hoy regresan con sus propios hijos y nietos para compartir la misma tradición.",
-  ],
-  paragraphsEn: [
+  paragraphEn:
     "Over 50 years sweetening moments in Roquetas de Mar. We opened in June 1974 and remain a family business of tradition, flavour and memories.",
-    "The children who visited in the 70s and 80s with their parents now return with their own children and grandchildren to share the same tradition.",
-  ],
 };
 
 export const aboutContent = {
