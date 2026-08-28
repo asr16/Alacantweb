@@ -63,7 +63,7 @@ export function Footer() {
               {schedule.map((slot) => (
                 <li key={slot.days} className="flex justify-between gap-4">
                   <span>{tx(slot.days, slot.daysEn)}</span>
-                  <span className="text-white/55">{slot.hours}</span>
+                  <span className="text-white/55">{tx(slot.hours, slot.hoursEn)}</span>
                 </li>
               ))}
             </ul>

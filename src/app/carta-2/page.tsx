@@ -8,12 +8,12 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = {
   title: "Cartas originales",
   description:
-    "Cartas ilustradas de Heladería Alacant: helados, dulce, desayunos y bowls de frutas en Roquetas de Mar.",
+    "Cartas 2026 de Heladería Alacant: copas, batidos, dulce, bowls, desayunos y alérgenos en Roquetas de Mar.",
   alternates: { canonical: "/carta-2" },
   openGraph: {
     title: `Cartas originales | ${siteConfig.name}`,
     description:
-      "Cartas ilustradas de Heladería Alacant: helados, dulce, desayunos y bowls de frutas.",
+      "Cartas 2026: copas, batidos, dulce, bowls, desayunos y alérgenos.",
     url: `${siteConfig.url}/carta-2`,
   },
 };
@@ -35,11 +35,19 @@ function readPages(doc: CartaDoc): CartaPage[] {
   }));
 }
 
-export default function Carta2Page() {
+type Carta2PageProps = {
+  searchParams?: Promise<{ doc?: string | string[] }>;
+};
+
+export default async function Carta2Page({ searchParams }: Carta2PageProps) {
   const documents: CartaDocument[] = cartaDocs.map((doc) => ({
     ...doc,
     pages: readPages(doc),
   }));
 
-  return <Carta2Content documents={documents} />;
+  const params = searchParams ? await searchParams : undefined;
+  const raw = params?.doc;
+  const initialId = Array.isArray(raw) ? raw[0] : raw;
+
+  return <Carta2Content documents={documents} initialId={initialId ?? null} />;
 }

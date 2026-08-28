@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { OpenStatus } from "@/components/OpenStatus";
 import { siteConfig } from "@/data/site";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -56,7 +55,6 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <OpenStatus />
             <LanguageSwitcher />
             <a href={siteConfig.phoneHref} className="btn btn-mar !py-2 !px-3.5 !text-[0.7rem]">
               {t("nav.call")}
@@ -97,8 +95,7 @@ export function Header() {
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-arena bg-white px-4 py-4">
-          <OpenStatus />
+        <div className="flex items-center justify-end border-b border-arena bg-white px-4 py-4">
           <button
             type="button"
             onClick={close}

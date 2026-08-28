@@ -2,7 +2,6 @@
 
 import { Bike, Camera, Clock, Mail, MapPin, Music2, Phone } from "lucide-react";
 import { ContactCard } from "@/components/ContactCard";
-import { OpenStatus } from "@/components/OpenStatus";
 import { SectionHeading } from "@/components/SectionHeading";
 import { siteConfig } from "@/data/site";
 import { getScheduleDisplay } from "@/lib/schedule";
@@ -138,14 +137,11 @@ export function ContactoContent() {
             icon={<Clock className="h-5 w-5" aria-hidden />}
             title={t("contact.hours")}
           >
-            <div className="mt-1 flex flex-wrap items-center gap-2">
-              <OpenStatus />
-            </div>
-            <ul className="mt-3 space-y-2 text-sm text-texto-suave">
+            <ul className="mt-1 space-y-2 text-sm text-texto-suave">
               {schedule.map((slot) => (
                 <li key={slot.days} className="flex justify-between gap-4">
                   <span>{tx(slot.days, slot.daysEn)}</span>
-                  <span>{slot.hours}</span>
+                  <span>{tx(slot.hours, slot.hoursEn)}</span>
                 </li>
               ))}
             </ul>

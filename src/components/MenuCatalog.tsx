@@ -13,7 +13,9 @@ import { ArrowUp } from "lucide-react";
 import { menuCategories, tagLabels, type MenuItem } from "@/data/menu";
 import { prefersReducedMotion } from "@/lib/motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { AllergenIconRow, AllergenLegend } from "@/components/AllergenIcons";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getMenuItemAllergens } from "@/lib/inferAllergens";
 
 function itemMatches(item: MenuItem, search: string) {
   const q = search.trim().toLowerCase();
@@ -182,10 +184,21 @@ export function MenuCatalog() {
 
       <div className="mt-5 flex flex-col gap-3 border border-arena bg-white px-4 py-3.5 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4">
         <p className="text-sm text-texto-suave">{t("menu.originalHint")}</p>
-        <Link href="/carta-2" className="btn btn-mar w-full !py-2.5 !px-4 sm:w-auto">
-          {t("menu.original")}
-        </Link>
+        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+          <Link href="/carta-2" className="btn btn-mar w-full !py-2.5 !px-4 sm:w-auto">
+            {t("menu.original")}
+          </Link>
+          <Link
+            href="/carta-2?doc=carta-alergenos"
+            className="btn btn-ghost w-full !py-2.5 !px-4 sm:w-auto"
+          >
+            {t("menu.allergens")}
+          </Link>
+        </div>
       </div>
+
+      <AllergenLegend />
+
       <div
         ref={stickyRef}
         className="sticky top-[4.25rem] z-30 mt-6 -mx-4 space-y-2.5 border-b border-arena bg-crema/95 px-4 py-2.5 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:mt-8 sm:space-y-3 sm:border sm:border-arena sm:px-5 sm:py-4"
@@ -276,13 +289,15 @@ export function MenuCatalog() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-              {cat.items.map((item) => (
+              {cat.items.map((item) => {
+                const { allergens, variable } = getMenuItemAllergens(item, cat.id);
+                return (
                 <article
                   key={item.name}
                   className="border border-arena bg-white p-5 transition-colors hover:border-mar/40"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="font-semibold text-texto">
                           {tx(item.name, item.nameEn ?? item.name)}
@@ -308,6 +323,11 @@ export function MenuCatalog() {
                           {tx(item.description, item.descriptionEn ?? item.description)}
                         </p>
                       )}
+                      <AllergenIconRow
+                        allergens={allergens}
+                        variable={variable}
+                        className="mt-2.5"
+                      />
                     </div>
                     {item.price && (
                       <span className="shrink-0 font-display font-semibold text-oliva">
@@ -316,7 +336,8 @@ export function MenuCatalog() {
                     )}
                   </div>
                 </article>
-              ))}
+              );
+              })}
             </div>
           </section>
         ))}

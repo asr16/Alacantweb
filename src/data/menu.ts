@@ -1,3 +1,5 @@
+import type { AllergenId } from "@/data/allergens";
+
 export type ProductTag = "popular" | "nuevo" | "sin-azucar";
 
 export type MenuItem = {
@@ -9,6 +11,10 @@ export type MenuItem = {
   price?: string;
   popular?: boolean;
   tags?: ProductTag[];
+  /** Alérgenos confirmados; si se omite, se infieren de la descripción. */
+  allergens?: AllergenId[];
+  /** El producto depende de ingredientes o sabores elegidos — enlace a carta de alérgenos. */
+  allergensVariable?: boolean;
 };
 
 export type MenuOptionGroup = {
@@ -57,12 +63,14 @@ export const menuCategories: MenuCategory[] = [
         descriptionEn: "Two scoops of the flavors you choose",
         popular: true,
         tags: ["popular"],
+        allergensVariable: true,
       },
       {
         name: "Copa al gusto (3 bolas)",
         nameEn: "Sundae your way (3 scoops)",
         description: "Tres bolas a elegir entre nuestros sabores",
         descriptionEn: "Three scoops of the flavors you choose",
+        allergensVariable: true,
       },
       {
         name: "Leche Merengada",
@@ -530,6 +538,78 @@ export const menuCategories: MenuCategory[] = [
         name: "Delicia Mix",
         description: "Mango, plátano, açaí y arándanos",
         descriptionEn: "Mango, banana, açaí and blueberries",
+      },
+    ],
+  },
+  {
+    id: "bowls-yogur",
+    title: "Bowl de yogur",
+    titleEn: "Yogurt bowls",
+    description:
+      "Yogur natural con muesli y toppings. Extras: chocolate negro o blanco, crema de cacahuete, sirope de arce, galletas Oreo/Cookies/Lotus, fruta fresca, coco, frutos secos o fruta deshidratada (+0,50 €); crema de cacahuete (+1,00 €).",
+    descriptionEn:
+      "Natural yogurt with muesli and toppings. Extras: dark or white chocolate, peanut butter, maple syrup, Oreo/Cookies/Lotus biscuits, fresh fruit, coconut, nuts or dehydrated fruit (+0.50 €); peanut butter (+1.00 €).",
+    items: [
+      {
+        name: "Italiano",
+        description:
+          "Yogur natural con naranja, plátano, fresas y muesli con un toque de canela.",
+        descriptionEn:
+          "Natural yogurt with orange, banana, strawberries and muesli with a touch of cinnamon.",
+        price: "5,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Punta Cana",
+        description:
+          "Yogur natural con naranja, galleta Oreo molida, melocotón, frambuesas y muesli.",
+        descriptionEn:
+          "Natural yogurt with orange, crushed Oreo, peach, raspberries and muesli.",
+        price: "5,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Infantil",
+        description:
+          "Yogur natural con galletas Oreo, fresas, gominolas, plátano, Lacasitos y nubes.",
+        descriptionEn:
+          "Natural yogurt with Oreo biscuits, strawberries, gummies, banana, Lacasitos and marshmallows.",
+        price: "5,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Alafit",
+        description:
+          "Yogur natural con fresas, kiwi, muesli y nueces con un toque final de chocolate caliente.",
+        descriptionEn:
+          "Natural yogurt with strawberries, kiwi, muesli and walnuts finished with hot chocolate.",
+        price: "5,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Malasia",
+        description:
+          "Yogur natural con plátano, arándanos, muesli, coco rallado y galleta Cookies molida.",
+        descriptionEn:
+          "Natural yogurt with banana, blueberries, muesli, shredded coconut and crushed Cookies biscuits.",
+        price: "5,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Brazilia",
+        description:
+          "Yogur natural con helado de fruta de la pasión, muesli, fresas, plátano y arándanos. Incluido en el desayuno finalista del concurso Un Mar de Desayunos II.",
+        descriptionEn:
+          "Natural yogurt with passion fruit ice cream, muesli, strawberries, banana and blueberries. Part of our finalist breakfast from Un Mar de Desayunos II.",
+        price: "5,50 €",
+        tags: ["nuevo"],
+      },
+      {
+        name: "Al gusto",
+        nameEn: "Build your own",
+        description: "Yogur natural con 4 ingredientes a elegir.",
+        descriptionEn: "Natural yogurt with 4 toppings of your choice.",
+        price: "5,50 €",
       },
     ],
   },

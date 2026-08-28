@@ -2,7 +2,6 @@
 
 import { siteConfig } from "@/data/site";
 import { getScheduleSummary } from "@/lib/schedule";
-import { OpenStatus } from "@/components/OpenStatus";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export function InfoBar() {
@@ -28,12 +27,9 @@ export function InfoBar() {
           </a>
         </div>
         <div className="px-4 py-6 sm:px-6">
-          <div className="flex flex-wrap items-center gap-2">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-texto-suave">
-              {t("infobar.hours")}
-            </p>
-            <OpenStatus />
-          </div>
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-texto-suave">
+            {t("infobar.hours")}
+          </p>
           <p className="mt-2 text-sm leading-snug text-texto">
             {getScheduleSummary(locale)}
           </p>

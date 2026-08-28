@@ -20,9 +20,19 @@ export type CartaDocument = {
   pages: CartaPage[];
 };
 
-export function Carta2Content({ documents }: { documents: CartaDocument[] }) {
+export function Carta2Content({
+  documents,
+  initialId = null,
+}: {
+  documents: CartaDocument[];
+  /** Si viene en la URL (?doc=…), abre esa carta al cargar. */
+  initialId?: string | null;
+}) {
   const { t, tx } = useLanguage();
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string | null>(() => {
+    if (!initialId) return null;
+    return documents.some((doc) => doc.id === initialId) ? initialId : null;
+  });
 
   const activeDoc = documents.find((doc) => doc.id === activeId) ?? null;
   const activeTitle = activeDoc

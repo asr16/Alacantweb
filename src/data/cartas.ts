@@ -11,23 +11,35 @@ export type CartaDoc = {
   /** Carpeta dentro de `public/carta/` con las páginas y su `pages.json`. */
   dir: string;
   /**
-   * Orden de lectura, por número de página del PDF. La carta principal trae la
-   * portada y la contraportada al final del documento de imprenta.
+   * Orden de lectura, por número de página del PDF. Los PDFs de imprenta traen
+   * la portada al final del documento.
    */
   pageOrder?: number[];
 };
 
+/** Portada al final → primero en web, luego el resto en orden. */
+function coverFirst(pageCount: number) {
+  return [pageCount, ...Array.from({ length: pageCount - 1 }, (_, i) => i + 1)];
+}
+
 export const cartaDocs: CartaDoc[] = [
   {
-    id: "carta-principal",
-    title: "Nuestra carta",
-    titleEn: "Our menu",
-    description:
-      "Copas de helado, jarritas y batidos, frapés, smoothies, granizados y carta templada.",
-    descriptionEn:
-      "Ice cream sundaes, milkshake jars, frappés, smoothies, slushes and the warm menu.",
-    dir: "principal",
-    pageOrder: [23, ...Array.from({ length: 22 }, (_, i) => i + 1), 24],
+    id: "carta-copas",
+    title: "Copas y batidos",
+    titleEn: "Sundaes & shakes",
+    description: "Copas de helado, jarritas y batidos.",
+    descriptionEn: "Ice cream sundaes, milkshake jars and shakes.",
+    dir: "copas",
+    pageOrder: coverFirst(14),
+  },
+  {
+    id: "carta-resto",
+    title: "Frapés y carta templada",
+    titleEn: "Frappés & warm menu",
+    description: "Frapés, smoothies, granizados y carta templada.",
+    descriptionEn: "Frappés, smoothies, slushes and the warm menu.",
+    dir: "resto",
+    pageOrder: coverFirst(10),
   },
   {
     id: "carta-dulce",
@@ -40,6 +52,22 @@ export const cartaDocs: CartaDoc[] = [
     dir: "dulce",
   },
   {
+    id: "carta-bowl-yogur",
+    title: "Bowl de yogur",
+    titleEn: "Yogurt bowls",
+    description: "Bowls de yogur con toppings a tu gusto.",
+    descriptionEn: "Build-your-own yogurt bowls with toppings.",
+    dir: "bowl-yogur",
+  },
+  {
+    id: "carta-bowl",
+    title: "Bowl de frutas",
+    titleEn: "Fruit bowls",
+    description: "Bowls con batido de fruta, muesli y toppings.",
+    descriptionEn: "Fruit smoothie bowls with muesli and toppings.",
+    dir: "bowl",
+  },
+  {
     id: "carta-desayunos",
     title: "Desayunos",
     titleEn: "Breakfast",
@@ -50,13 +78,13 @@ export const cartaDocs: CartaDoc[] = [
     dir: "desayunos",
   },
   {
-    id: "carta-bowl",
-    title: "Bowl de frutas",
-    titleEn: "Fruit bowls",
+    id: "carta-alergenos",
+    title: "Alérgenos",
+    titleEn: "Allergens",
     description:
-      "Bowls con batido de fruta, muesli y toppings. Normal 5,50 € · Maxi 6,50 €.",
+      "Información de alérgenos 2026: carta general y línea Impulso.",
     descriptionEn:
-      "Fruit smoothie bowls with muesli and toppings. Regular 5.50 € · Maxi 6.50 €.",
-    dir: "bowl",
+      "2026 allergen information: general chart and Impulso line.",
+    dir: "alergenos",
   },
 ];

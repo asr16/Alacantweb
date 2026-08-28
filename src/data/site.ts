@@ -45,9 +45,9 @@ export const siteConfig = {
   googleMapsEmbed:
     "https://www.google.com/maps?q=Avenida+del+Mediterr%C3%A1neo+109,+04740+Roquetas+de+Mar&hl=es&z=17&output=embed",
   scheduleNote:
-    "Horario orientativo. Puede variar en festivos; confirma por teléfono.",
+    "Horario orientativo. El cierre puede variar según temporada y festivos; confirma por teléfono.",
   scheduleNoteEn:
-    "Indicative hours. May vary on holidays; confirm by phone.",
+    "Indicative hours. Closing time may vary by season and holidays; confirm by phone.",
   nav: [
     { href: "/", labelKey: "nav.home" as const },
     { href: "/carta", labelKey: "nav.menu" as const },
@@ -314,9 +314,9 @@ export const featureCards = [
     description: "Coulant, brownie con helado y donut especial, recién hechos.",
     descriptionEn: "Coulant, brownie with ice cream and our special donut, freshly made.",
     href: "/carta#pasteleria",
-    image: "/carta/principal/pagina-1.webp",
-    imageAlt: "Selección de la carta de Heladería Alacant",
-    imageAltEn: "A selection from the Heladería Alacant menu",
+    image: "/carta/copas/pagina-14.webp",
+    imageAlt: "Carta de copas y batidos de Heladería Alacant",
+    imageAltEn: "Sundaes and shakes menu at Heladería Alacant",
   },
 ];
 

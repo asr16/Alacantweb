@@ -1,26 +1,5 @@
 import { siteConfig } from "@/data/site";
-import { SCHEDULE_GROUPS, formatClock } from "@/lib/schedule";
-
-const DAY_NAMES = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-] as const;
-
-function openingHoursSpecification() {
-  return SCHEDULE_GROUPS.flatMap((group) =>
-    group.days.map((day) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: DAY_NAMES[day],
-      opens: formatClock(group.openMin),
-      closes: formatClock(group.closeMin === 24 * 60 ? 0 : group.closeMin),
-    })),
-  );
-}
+import { getOpeningHoursSpecification } from "@/lib/schedule";
 
 /** Datos estructurados JSON-LD para negocio local (solo datos reales del proyecto). */
 export function LocalBusinessJsonLd() {
@@ -54,7 +33,7 @@ export function LocalBusinessJsonLd() {
       siteConfig.glovo,
       siteConfig.googleMaps,
     ],
-    openingHoursSpecification: openingHoursSpecification(),
+    openingHoursSpecification: getOpeningHoursSpecification(),
   };
 
   return (
