@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export type CartaPage = {
@@ -22,16 +23,15 @@ export type CartaDocument = {
 
 export function Carta2Content({
   documents,
-  initialId = null,
 }: {
   documents: CartaDocument[];
-  /** Si viene en la URL (?doc=…), abre esa carta al cargar. */
-  initialId?: string | null;
 }) {
   const { t, tx } = useLanguage();
+  const searchParams = useSearchParams();
+  const docFromUrl = searchParams.get("doc");
   const [activeId, setActiveId] = useState<string | null>(() => {
-    if (!initialId) return null;
-    return documents.some((doc) => doc.id === initialId) ? initialId : null;
+    if (!docFromUrl) return null;
+    return documents.some((doc) => doc.id === docFromUrl) ? docFromUrl : null;
   });
 
   const activeDoc = documents.find((doc) => doc.id === activeId) ?? null;

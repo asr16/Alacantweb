@@ -1,9 +1,8 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
-import { Carta2Content, type CartaDocument, type CartaPage } from "@/components/Carta2Content";
-import { cartaDocs, type CartaDoc } from "@/data/cartas";
+import { Suspense } from "react";
+import { Carta2Content } from "@/components/Carta2Content";
 import { siteConfig } from "@/data/site";
+import { cartaDocuments } from "@/lib/cartaPages";
 
 export const metadata: Metadata = {
   title: "Cartas originales",
@@ -18,35 +17,10 @@ export const metadata: Metadata = {
   },
 };
 
-/** Lee en build las páginas generadas por `npm run carta:pdf`. */
-function readPages(doc: CartaDoc): CartaPage[] {
-  const dir = path.join(process.cwd(), "public", "carta", doc.dir);
-  const raw = fs.readFileSync(path.join(dir, "pages.json"), "utf8").replace(/^\uFEFF/, "");
-  const pages = JSON.parse(raw) as { src: string; width: number; height: number }[];
-
-  const ordered = doc.pageOrder
-    ? doc.pageOrder.map((number) => pages[number - 1]).filter(Boolean)
-    : pages;
-
-  return ordered.map((page) => ({
-    ...page,
-    src: `/carta/${doc.dir}/${page.src}`,
-  }));
-}
-
-type Carta2PageProps = {
-  searchParams?: Promise<{ doc?: string | string[] }>;
-};
-
-export default async function Carta2Page({ searchParams }: Carta2PageProps) {
-  const documents: CartaDocument[] = cartaDocs.map((doc) => ({
-    ...doc,
-    pages: readPages(doc),
-  }));
-
-  const params = searchParams ? await searchParams : undefined;
-  const raw = params?.doc;
-  const initialId = Array.isArray(raw) ? raw[0] : raw;
-
-  return <Carta2Content documents={documents} initialId={initialId ?? null} />;
+export default function Carta2Page() {
+  return (
+    <Suspense>
+      <Carta2Content documents={cartaDocuments} />
+    </Suspense>
+  );
 }

@@ -2,29 +2,8 @@
 
 import Link from "next/link";
 import { HelpCircle } from "lucide-react";
-import {
-  ALLERGEN_IDS,
-  allergenCatalog,
-  type AllergenId,
-} from "@/data/allergens";
+import { allergenCatalog, type AllergenId } from "@/data/allergens";
 import { useLanguage } from "@/i18n/LanguageProvider";
-
-const ALLERGEN_COLORS: Record<AllergenId, string> = {
-  gluten: "#c4a035",
-  crustaceos: "#4a90a4",
-  huevos: "#e8c547",
-  pescado: "#5b8fc7",
-  cacahuetes: "#c4783a",
-  soja: "#7aad4a",
-  lacteos: "#6b8cae",
-  "frutos-cascara": "#8b6914",
-  apio: "#6a9e5a",
-  mostaza: "#d4a017",
-  sesamo: "#b8956b",
-  sulfitos: "#9b59b6",
-  altramuces: "#e67e22",
-  moluscos: "#3498db",
-};
 
 export function AllergenIcon({
   id,
@@ -42,11 +21,7 @@ export function AllergenIcon({
   return (
     <span
       className={`inline-flex shrink-0 items-center justify-center rounded-full font-display text-[0.55rem] font-bold leading-none text-white shadow-sm ${className}`}
-      style={{
-        width: size,
-        height: size,
-        backgroundColor: ALLERGEN_COLORS[id],
-      }}
+      style={{ width: size, height: size, backgroundColor: info.color }}
       title={label}
       aria-label={label}
     >
@@ -92,27 +67,6 @@ export function AllergenIconRow({
           <AllergenIcon id={id} />
         </span>
       ))}
-    </div>
-  );
-}
-
-export function AllergenLegend() {
-  const { t, tx } = useLanguage();
-
-  return (
-    <div className="mt-4 border border-arena bg-white px-4 py-3.5 sm:px-5 sm:py-4">
-      <p className="text-sm font-semibold text-texto">{t("menu.allergensLegendTitle")}</p>
-      <p className="mt-1 text-xs leading-relaxed text-texto-suave">
-        {t("menu.allergensLegendHint")}
-      </p>
-      <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
-        {ALLERGEN_IDS.map((id) => (
-          <li key={id} className="flex items-center gap-1.5 text-xs text-texto">
-            <AllergenIcon id={id} size={20} />
-            <span>{tx(allergenCatalog[id].labelEs, allergenCatalog[id].labelEn)}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

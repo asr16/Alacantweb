@@ -45,9 +45,6 @@ export const dictionaries = {
     "menu.allergensContains": "Alérgenos presentes",
     "menu.allergensVariable": "Consultar alérgenos",
     "menu.allergensVariableHint": "Depende de los ingredientes o sabores elegidos",
-    "menu.allergensLegendTitle": "Alérgenos en la carta",
-    "menu.allergensLegendHint":
-      "Iconos orientativos según los ingredientes descritos. Para información completa (helados, Impulso y especialidades), consulta la carta de alérgenos.",
     "carta2.title": "Nuestras cartas",
     "carta2.page": "Página",
     "carta2.pickHint": "Elige una carta para verla.",
@@ -130,9 +127,6 @@ export const dictionaries = {
     "menu.allergensContains": "Contains allergens",
     "menu.allergensVariable": "Check allergens",
     "menu.allergensVariableHint": "Depends on chosen ingredients or flavors",
-    "menu.allergensLegendTitle": "Allergens on the menu",
-    "menu.allergensLegendHint":
-      "Indicative icons based on listed ingredients. For full information (ice cream flavors, Impulso and specials), see the allergen chart.",
     "carta2.title": "Our menus",
     "carta2.page": "Page",
     "carta2.pickHint": "Choose a menu to view it.",

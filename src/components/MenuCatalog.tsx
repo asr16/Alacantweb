@@ -13,7 +13,7 @@ import { ArrowUp } from "lucide-react";
 import { menuCategories, tagLabels, type MenuItem } from "@/data/menu";
 import { prefersReducedMotion } from "@/lib/motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { AllergenIconRow, AllergenLegend } from "@/components/AllergenIcons";
+import { AllergenIconRow } from "@/components/AllergenIcons";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getMenuItemAllergens } from "@/lib/inferAllergens";
 
@@ -51,6 +51,16 @@ export function MenuCatalog() {
         .filter((cat) => cat.items.length > 0),
     [search],
   );
+
+  const allergenByItem = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof getMenuItemAllergens>>();
+    for (const cat of filtered) {
+      for (const item of cat.items) {
+        map.set(`${cat.id}\0${item.name}`, getMenuItemAllergens(item, cat.id));
+      }
+    }
+    return map;
+  }, [filtered]);
 
   const visibleActiveId = filtered.some((cat) => cat.id === activeId)
     ? activeId
@@ -197,8 +207,6 @@ export function MenuCatalog() {
         </div>
       </div>
 
-      <AllergenLegend />
-
       <div
         ref={stickyRef}
         className="sticky top-[4.25rem] z-30 mt-6 -mx-4 space-y-2.5 border-b border-arena bg-crema/95 px-4 py-2.5 backdrop-blur-sm sm:top-[4.5rem] sm:mx-0 sm:mt-8 sm:space-y-3 sm:border sm:border-arena sm:px-5 sm:py-4"
@@ -290,7 +298,9 @@ export function MenuCatalog() {
 
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               {cat.items.map((item) => {
-                const { allergens, variable } = getMenuItemAllergens(item, cat.id);
+                const { allergens, variable } =
+                  allergenByItem.get(`${cat.id}\0${item.name}`) ??
+                  getMenuItemAllergens(item, cat.id);
                 return (
                 <article
                   key={item.name}

@@ -42,9 +42,8 @@ export const tagLabels: Record<ProductTag, { es: string; en: string }> = {
 };
 
 /**
- * Contenido transcrito de las cartas oficiales de la heladería
- * (`public/carta/carta-principal.pdf`, `carta-dulce.pdf`, `carta-desayunos.pdf`
- * y `carta-bowl.pdf`). Solo se indican precios cuando vienen en el PDF.
+ * Contenido transcrito de las cartas oficiales (PDF 2026).
+ * Solo se indican precios cuando vienen en el PDF.
  */
 export const menuCategories: MenuCategory[] = [
   {
