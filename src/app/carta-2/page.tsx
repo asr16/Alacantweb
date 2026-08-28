@@ -21,9 +21,8 @@ export const metadata: Metadata = {
 /** Lee en build las páginas generadas por `npm run carta:pdf`. */
 function readPages(doc: CartaDoc): CartaPage[] {
   const dir = path.join(process.cwd(), "public", "carta", doc.dir);
-  const pages = JSON.parse(
-    fs.readFileSync(path.join(dir, "pages.json"), "utf8"),
-  ) as { src: string; width: number; height: number }[];
+  const raw = fs.readFileSync(path.join(dir, "pages.json"), "utf8").replace(/^\uFEFF/, "");
+  const pages = JSON.parse(raw) as { src: string; width: number; height: number }[];
 
   const ordered = doc.pageOrder
     ? doc.pageOrder.map((number) => pages[number - 1]).filter(Boolean)
