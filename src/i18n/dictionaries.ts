@@ -35,7 +35,7 @@ export const dictionaries = {
     "infobar.phone": "Teléfono",
     "menu.title": "Nuestra carta",
     "menu.subtitle":
-      "Elige una categoría o busca un producto. Consulta los precios actualizados en el local.",
+      "Elige una categoría o busca un producto. Consulta precios y disponibilidad en el local.",
     "menu.search": "Buscar producto…",
     "menu.empty": "No hay productos con estos filtros.",
     "menu.backTop": "Volver arriba",
@@ -117,7 +117,7 @@ export const dictionaries = {
     "infobar.phone": "Phone",
     "menu.title": "Our menu",
     "menu.subtitle":
-      "Pick a category or search a product. Ask in-store for current prices.",
+      "Pick a category or search a product. Ask in-store for prices and availability.",
     "menu.search": "Search product…",
     "menu.empty": "No products match these filters.",
     "menu.backTop": "Back to top",

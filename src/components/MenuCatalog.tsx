@@ -339,11 +339,6 @@ export function MenuCatalog() {
                         className="mt-2.5"
                       />
                     </div>
-                    {item.price && (
-                      <span className="shrink-0 font-display font-semibold text-oliva">
-                        {item.price}
-                      </span>
-                    )}
                   </div>
                 </article>
               );

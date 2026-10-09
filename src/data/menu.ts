@@ -51,15 +51,43 @@ export const menuCategories: MenuCategory[] = [
     title: "Helados al gusto",
     titleEn: "Ice cream by the scoop",
     description:
-      "Más de 65 sabores de helado artesano a elegir. Pregúntanos por los sabores disponibles del día.",
+      "Elige entre nuestros sabores artesanos. Pregúntanos por la disponibilidad del día.",
     descriptionEn:
-      "Over 65 artisan ice cream flavors to choose from. Ask us about the flavors available today.",
+      "Choose from our artisan flavors. Ask us about today's availability.",
+    optionGroups: [
+      {
+        label: "Sabores artesanos",
+        labelEn: "Artisan flavors",
+        options: [
+          "Chocolate",
+          "Fresa",
+          "Vainilla",
+          "Vainilla Praliné",
+          "Nata",
+          "Limón",
+          "Leche merengada",
+          "Stracciatella",
+          "Trufa",
+        ],
+        optionsEn: [
+          "Chocolate",
+          "Strawberry",
+          "Vanilla",
+          "Vanilla Praline",
+          "Cream",
+          "Lemon",
+          "Leche merengada",
+          "Stracciatella",
+          "Truffle",
+        ],
+      },
+    ],
     items: [
       {
         name: "Copa al gusto (2 bolas)",
         nameEn: "Sundae your way (2 scoops)",
-        description: "Dos bolas a elegir entre nuestros sabores",
-        descriptionEn: "Two scoops of the flavors you choose",
+        description: "Dos bolas a elegir entre nuestros sabores artesanos",
+        descriptionEn: "Two scoops of the artisan flavors you choose",
         popular: true,
         tags: ["popular"],
         allergensVariable: true,
@@ -67,15 +95,9 @@ export const menuCategories: MenuCategory[] = [
       {
         name: "Copa al gusto (3 bolas)",
         nameEn: "Sundae your way (3 scoops)",
-        description: "Tres bolas a elegir entre nuestros sabores",
-        descriptionEn: "Three scoops of the flavors you choose",
+        description: "Tres bolas a elegir entre nuestros sabores artesanos",
+        descriptionEn: "Three scoops of the artisan flavors you choose",
         allergensVariable: true,
-      },
-      {
-        name: "Leche Merengada",
-        nameEn: "Leche merengada",
-        description: "El auténtico sabor de la leche merengada con canela.",
-        descriptionEn: "The authentic taste of leche merengada with cinnamon.",
       },
     ],
   },
@@ -545,9 +567,9 @@ export const menuCategories: MenuCategory[] = [
     title: "Bowl de yogur",
     titleEn: "Yogurt bowls",
     description:
-      "Yogur natural con muesli y toppings. Extras: chocolate negro o blanco, crema de cacahuete, sirope de arce, galletas Oreo/Cookies/Lotus, fruta fresca, coco, frutos secos o fruta deshidratada (+0,50 €); crema de cacahuete (+1,00 €).",
+      "Yogur natural con muesli y toppings. Extras: chocolate negro o blanco, crema de cacahuete, sirope de arce, galletas Oreo/Cookies/Lotus, fruta fresca, coco, frutos secos o fruta deshidratada.",
     descriptionEn:
-      "Natural yogurt with muesli and toppings. Extras: dark or white chocolate, peanut butter, maple syrup, Oreo/Cookies/Lotus biscuits, fresh fruit, coconut, nuts or dehydrated fruit (+0.50 €); peanut butter (+1.00 €).",
+      "Natural yogurt with muesli and toppings. Extras: dark or white chocolate, peanut butter, maple syrup, Oreo/Cookies/Lotus biscuits, fresh fruit, coconut, nuts or dehydrated fruit.",
     items: [
       {
         name: "Italiano",
@@ -555,7 +577,6 @@ export const menuCategories: MenuCategory[] = [
           "Yogur natural con naranja, plátano, fresas y muesli con un toque de canela.",
         descriptionEn:
           "Natural yogurt with orange, banana, strawberries and muesli with a touch of cinnamon.",
-        price: "5,50 €",
         tags: ["nuevo"],
       },
       {
@@ -564,7 +585,6 @@ export const menuCategories: MenuCategory[] = [
           "Yogur natural con naranja, galleta Oreo molida, melocotón, frambuesas y muesli.",
         descriptionEn:
           "Natural yogurt with orange, crushed Oreo, peach, raspberries and muesli.",
-        price: "5,50 €",
         tags: ["nuevo"],
       },
       {
@@ -573,7 +593,6 @@ export const menuCategories: MenuCategory[] = [
           "Yogur natural con galletas Oreo, fresas, gominolas, plátano, Lacasitos y nubes.",
         descriptionEn:
           "Natural yogurt with Oreo biscuits, strawberries, gummies, banana, Lacasitos and marshmallows.",
-        price: "5,50 €",
         tags: ["nuevo"],
       },
       {
@@ -582,7 +601,6 @@ export const menuCategories: MenuCategory[] = [
           "Yogur natural con fresas, kiwi, muesli y nueces con un toque final de chocolate caliente.",
         descriptionEn:
           "Natural yogurt with strawberries, kiwi, muesli and walnuts finished with hot chocolate.",
-        price: "5,50 €",
         tags: ["nuevo"],
       },
       {
@@ -591,7 +609,6 @@ export const menuCategories: MenuCategory[] = [
           "Yogur natural con plátano, arándanos, muesli, coco rallado y galleta Cookies molida.",
         descriptionEn:
           "Natural yogurt with banana, blueberries, muesli, shredded coconut and crushed Cookies biscuits.",
-        price: "5,50 €",
         tags: ["nuevo"],
       },
       {
@@ -600,7 +617,6 @@ export const menuCategories: MenuCategory[] = [
           "Yogur natural con helado de fruta de la pasión, muesli, fresas, plátano y arándanos. Incluido en el desayuno finalista del concurso Un Mar de Desayunos II.",
         descriptionEn:
           "Natural yogurt with passion fruit ice cream, muesli, strawberries, banana and blueberries. Part of our finalist breakfast from Un Mar de Desayunos II.",
-        price: "5,50 €",
         tags: ["nuevo"],
       },
       {
@@ -608,7 +624,6 @@ export const menuCategories: MenuCategory[] = [
         nameEn: "Build your own",
         description: "Yogur natural con 4 ingredientes a elegir.",
         descriptionEn: "Natural yogurt with 4 toppings of your choice.",
-        price: "5,50 €",
       },
     ],
   },
@@ -617,9 +632,9 @@ export const menuCategories: MenuCategory[] = [
     title: "Bowl de frutas",
     titleEn: "Fruit bowls",
     description:
-      "Cremoso batido de fruta con muesli y toppings. Normal 5,50 € · Maxi 6,50 €. Extras: leche de soja, avena o sin lactosa, chocolate negro o blanco, miel, sirope de dulce de arce, galletas Oreo/Cookies/Lotus, Lacasitos, fruta fresca, coco, almendra o nueces, mango o plátano deshidratado (+0,50 €); crema de cacahuete (+1,00 €).",
+      "Cremoso batido de fruta con muesli y toppings. Extras: leche de soja, avena o sin lactosa, chocolate negro o blanco, miel, sirope de dulce de arce, galletas Oreo/Cookies/Lotus, Lacasitos, fruta fresca, coco, almendra o nueces, mango o plátano deshidratado.",
     descriptionEn:
-      "Creamy fruit blend with muesli and toppings. Regular 5.50 € · Maxi 6.50 €. Extras: soy, oat or lactose-free milk, dark or white chocolate, honey, maple syrup, Oreo/Cookies/Lotus biscuits, Lacasitos, fresh fruit, coconut, almond or walnuts, dehydrated mango or banana (+0.50 €); peanut butter (+1.00 €).",
+      "Creamy fruit blend with muesli and toppings. Extras: soy, oat or lactose-free milk, dark or white chocolate, honey, maple syrup, Oreo/Cookies/Lotus biscuits, Lacasitos, fresh fruit, coconut, almond or walnuts, dehydrated mango or banana.",
     items: [
       {
         name: "Colada Jungle Bowl",
@@ -627,7 +642,6 @@ export const menuCategories: MenuCategory[] = [
           "Cremoso batido de plátano, coco y piña acompañado de muesli, plátano, coco, arándanos y coco rallado.",
         descriptionEn:
           "Creamy banana, coconut and pineapple blend with muesli, banana, coconut, blueberries and shredded coconut.",
-        price: "5,50 € · Maxi 6,50 €",
         tags: ["nuevo"],
       },
       {
@@ -636,7 +650,6 @@ export const menuCategories: MenuCategory[] = [
           "Cremoso batido de fresas y plátano acompañado de muesli, fresas, plátano y frutos rojos.",
         descriptionEn:
           "Creamy strawberry and banana blend with muesli, strawberries, banana and red berries.",
-        price: "5,50 € · Maxi 6,50 €",
         tags: ["nuevo"],
       },
       {
@@ -645,7 +658,6 @@ export const menuCategories: MenuCategory[] = [
           "Cremoso batido de mango, plátano, açaí y arándanos acompañado de muesli, plátano, fresas y arándanos.",
         descriptionEn:
           "Creamy mango, banana, açaí and blueberry blend with muesli, banana, strawberries and blueberries.",
-        price: "5,50 € · Maxi 6,50 €",
         tags: ["nuevo"],
       },
       {
@@ -654,7 +666,6 @@ export const menuCategories: MenuCategory[] = [
           "Cremoso batido de fruta del dragón, fresas y mango acompañado de muesli, fresas, arándanos y mango natural.",
         descriptionEn:
           "Creamy dragon fruit, strawberry and mango blend with muesli, strawberries, blueberries and fresh mango.",
-        price: "5,50 € · Maxi 6,50 €",
         tags: ["nuevo"],
       },
       {
@@ -663,7 +674,6 @@ export const menuCategories: MenuCategory[] = [
           "Cremoso batido de piña, mango y papaya acompañado de muesli, piña, mango natural y papaya.",
         descriptionEn:
           "Creamy pineapple, mango and papaya blend with muesli, pineapple, fresh mango and papaya.",
-        price: "5,50 € · Maxi 6,50 €",
         tags: ["nuevo"],
       },
       {
@@ -672,7 +682,6 @@ export const menuCategories: MenuCategory[] = [
           "Cremoso batido de fresas, arándanos, cereza y mango acompañado de muesli, fresas, arándanos y grosellas con un toque de canela.",
         descriptionEn:
           "Creamy strawberry, blueberry, cherry and mango blend with muesli, strawberries, blueberries, currants and a touch of cinnamon.",
-        price: "5,50 € · Maxi 6,50 €",
         tags: ["nuevo"],
       },
     ],
