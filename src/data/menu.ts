@@ -775,6 +775,13 @@ export const menuCategories: MenuCategory[] = [
         tags: ["nuevo"],
       },
       {
+        name: "Especial picadillo fundido",
+        nameEn: "Special melted minced ham",
+        description: "Tomate, jamón picadillo y queso fundido",
+        descriptionEn: "Tomato, minced ham and melted cheese",
+        tags: ["nuevo"],
+      },
+      {
         name: "Especial serrano y rúcula",
         nameEn: "Special Serrano & rocket",
         description: "Queso de untar, rúcula, jamón serrano y AOVE",

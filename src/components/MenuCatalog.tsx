@@ -14,6 +14,7 @@ import { menuCategories, tagLabels, type MenuItem } from "@/data/menu";
 import { prefersReducedMotion } from "@/lib/motion";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { AllergenIconRow } from "@/components/AllergenIcons";
+import { MenuOptionGroup } from "@/components/MenuOptionGroup";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getMenuItemAllergens } from "@/lib/inferAllergens";
 
@@ -277,23 +278,21 @@ export function MenuCatalog() {
               <p className="mt-2 max-w-2xl text-texto-suave">
                 {tx(cat.description, cat.descriptionEn)}
               </p>
-              {cat.optionGroups?.map((group) => (
-                <div key={group.label} className="mt-4">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-texto-suave">
-                    {tx(group.label, group.labelEn)}
-                  </p>
-                  <ul className="mt-2 flex flex-wrap gap-1.5">
-                    {tx(group.options, group.optionsEn).map((option) => (
-                      <li
-                        key={option}
-                        className="border border-arena bg-white px-2.5 py-1 text-xs text-texto"
-                      >
-                        {option}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {cat.optionGroups?.map((group) => {
+                const options = tx(group.options, group.optionsEn);
+                const denseList =
+                  cat.id === "helados" || options.length >= 10;
+
+                return (
+                  <MenuOptionGroup
+                    key={group.label}
+                    groupKey={`${cat.id}-${group.label}`}
+                    label={tx(group.label, group.labelEn)}
+                    options={options}
+                    layout={denseList ? "dense" : "pills"}
+                  />
+                );
+              })}
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
