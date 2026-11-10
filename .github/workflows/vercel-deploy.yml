@@ -1,24 +1,54 @@
-# Dispara un build en Vercel cuando GitHub no recibe webhooks del proyecto.
-# En Vercel: Project → Settings → Git → Deploy Hooks → Create (rama main).
-# En GitHub: repo → Settings → Secrets → VERCEL_DEPLOY_HOOK = URL del hook.
-name: Vercel preview
+# Despliega a Vercel en cada push a main (sin depender del webhook Git de Vercel).
+# Secretos en GitHub → Settings → Secrets and variables → Actions:
+#   VERCEL_TOKEN      → https://vercel.com/account/tokens
+#   VERCEL_ORG_ID     → Team settings → General (o en .vercel/project.json tras vercel link)
+#   VERCEL_PROJECT_ID → Project alacantweb → Settings → General
+name: Deploy to Vercel
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
-  trigger:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: POST Deploy Hook
+      - uses: actions/checkout@v4
+
+      - name: Comprobar secretos de Vercel
         env:
-          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          ORG: ${{ secrets.VERCEL_ORG_ID }}
+          PROJ: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          if [ -z "$HOOK" ]; then
-            echo "::warning::Sin VERCEL_DEPLOY_HOOK. Crea el Deploy Hook en Vercel y añade el secreto en GitHub Actions."
-            exit 0
+          if [ -z "$TOKEN" ] || [ -z "$ORG" ] || [ -z "$PROJ" ]; then
+            echo "::error::Faltan VERCEL_TOKEN, VERCEL_ORG_ID o VERCEL_PROJECT_ID en GitHub Actions."
+            echo "Token: https://vercel.com/account/tokens"
+            echo "IDs: proyecto alacantweb → Settings → General"
+            exit 1
           fi
-          curl -fsS -X POST "$HOOK"
-          echo "Build solicitado en Vercel."
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Instalar Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Sincronizar configuración del proyecto
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy a producción (alacantweb.vercel.app)
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
