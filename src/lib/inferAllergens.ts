@@ -28,9 +28,13 @@ const INFERENCE: Record<AllergenId, RegExp> = {
 const CATEGORY_DEFAULTS: Partial<Record<string, AllergenId[]>> = {
   copas: ["lacteos"],
   batidos: ["lacteos"],
+  frappes: ["lacteos"],
   cafeteria: ["lacteos"],
   templada: ["lacteos"],
   "bowls-yogur": ["lacteos"],
+  bolleria: ["gluten", "lacteos", "huevos"],
+  tartas: ["gluten", "lacteos", "huevos"],
+  merengues: ["huevos", "lacteos"],
   pasteleria: ["gluten", "lacteos", "huevos"],
 };
 

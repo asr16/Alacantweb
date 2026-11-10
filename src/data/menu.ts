@@ -1,4 +1,14 @@
 import type { AllergenId } from "@/data/allergens";
+import { iceCreamFlavorGroups } from "@/data/iceCreamFlavors";
+import {
+  bebidasCategory,
+  bolleriaCategory,
+  cafeteriaCategory,
+  frappesCategory,
+  infusionesCategory,
+  merenguesCategory,
+  tartasCategory,
+} from "@/data/menuCafeteriaEtc";
 
 export type ProductTag = "popular" | "nuevo" | "sin-azucar";
 
@@ -51,43 +61,16 @@ export const menuCategories: MenuCategory[] = [
     title: "Helados al gusto",
     titleEn: "Ice cream by the scoop",
     description:
-      "Elige entre nuestros sabores artesanos. Pregúntanos por la disponibilidad del día.",
+      "Artesanos, Free From y Premium. Pregúntanos por la disponibilidad del día.",
     descriptionEn:
-      "Choose from our artisan flavors. Ask us about today's availability.",
-    optionGroups: [
-      {
-        label: "Sabores artesanos",
-        labelEn: "Artisan flavors",
-        options: [
-          "Chocolate",
-          "Fresa",
-          "Vainilla",
-          "Vainilla Praliné",
-          "Nata",
-          "Limón",
-          "Leche merengada",
-          "Stracciatella",
-          "Trufa",
-        ],
-        optionsEn: [
-          "Chocolate",
-          "Strawberry",
-          "Vanilla",
-          "Vanilla Praline",
-          "Cream",
-          "Lemon",
-          "Leche merengada",
-          "Stracciatella",
-          "Truffle",
-        ],
-      },
-    ],
+      "Artisan, Free From and Premium lines. Ask us about today's availability.",
+    optionGroups: iceCreamFlavorGroups,
     items: [
       {
         name: "Copa al gusto (2 bolas)",
         nameEn: "Sundae your way (2 scoops)",
-        description: "Dos bolas a elegir entre nuestros sabores artesanos",
-        descriptionEn: "Two scoops of the artisan flavors you choose",
+        description: "Dos bolas a elegir entre nuestros sabores",
+        descriptionEn: "Two scoops of the flavors you choose",
         popular: true,
         tags: ["popular"],
         allergensVariable: true,
@@ -95,8 +78,8 @@ export const menuCategories: MenuCategory[] = [
       {
         name: "Copa al gusto (3 bolas)",
         nameEn: "Sundae your way (3 scoops)",
-        description: "Tres bolas a elegir entre nuestros sabores artesanos",
-        descriptionEn: "Three scoops of the artisan flavors you choose",
+        description: "Tres bolas a elegir entre nuestros sabores",
+        descriptionEn: "Three scoops of the flavors you choose",
         allergensVariable: true,
       },
     ],
@@ -458,59 +441,7 @@ export const menuCategories: MenuCategory[] = [
       },
     ],
   },
-  {
-    id: "cafeteria",
-    title: "Cafetería y frapés",
-    titleEn: "Café & frappés",
-    description:
-      "Frapés de café con helado y nata, y nuestros cafés especiales de siempre.",
-    descriptionEn:
-      "Coffee frappés with ice cream and whipped cream, plus our classic specialty coffees.",
-    items: [
-      { name: "Frappé Solo", nameEn: "Frappé Solo" },
-      {
-        name: "Frappé Créme",
-        description: "Con nata",
-        descriptionEn: "With whipped cream",
-      },
-      {
-        name: "Frappé Chocolate",
-        description: "Con nata y chocolate",
-        descriptionEn: "With whipped cream and chocolate",
-        popular: true,
-        tags: ["popular"],
-      },
-      { name: "Frappé con Hielo", nameEn: "Iced Frappé" },
-      { name: "Frappé Batido", nameEn: "Blended Frappé" },
-      {
-        name: "Frappé Irlandés",
-        nameEn: "Irish Frappé",
-        description: "Con helado, café, nata y whisky",
-        descriptionEn: "With ice cream, coffee, whipped cream and whisky",
-      },
-      {
-        name: "Frappé Gelat",
-        description: "Con helado y nata",
-        descriptionEn: "With ice cream and whipped cream",
-      },
-      {
-        name: "Frappé Gelat con Baileys",
-        nameEn: "Frappé Gelat with Baileys",
-        description: "Con nata y chocolate",
-        descriptionEn: "With whipped cream and chocolate",
-      },
-      { name: "Café Vienés", nameEn: "Viennese Coffee" },
-      { name: "Café Cream", nameEn: "Coffee Cream" },
-      { name: "Affogato", nameEn: "Affogato" },
-      { name: "Café Irlandés", nameEn: "Irish Coffee" },
-      { name: "Café Escocés", nameEn: "Scottish Coffee" },
-      { name: "Barraquito", nameEn: "Barraquito" },
-      {
-        name: "Bombón Batido con Nata",
-        nameEn: "Blended Bombón with Whipped Cream",
-      },
-    ],
-  },
+  frappesCategory,
   {
     id: "smoothies",
     title: "Smoothies",
@@ -632,9 +563,9 @@ export const menuCategories: MenuCategory[] = [
     title: "Bowl de frutas",
     titleEn: "Fruit bowls",
     description:
-      "Cremoso batido de fruta con muesli y toppings. Extras: leche de soja, avena o sin lactosa, chocolate negro o blanco, miel, sirope de dulce de arce, galletas Oreo/Cookies/Lotus, Lacasitos, fruta fresca, coco, almendra o nueces, mango o plátano deshidratado.",
+      "Cremoso batido de fruta con muesli y toppings. Tamaño maxi disponible. Extras: leche de soja, avena o sin lactosa, chocolate, miel, sirope, galletas, fruta, coco, frutos secos y más.",
     descriptionEn:
-      "Creamy fruit blend with muesli and toppings. Extras: soy, oat or lactose-free milk, dark or white chocolate, honey, maple syrup, Oreo/Cookies/Lotus biscuits, Lacasitos, fresh fruit, coconut, almond or walnuts, dehydrated mango or banana.",
+      "Creamy fruit blend with muesli and toppings. Maxi size available. Extras: soy, oat or lactose-free milk, chocolate, honey, syrup, biscuits, fruit, coconut, nuts and more.",
     items: [
       {
         name: "Colada Jungle Bowl",
@@ -1028,12 +959,18 @@ export const menuCategories: MenuCategory[] = [
       },
     ],
   },
+  cafeteriaCategory,
+  infusionesCategory,
+  bolleriaCategory,
+  tartasCategory,
+  merenguesCategory,
+  bebidasCategory,
   {
     id: "pasteleria",
     title: "Postres y dulces",
     titleEn: "Desserts & sweets",
-    description: "Dulces recién hechos para acompañar el café o cerrar la merienda.",
-    descriptionEn: "Freshly made sweets to go with your coffee or finish an afternoon treat.",
+    description: "Dulces de la casa para acompañar el café o cerrar la merienda.",
+    descriptionEn: "House desserts to go with your coffee or finish an afternoon treat.",
     items: [
       {
         name: "Donut Especial",
