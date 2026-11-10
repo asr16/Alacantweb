@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        # Se fija en tiempo de build (sitemap, robots, metadatos).
+        # Se puede definir en un fichero .env junto a este archivo:
+        #   NEXT_PUBLIC_SITE_URL=https://tu-dominio.es
+        # Si queda vacío, la web usa https://heladeriaalacant.es
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-}
+    image: alacantweb:latest
+    container_name: alacantweb
+    init: true
+    restart: unless-stopped
+    ports:
+      # Pruebas en local: http://localhost:3000
+      # En el VPS, con proxy inverso delante, cambiar a "127.0.0.1:3000:3000"
+      - "3000:3000"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
