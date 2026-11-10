@@ -40,8 +40,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/brand/logo-alacant-icon.png",
-    apple: "/brand/logo-alacant-icon.png",
+    icon: [
+      { url: "/icon", sizes: "32x32", type: "image/png" },
+      { url: "/brand/favicon-48.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: "/apple-icon",
   },
   openGraph: {
     title: siteConfig.name,
