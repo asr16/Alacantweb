@@ -32,14 +32,20 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-arena bg-crema/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5">
+      <header className="sticky top-0 z-50 overflow-visible border-b border-arena bg-crema/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 overflow-visible px-4 py-2.5 sm:px-6 sm:py-3.5">
           <Link
             href="/"
-            className="group transition-opacity hover:opacity-90"
+            className="group inline-flex h-11 shrink-0 items-center overflow-visible transition-opacity hover:opacity-90"
             aria-label={siteConfig.name}
           >
-            <BrandLogo height={48} priority decorative />
+            <BrandLogo
+              src="/brand/logo-fondo%20transparente.png"
+              height={48}
+              priority
+              decorative
+              className="origin-left scale-[1.22]"
+            />
           </Link>
 
           <nav className="hidden items-center gap-6 lg:flex" aria-label={t("nav.main")}>

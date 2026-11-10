@@ -2,6 +2,8 @@ import Image from "next/image";
 import { siteConfig } from "@/data/site";
 
 type BrandLogoProps = {
+  /** Ruta bajo `public/` (p. ej. `/brand/...`). */
+  src?: string;
   /** Altura visual del logo en px. */
   height?: number;
   className?: string;
@@ -10,17 +12,24 @@ type BrandLogoProps = {
   decorative?: boolean;
 };
 
+const DEFAULT_LOGO_SRC = "/brand/logo-alacant.webp";
+
 export function BrandLogo({
+  src = DEFAULT_LOGO_SRC,
   height = 48,
   className = "",
   priority = false,
   decorative = false,
 }: BrandLogoProps) {
+  const intrinsicWidth = Math.round(
+    height * (src === DEFAULT_LOGO_SRC ? 1 : 2.4),
+  );
+
   return (
     <Image
-      src="/brand/logo-alacant.webp"
+      src={src}
       alt={decorative ? "" : siteConfig.name}
-      width={height}
+      width={intrinsicWidth}
       height={height}
       className={`w-auto object-contain ${className}`}
       style={{ height, width: "auto" }}
