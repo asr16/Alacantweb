@@ -61,9 +61,9 @@ export const menuCategories: MenuCategory[] = [
     title: "Helados al gusto",
     titleEn: "Ice cream by the scoop",
     description:
-      "Artesanos, Free From y Premium. Pregúntanos por la disponibilidad del día.",
+      "Artesanos, Premium y Free From. Pregúntanos por la disponibilidad del día.",
     descriptionEn:
-      "Artisan, Free From and Premium lines. Ask us about today's availability.",
+      "Artisan, Premium and Free From lines. Ask us about today's availability.",
     optionGroups: iceCreamFlavorGroups,
     items: [
       {

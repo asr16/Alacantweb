@@ -5,6 +5,7 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 
 const MOBILE_MQ = "(max-width: 639px)";
 const MOBILE_PREVIEW_COUNT = 4;
+const DESKTOP_PREVIEW_COUNT = 8;
 
 function subscribeMobileMq(onChange: () => void) {
   const mq = window.matchMedia(MOBILE_MQ);
@@ -41,11 +42,10 @@ export function MenuOptionGroup({
   );
   const [expanded, setExpanded] = useState(false);
 
-  const canCollapse = layout === "dense" && options.length > MOBILE_PREVIEW_COUNT;
-  const collapsed = isMobile && canCollapse && !expanded;
-  const visible = collapsed
-    ? options.slice(0, MOBILE_PREVIEW_COUNT)
-    : options;
+  const previewCount = isMobile ? MOBILE_PREVIEW_COUNT : DESKTOP_PREVIEW_COUNT;
+  const canCollapse = layout === "dense" && options.length > previewCount;
+  const collapsed = canCollapse && !expanded;
+  const visible = collapsed ? options.slice(0, previewCount) : options;
   const wrapClass = layout === "dense" ? "menu-option-group" : "mt-4";
   const titleClass =
     layout === "dense"
@@ -70,15 +70,26 @@ export function MenuOptionGroup({
           ))}
         </ul>
       )}
-      {canCollapse && (
+      {canCollapse && !expanded && (
+        <button
+          type="button"
+          className="menu-option-expand"
+          aria-expanded={false}
+          aria-controls={`menu-options-${groupKey}`}
+          onClick={() => setExpanded(true)}
+        >
+          {t("menu.flavorsMore")}
+        </button>
+      )}
+      {canCollapse && expanded && (
         <button
           type="button"
           className="menu-option-expand"
           aria-expanded={expanded}
           aria-controls={`menu-options-${groupKey}`}
-          onClick={() => setExpanded((v) => !v)}
+          onClick={() => setExpanded(false)}
         >
-          {expanded ? t("menu.flavorsLess") : t("menu.flavorsMore")}
+          {t("menu.flavorsLess")}
         </button>
       )}
     </div>

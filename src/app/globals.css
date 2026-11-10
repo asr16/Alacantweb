@@ -414,9 +414,3 @@ body {
   border-color: var(--color-mar);
   background: color-mix(in srgb, var(--color-crema) 70%, white);
 }
-
-@media (min-width: 640px) {
-  .menu-option-expand {
-    display: none;
-  }
-}

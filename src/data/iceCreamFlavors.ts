@@ -67,28 +67,6 @@ export const iceCreamFlavorGroups: MenuOptionGroup[] = [
     ],
   },
   {
-    label: "Sabores Free From",
-    labelEn: "Free From (gluten-free, dairy-free & vegan)",
-    options: [
-      "Sorbete de limón",
-      "Sorbete de frambuesa",
-      "Sorbete de mandarina",
-      "Sorbete de fruta del dragón",
-      "Sorbete de mango",
-      "Sorbete de manzana verde",
-      "Caramelo con salsa de chocolate",
-    ],
-    optionsEn: [
-      "Lemon sorbet",
-      "Raspberry sorbet",
-      "Mandarin sorbet",
-      "Dragon fruit sorbet",
-      "Mango sorbet",
-      "Green apple sorbet",
-      "Caramel with chocolate sauce",
-    ],
-  },
-  {
     label: "Sabores Premium",
     labelEn: "Premium flavors",
     options: [
@@ -158,6 +136,28 @@ export const iceCreamFlavorGroups: MenuOptionGroup[] = [
       "Crème catalane",
       "Banana with chocolate and walnuts",
       "Mantecado turrón with toasted yolk",
+    ],
+  },
+  {
+    label: "Sabores Free From",
+    labelEn: "Free From (gluten-free, dairy-free & vegan)",
+    options: [
+      "Sorbete de limón",
+      "Sorbete de frambuesa",
+      "Sorbete de mandarina",
+      "Sorbete de fruta del dragón",
+      "Sorbete de mango",
+      "Sorbete de manzana verde",
+      "Caramelo con salsa de chocolate",
+    ],
+    optionsEn: [
+      "Lemon sorbet",
+      "Raspberry sorbet",
+      "Mandarin sorbet",
+      "Dragon fruit sorbet",
+      "Mango sorbet",
+      "Green apple sorbet",
+      "Caramel with chocolate sauce",
     ],
   },
 ];
