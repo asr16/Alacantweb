@@ -56,8 +56,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // Genera .next/standalone (servidor mínimo con solo lo necesario) para Docker
-  output: "standalone",
+  // Standalone solo en Docker (Vercel falla con output standalone → ENOENT nft.json)
+  ...(process.env.OUTPUT_STANDALONE === "1" ? { output: "standalone" as const } : {}),
   images: {
     formats: ["image/webp"],
     qualities: [75, 90, 95, 100],

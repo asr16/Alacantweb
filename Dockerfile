@@ -22,7 +22,8 @@ COPY . .
 
 # NEXT_PUBLIC_* se fija en tiempo de build (sitemap, robots, metadatos)
 ARG NEXT_PUBLIC_SITE_URL
-ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL} \
+    OUTPUT_STANDALONE=1
 
 RUN npm run build
 
