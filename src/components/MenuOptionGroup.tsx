@@ -21,11 +21,15 @@ function getMobileMqServerSnapshot() {
   return false;
 }
 
+/** helados: colapsar en móvil (4) y escritorio (8); mobile-only: solo móvil */
+type CollapseMode = "helados" | "mobile-only" | "never";
+
 type MenuOptionGroupProps = {
   groupKey: string;
   label: string;
   options: string[];
   layout: "dense" | "pills";
+  collapseMode?: CollapseMode;
 };
 
 export function MenuOptionGroup({
@@ -33,6 +37,7 @@ export function MenuOptionGroup({
   label,
   options,
   layout,
+  collapseMode = "never",
 }: MenuOptionGroupProps) {
   const { t } = useLanguage();
   const isMobile = useSyncExternalStore(
@@ -42,8 +47,15 @@ export function MenuOptionGroup({
   );
   const [expanded, setExpanded] = useState(false);
 
-  const previewCount = isMobile ? MOBILE_PREVIEW_COUNT : DESKTOP_PREVIEW_COUNT;
-  const canCollapse = layout === "dense" && options.length > previewCount;
+  const previewCount =
+    collapseMode === "helados" && !isMobile
+      ? DESKTOP_PREVIEW_COUNT
+      : MOBILE_PREVIEW_COUNT;
+  const canCollapse =
+    layout === "dense" &&
+    collapseMode !== "never" &&
+    (collapseMode === "mobile-only" ? isMobile : true) &&
+    options.length > previewCount;
   const collapsed = canCollapse && !expanded;
   const visible = collapsed ? options.slice(0, previewCount) : options;
   const wrapClass = layout === "dense" ? "menu-option-group" : "mt-4";

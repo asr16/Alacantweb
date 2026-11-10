@@ -281,7 +281,16 @@ export function MenuCatalog() {
               {cat.optionGroups?.map((group) => {
                 const options = tx(group.options, group.optionsEn);
                 const denseList =
-                  cat.id === "helados" || options.length >= 10;
+                  cat.id === "helados" ||
+                  cat.id === "gofres-crepes" ||
+                  (cat.id === "desayunos" && options.length >= 10) ||
+                  options.length >= 10;
+                const collapseMode =
+                  cat.id === "helados"
+                    ? "helados"
+                    : cat.id === "desayunos" || cat.id === "gofres-crepes"
+                      ? "mobile-only"
+                      : "never";
 
                 return (
                   <MenuOptionGroup
@@ -290,6 +299,7 @@ export function MenuCatalog() {
                     label={tx(group.label, group.labelEn)}
                     options={options}
                     layout={denseList ? "dense" : "pills"}
+                    collapseMode={denseList ? collapseMode : "never"}
                   />
                 );
               })}
